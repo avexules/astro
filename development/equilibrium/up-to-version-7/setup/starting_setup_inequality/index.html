@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>starting_setup_inequality · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/">Research Vault</a><a href="/development/" aria-current="page">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="development" style="--split-left: 17rem"><div class="split-left"><nav class="sidebar" aria-label="Development Log notes"><details class="browse" open data-browse><summary>Browse Game Development</summary><ul class="tree"><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/">equilibrium</a><span class="count">22</span></summary><ul><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/">Up to version 7</a><span class="count">18</span></summary><ul><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/economy-deck/">economy deck</a><span class="count">4</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v4/">Economy Decklist v4</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v5/">Economy Decklist v5</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v6/">Economy Decklist v6</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy_cards-csv/">economy_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/event-deck/">event deck</a><span class="count">2</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/event-deck/event-decklist/">Event Decklist</a></li><li><a href="/development/equilibrium/up-to-version-7/event-deck/event_cards-csv/">event_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/feedback/">feedback</a><span class="count">2</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/feedback/feedback-from-v5/">Feedback from v5</a></li><li><a href="/development/equilibrium/up-to-version-7/feedback/feedback-from-v7/">Feedback from v7</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/rules/">rules</a><span class="count">5</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v3/">Equilibrium v3</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v4/">Equilibrium v4</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v5/">Equilibrium v5</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v6/">Equilibrium v6</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v7/">Equilibrium v7</a></li></ul></details></li><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/setup/">setup</a><span class="count">5</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/setup/card_distribution_rebalanced-csv/">card_distribution_rebalanced.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/card_distribution-csv/">card_distribution.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/event_sequence-csv/">event_sequence.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/starting_setup/">starting_setup</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/starting_setup_inequality/" aria-current="page">starting_setup_inequality</a></li></ul></details></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/">Version 10</a><span class="count">4</span></summary><ul><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/economy_cards/">economy_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/economy_cards/economy_cards-csv/">economy_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/role_cards/">role_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/role_cards/role_cards-csv/">role_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/round_cards/">round_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/round_cards/round_cards-csv/">round_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/rules/">rules</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/rules/equilibrium-v10/">Equilibrium v10</a></li></ul></details></li></ul></details></li></ul></details></li><li><a href="/development/camaiore/">camaiore</a></li></ul></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/development/">Development Log</a> / <a href="/development/equilibrium/">equilibrium</a> / <a href="/development/equilibrium/up-to-version-7/">Up to version 7</a> / <a href="/development/equilibrium/up-to-version-7/setup/">setup</a></nav><h1 class="note-title">starting_setup_inequality</h1><p class="note-updated">Updated 2026-11-24</p><div class="note-meta"><details class="fold" data-fold="outline"><summary>Outline</summary><ul class="toc"><li class="toc-2"><a href="#players-circular-seating-order">Players (Circular seating order)</a></li><li class="toc-3"><a href="#1-pink-democratic-left-economy---middle-class-dominant">1. PINK (Democratic-Left Economy) - Middle-Class Dominant</a></li><li class="toc-3"><a href="#2-rose-authoritarian-center-economy---pyramidal-hierarchy">2. ROSE (Authoritarian-Center Economy) - Pyramidal Hierarchy</a></li><li class="toc-3"><a href="#3-orange-authoritarian-right-economy---polarizedhollowed-middle">3. ORANGE (Authoritarian-Right Economy) - Polarized/Hollowed Middle</a></li><li class="toc-3"><a href="#4-brown-authoritarian-left-economy---egalitarian-scarcity">4. BROWN (Authoritarian-Left Economy) - Egalitarian Scarcity</a></li><li class="toc-3"><a href="#5-black-democratic-center-economy---balanced-moderation">5. BLACK (Democratic-Center Economy) - Balanced Moderation</a></li><li class="toc-3"><a href="#6-white-democratic-right-economy---elite-heavy-capitalism">6. WHITE (Democratic-Right Economy) - Elite-Heavy Capitalism</a></li><li class="toc-2"><a href="#card-distribution-principles">Card Distribution Principles</a></li><li class="toc-3"><a href="#early-game-vs-late-game-balance">Early-Game vs. Late-Game Balance</a></li><li class="toc-3"><a href="#card-condition-examples-by-class-structure">Card Condition Examples by Class Structure</a></li><li class="toc-2"><a href="#inequality-metrics">Inequality Metrics</a></li><li class="toc-2"><a href="#gameplay-implications">Gameplay Implications</a></li><li class="toc-3"><a href="#class-based-card-mechanics">Class-Based Card Mechanics</a></li><li class="toc-3"><a href="#strategic-dilemmas">Strategic Dilemmas</a></li></ul></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h1 id="equilibrium-v7---inequality-model-starting-setup">EQUILIBRIUM v7 - Inequality Model Starting Setup</h1>
+<h2 id="players-circular-seating-order">Players (Circular seating order)</h2>
+<h3 id="1-pink-democratic-left-economy---middle-class-dominant">1. <strong>PINK</strong> (Democratic-Left Economy) - <strong>Middle-Class Dominant</strong></h3>
+<ul>
+<li>Dice: L=2, M=5, H=1 = <strong>8 population</strong></li>
+</ul>
+   <!-- - Water: 9 (surplus +1) -->
+<ul>
+<li>Neighbors: WHITE (left), ROSE (right)</li>
+<li><strong>Archetype</strong>: Egalitarian democracy with strong middle class, compressed inequality</li>
+<li><strong>Card Strategy</strong>: Cards reward equality conditions, cooperation. Most cards valid early (reflecting stable system), but signature card requires maintaining universal welfare (harder endgame).</li>
+</ul>
+<h3 id="2-rose-authoritarian-center-economy---pyramidal-hierarchy">2. <strong>ROSE</strong> (Authoritarian-Center Economy) - <strong>Pyramidal Hierarchy</strong></h3>
+<ul>
+<li>Dice: L=5, M=2, H=2 = <strong>9 population</strong></li>
+</ul>
+   <!-- - Water: 6 (deficit -3) -->
+<ul>
+<li>Neighbors: PINK (left), ORANGE (right)</li>
+<li><strong>Archetype</strong>: Traditional pyramid - large underclass supporting small elite</li>
+<li><strong>Card Strategy</strong>: Cards reward hierarchy (highest &gt; lowest by margin). Moderate cards valid early, signature requires total dominance (pop AND water supremacy).</li>
+</ul>
+<h3 id="3-orange-authoritarian-right-economy---polarizedhollowed-middle">3. <strong>ORANGE</strong> (Authoritarian-Right Economy) - <strong>Polarized/Hollowed Middle</strong></h3>
+<ul>
+<li>Dice: L=5, M=1, H=3 = <strong>9 population</strong></li>
+</ul>
+   <!-- - Water: 6 (deficit -3) -->
+<ul>
+<li>Neighbors: ROSE (left), BROWN (right)</li>
+<li><strong>Archetype</strong>: Extreme inequality - many poor, vanishing middle, concentrated elite</li>
+<li><strong>Card Strategy</strong>: Cards reward polarization and extremes. Some valid early (high pop, extremes present), signature requires maximum polarization (H=6, L=1).</li>
+</ul>
+<h3 id="4-brown-authoritarian-left-economy---egalitarian-scarcity">4. <strong>BROWN</strong> (Authoritarian-Left Economy) - <strong>Egalitarian Scarcity</strong></h3>
+<ul>
+<li>Dice: L=2, M=2, H=2 = <strong>6 population</strong></li>
+</ul>
+   <!-- - Water: 4 (deficit -2) -->
+<ul>
+<li>Neighbors: ORANGE (left), BLACK (right)</li>
+<li><strong>Archetype</strong>: Perfect equality but limited resources - controlled low-growth state</li>
+<li><strong>Card Strategy</strong>: Cards reward equality and low totals. MOST valid at start (all dice equal, low pop, all ≤3), but signature requires MAINTAINING equality throughout game (hardest to preserve).</li>
+</ul>
+<h3 id="5-black-democratic-center-economy---balanced-moderation">5. <strong>BLACK</strong> (Democratic-Center Economy) - <strong>Balanced Moderation</strong></h3>
+<ul>
+<li>Dice: L=2, M=3, H=1 = <strong>6 population</strong></li>
+</ul>
+   <!-- - Water: 11 (surplus +5) -->
+<ul>
+<li>Neighbors: BROWN (left), WHITE (right)</li>
+<li><strong>Archetype</strong>: Moderate inequality, small prosperous society</li>
+<li><strong>Card Strategy</strong>: Cards reward moderate differences and stability. Many valid early, signature requires collective survival (no eliminations - cooperative endgame).</li>
+</ul>
+<h3 id="6-white-democratic-right-economy---elite-heavy-capitalism">6. <strong>WHITE</strong> (Democratic-Right Economy) - <strong>Elite-Heavy Capitalism</strong></h3>
+<ul>
+<li>Dice: L=2, M=1, H=4 = <strong>7 population</strong></li>
+</ul>
+   <!-- - Water: 9 (surplus +2) -->
+<ul>
+<li>Neighbors: BLACK (left), PINK (right)</li>
+<li><strong>Archetype</strong>: Top-heavy distribution - small elite controls disproportionate share</li>
+<li><strong>Card Strategy</strong>: Cards reward diversity and individual success. Fewer valid early (need to achieve dominance), signature rewards water supremacy (competitive endgame).</li>
+</ul>
+<p><strong>Total: 45 population</strong></p>
+<h2 id="card-distribution-principles">Card Distribution Principles</h2>
+<p>Cards are redistributed from <a href="(G)*%20Game%20Development/Equilibrium/Up%20to%20version%207/setup/card_distribution_rebalanced.csv">card_distribution_rebalanced.csv</a> but weighted by class structure:</p>
+<h3 id="early-game-vs-late-game-balance">Early-Game vs. Late-Game Balance</h3>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Valid at Start</th>
+<th>Counterbalance Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PINK</strong> (L=2,M=5,H=1)</td>
+<td>HIGH validity (~70%)</td>
+<td>Signature card very hard: requires ALL players have water≥pop (depends on others’ cooperation)</td>
+</tr>
+<tr>
+<td><strong>ROSE</strong> (L=5,M=2,H=2)</td>
+<td>MEDIUM validity (~60%)</td>
+<td>Signature moderately hard: requires being highest in BOTH pop AND water simultaneously</td>
+</tr>
+<tr>
+<td><strong>ORANGE</strong> (L=5,M=1,H=3)</td>
+<td>MEDIUM validity (~60%)</td>
+<td>Signature very hard: requires achieving maximum polarization (6-1 spread)</td>
+</tr>
+<tr>
+<td><strong>BROWN</strong> (L=2,M=2,H=2)</td>
+<td>HIGHEST validity (~85%)</td>
+<td>Signature HARDEST: requires maintaining perfect equality (2=2=2) through all disruptions</td>
+</tr>
+<tr>
+<td><strong>BLACK</strong> (L=2,M=3,H=1)</td>
+<td>HIGH validity (~70%)</td>
+<td>Signature hard: requires preventing ANY player elimination (collective responsibility)</td>
+</tr>
+<tr>
+<td><strong>WHITE</strong> (L=2,M=1,H=4)</td>
+<td>LOW validity (~40%)</td>
+<td>Signature easier: just requires having most water (achievable with surplus start)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="card-condition-examples-by-class-structure">Card Condition Examples by Class Structure</h3>
+<h4 id="pink-strong-middle-class-2-5-1">PINK (Strong Middle Class: 2-5-1)</h4>
+<ul>
+<li>✓ “Any pair differ by ≤1” - YES (M=5, H=1 differ by 4, but L=2, M=5 differ by 3… actually need to reconsider)</li>
+<li>✓ “Total population is even” - YES (8)</li>
+<li>✓ “Total population ≥7” - YES (8)</li>
+<li>✗ “You redistributed water” - NO (game action)</li>
+<li>✗ “All players have water≥pop” (SIGNATURE) - NO (endgame cooperative condition)</li>
+</ul>
+<h4 id="rose-pyramid-5-2-2">ROSE (Pyramid: 5-2-2)</h4>
+<ul>
+<li>✓ “Highest die &gt; lowest die by ≥2” - YES (5-2=3)</li>
+<li>✓ “Pop+neighbor≥15” - YES (likely)</li>
+<li>✓ “Total population is odd” - YES (9)</li>
+<li>✗ “Gave/received≥3 water” - NO (game action)</li>
+<li>✗ “Highest pop AND highest water” (SIGNATURE) - NO (endgame dominance)</li>
+</ul>
+<h4 id="orange-polarized-5-1-3">ORANGE (Polarized: 5-1-3)</h4>
+<ul>
+<li>✓ “Any two dice equal” - NO (all different)</li>
+<li>✓ “Any die shows 1” - YES (M=1)</li>
+<li>✓ “Total population≥9” - YES (9)</li>
+<li>✓ “Highest total population” - MAYBE (tied)</li>
+<li>✗ “Highest die ≥5” - NO (H=3)</li>
+<li>✗ “Highest=6 AND lowest=1” (SIGNATURE) - NO (need 6-1 polarization)</li>
+</ul>
+<h4 id="brown-perfect-equality-2-2-2">BROWN (Perfect Equality: 2-2-2)</h4>
+<ul>
+<li>✓ “Any two dice equal” - YES (all equal!)</li>
+<li>✓ “Total population≤6” - YES (6)</li>
+<li>✓ “All dice≤3” - YES (all =2)</li>
+<li>✓ “Total population is even” - YES (6)</li>
+<li>✓ “All three dice equal AND pop≤6” (SIGNATURE) - YES! <strong>But must MAINTAIN through game</strong></li>
+</ul>
+<h4 id="black-moderate-2-3-1">BLACK (Moderate: 2-3-1)</h4>
+<ul>
+<li>✓ “Highest - lowest ≤2” - YES (3-1=2)</li>
+<li>✓ “Total population is even” - YES (6)</li>
+<li>✓ “Any die shows 1” - YES (H=1)</li>
+<li>✓ “Lowest die≤3” - YES (L=1)</li>
+<li>✗ “No player eliminated” (SIGNATURE) - NO (endgame condition)</li>
+</ul>
+<h4 id="white-elite-heavy-2-1-4">WHITE (Elite-Heavy: 2-1-4)</h4>
+<ul>
+<li>✓ “All dice different” - YES</li>
+<li>✓ “Total population is odd” - YES (7)</li>
+<li>✓ “Total population≥7” - YES (7)</li>
+<li>✗ “You redistributed water” - NO (game action)</li>
+<li>✗ “Most water among all players” (SIGNATURE) - NO (need to achieve dominance)</li>
+</ul>
+<hr>
+<h2 id="inequality-metrics">Inequality Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Gini Approximation*</th>
+<th>Class Structure</th>
+<th>Political Economy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PINK</td>
+<td>0.25</td>
+<td>Low inequality (middle-class society)</td>
+<td>Democratic redistribution</td>
+</tr>
+<tr>
+<td>ROSE</td>
+<td>0.30</td>
+<td>Medium-low (traditional pyramid)</td>
+<td>Authoritarian stability</td>
+</tr>
+<tr>
+<td>ORANGE</td>
+<td>0.40</td>
+<td>HIGH (polarized)</td>
+<td>Authoritarian market</td>
+</tr>
+<tr>
+<td>BROWN</td>
+<td>0.00</td>
+<td>Zero inequality (perfect equality)</td>
+<td>Authoritarian egalitarian</td>
+</tr>
+<tr>
+<td>BLACK</td>
+<td>0.20</td>
+<td>Low (balanced)</td>
+<td>Democratic balance</td>
+</tr>
+<tr>
+<td>WHITE</td>
+<td>0.35</td>
+<td>Medium-high (elite capture)</td>
+<td>Democratic capitalism</td>
+</tr>
+</tbody>
+</table>
+<p>*Simplified Gini coefficient based on L/M/H distribution</p>
+<hr>
+<h2 id="gameplay-implications">Gameplay Implications</h2>
+<h3 id="class-based-card-mechanics">Class-Based Card Mechanics</h3>
+<ol>
+<li>
+<p><strong>Equality Conditions</strong> (favor PINK, BROWN, BLACK)</p>
+<ul>
+<li>“All dice equal” or “All dice differ by ≤1”</li>
+<li>“Any pair equal”</li>
+<li>These are EASIER for egalitarian societies to satisfy initially</li>
+</ul>
+</li>
+<li>
+<p><strong>Hierarchy Conditions</strong> (favor ROSE, WHITE)</p>
+<ul>
+<li>“Highest &gt; lowest by ≥X”</li>
+<li>“Highest die ≥5” or “Lowest die ≤2”</li>
+<li>These reward maintaining class stratification</li>
+</ul>
+</li>
+<li>
+<p><strong>Polarization Conditions</strong> (favor ORANGE)</p>
+<ul>
+<li>“Any die shows 1 AND any die ≥5”</li>
+<li>“Middle class (M) ≤2”</li>
+<li>These reward extremes</li>
+</ul>
+</li>
+<li>
+<p><strong>Population Dynamics</strong></p>
+<ul>
+<li>Migration now affects CLASS composition, not just total</li>
+<li>Losing L=1 vs H=1 has different strategic implications</li>
+<li>Inequality can CHANGE during game through selective migration/death</li>
+</ul>
+</li>
+</ol>
+<h3 id="strategic-dilemmas">Strategic Dilemmas</h3>
+<ul>
+<li><strong>PINK</strong>: Easy early game (many valid cards), but final card requires OTHERS to cooperate</li>
+<li><strong>BROWN</strong>: Easiest start (signature card already valid!), but MUST PRESERVE equality against all disruptions</li>
+<li><strong>WHITE</strong>: Hard early game (few valid cards), but signature achievable through competition</li>
+<li><strong>ORANGE</strong>: Must INCREASE polarization to achieve signature (H→6, M→lower, L→1)</li>
+</ul>
+</div></article></div></div></div><script>(function(){const id = "development";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

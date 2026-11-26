@@ -1,0 +1,28 @@
+Flavor Name,Condition
+Famine,Each player either rerolls their highest die or decreases two die by 1.
+Famine,Each player either rerolls their highest die or decreases two die by 1.
+Run for your lives,The player poorest in water must give 1 population to each neighbor (as migration).
+Run for your lives,The player poorest in water must give 1 population to each neighbor (as migration).
+Economic crisis,All players lose 1 population.
+Fertility increase,"Each player that plays or discards an economy card this round, may increase one of their dice by 1."
+Fertility increase,"Each player that plays or discards an economy card this round, may increase one of their dice by 1."
+Water imbalance,"Highest population player gains 1 water, lowest population player loses 1 water."
+Water imbalance,"Highest population player gains 1 water, lowest population player loses 1 water."
+Heatwave,All players lose 1 water.
+Heatwave,All players lose 1 water.
+Water pollution,Richest water player decreases two of their dice by 1.
+Water pollution,Richest water player decreases two of their dice by 1.
+Refugee wave,The player richest in water must take 2 population from the poorest player (as migration).
+Refugee wave,The player richest in water must take 2 population from the poorest player (as migration).
+Flight & Asylum,The player richest in water must take 1 population from each neighbor (as migration).
+Flight & Asylum,The player richest in water must take 1 population from each neighbor (as migration).
+Crisis management,Lowest population player loses 1 water and poorest water player decreases population by 1.
+Missing supplies,Either all odd population players or all even population players lose 2 water.
+Emergency care,One poorest water player gains as much water as their difference in water to population from any of their neighbors (as redistribution).
+Harsh Season,All players with population ≤ 5 lose 1 water.
+Helping unites,Either richest water player must take 3 population of poorest water player (as migration) or Highest population player must send 3 water to lowest population player (as redistribution).
+Helping unites,Either highest population player must take 3 population of poorest water player (as migration) or Richest water player must send 3 water to lowest population player (as redistribution).
+Rain & Drought,All players lose 1 water except one richest water player gains 2.
+Rain & Drought,All players gain 1 water except one poorest water player loses 2.
+Localized Rain,Each player with odd population gains 1 water.
+Localized Rain,Each player with even population gains 1 water.

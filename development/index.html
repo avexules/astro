@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Equilibrium v10 · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="canonical" href="/development/equilibrium/version-10/rules/equilibrium-v10/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/">Research Vault</a><a href="/development/" aria-current="page">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="development" style="--split-left: 17rem"><div class="split-left"><nav class="sidebar" aria-label="Development Log notes"><details class="browse" open data-browse><summary>Browse Game Development</summary><ul class="tree"><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/">equilibrium</a><span class="count">22</span></summary><ul><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/">Up to version 7</a><span class="count">18</span></summary><ul><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/economy-deck/">economy deck</a><span class="count">4</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v4/">Economy Decklist v4</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v5/">Economy Decklist v5</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy-decklist-v6/">Economy Decklist v6</a></li><li><a href="/development/equilibrium/up-to-version-7/economy-deck/economy_cards-csv/">economy_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/event-deck/">event deck</a><span class="count">2</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/event-deck/event-decklist/">Event Decklist</a></li><li><a href="/development/equilibrium/up-to-version-7/event-deck/event_cards-csv/">event_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/feedback/">feedback</a><span class="count">2</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/feedback/feedback-from-v5/">Feedback from v5</a></li><li><a href="/development/equilibrium/up-to-version-7/feedback/feedback-from-v7/">Feedback from v7</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/rules/">rules</a><span class="count">5</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v3/">Equilibrium v3</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v4/">Equilibrium v4</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v5/">Equilibrium v5</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v6/">Equilibrium v6</a></li><li><a href="/development/equilibrium/up-to-version-7/rules/equilibrium-v7/">Equilibrium v7</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/up-to-version-7/setup/">setup</a><span class="count">5</span></summary><ul><li><a href="/development/equilibrium/up-to-version-7/setup/card_distribution_rebalanced-csv/">card_distribution_rebalanced.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/card_distribution-csv/">card_distribution.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/event_sequence-csv/">event_sequence.csv</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/starting_setup/">starting_setup</a></li><li><a href="/development/equilibrium/up-to-version-7/setup/starting_setup_inequality/">starting_setup_inequality</a></li></ul></details></li></ul></details></li><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/">Version 10</a><span class="count">4</span></summary><ul><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/economy_cards/">economy_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/economy_cards/economy_cards-csv/">economy_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/role_cards/">role_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/role_cards/role_cards-csv/">role_cards.csv</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/round_cards/">round_cards</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/round_cards/round_cards-csv/">round_cards.csv</a></li></ul></details></li><li><details open><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/development/equilibrium/version-10/rules/">rules</a><span class="count">1</span></summary><ul><li><a href="/development/equilibrium/version-10/rules/equilibrium-v10/" aria-current="page">Equilibrium v10</a></li></ul></details></li></ul></details></li></ul></details></li><li><a href="/development/camaiore/">camaiore</a></li></ul></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/development/">Development Log</a> / <a href="/development/equilibrium/">equilibrium</a> / <a href="/development/equilibrium/version-10/">Version 10</a> / <a href="/development/equilibrium/version-10/rules/">rules</a></nav><h1 class="note-title">Equilibrium v10</h1><p class="note-updated">Updated 2026-11-24</p><div class="note-meta"><details class="fold" data-fold="outline"><summary>Outline</summary><ul class="toc"><li class="toc-2"><a href="#components">Components</a></li><li class="toc-2"><a href="#setup">Setup</a></li><li class="toc-3"><a href="#seating">Seating</a></li><li class="toc-3"><a href="#starting-conditions">Starting Conditions</a></li><li class="toc-2"><a href="#winning-and-losing">Winning and Losing</a></li><li class="toc-2"><a href="#round-structure">Round Structure</a></li><li class="toc-3"><a href="#phase-1--round-card">Phase 1 — Round Card</a></li><li class="toc-3"><a href="#phase-2--play">Phase 2 — Play</a></li><li class="toc-3"><a href="#phase-3--feed--grow">Phase 3 — Feed &amp; Grow</a></li><li class="toc-2"><a href="#economy-cards">Economy Cards</a></li><li class="toc-3"><a href="#overview">Overview</a></li><li class="toc-3"><a href="#example">Example</a></li><li class="toc-3"><a href="#playing-a-card-max-1-per-round">Playing a Card (max 1 per round)</a></li><li class="toc-3"><a href="#sources">Sources</a></li><li class="toc-3"><a href="#destinations">Destinations</a></li><li class="toc-3"><a href="#card-notes">Card Notes</a></li><li class="toc-2"><a href="#endgame-scoring">Endgame Scoring</a></li><li class="toc-2"><a href="#tie-breaking">Tie-Breaking</a></li><li class="toc-2"><a href="#harvesting">Harvesting</a></li><li class="toc-2"><a href="#migration">Migration</a></li><li class="toc-2"><a href="#the-common-pool">The Common Pool</a></li><li class="toc-2"><a href="#verbal-agreements">Verbal Agreements</a></li><li class="toc-2"><a href="#voting">Voting</a></li><li class="toc-3"><a href="#equal-shares-reference">Equal Shares Reference</a></li><li class="toc-2"><a href="#information-visibility">Information Visibility</a></li><li class="toc-2"><a href="#regulation-variants">Regulation Variants</a></li><li class="toc-3"><a href="#free-market--minimal-regulation">Free Market — Minimal Regulation</a></li><li class="toc-3"><a href="#democracy--moderate-regulation">Democracy — Moderate Regulation</a></li><li class="toc-3"><a href="#welfare-state--heavy-regulation">Welfare State — Heavy Regulation</a></li><li class="toc-3"><a href="#what-variants-do-not-affect">What Variants Do NOT Affect</a></li><li class="toc-2"><a href="#player-identities">Player Identities</a></li><li class="toc-2"><a href="#for-facilitators">For Facilitators</a></li><li class="toc-3"><a href="#teaching-the-game">Teaching the Game</a></li><li class="toc-3"><a href="#role-rotation">Role Rotation</a></li><li class="toc-3"><a href="#post-game-debrief">Post-Game Debrief</a></li><li class="toc-2"><a href="#glossary">Glossary</a></li></ul></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><p>Equilibrium is a coopetitive 5-player negotiation game. You share a common pool of resources with four other players. Harvest from it, form trade alliances, laws and sanctions, and play Economy Cards to score points. But if your population starves to zero, you’re out.</p>
+<blockquote>
+<p><strong>Your goal:</strong> score the most points — but you’ll need each other to survive.</p>
+</blockquote>
+<p><strong>QUICK START</strong></p>
+<p>If you want to start playing immediately, here’s all you need:</p>
+<ol>
+<li><strong>Sit in order A–B–C–D–E around the table.</strong> Each player takes their Role Card and 7 Economy Cards.</li>
+<li><strong>Place 36 resource tokens in the center</strong> as the common pool. Give Player B 4 tokens and Player D 3 tokens. Everyone else starts with 0.</li>
+<li><strong>Set each player’s Population counter</strong> to their starting value (A=4, B=6, C=2, D=5, E=1).</li>
+<li><strong>Check your Role Card</strong> for the regulation variant you’re playing (Free Market, Democracy, or Welfare State). It tells you how harvest limits work.</li>
+<li><strong>Phase 1: Flip the first Round Card and read it aloud.</strong> It tells you what happens this round.</li>
+<li><strong>Phase 2: Start the timer.</strong> Harvest resources from the pool (clockwise, starting with Player A in Round 1, rotating each round), negotiate, trade, and play cards. When everyone is done or time runs out, move on.</li>
+<li><strong>Phase 3: Feed your people.</strong> Spend 1 resource per Population point you want to keep. Unfed Population is lost. Then apply storage cap, then optionally grow, then the pool regenerates.</li>
+<li><strong>Repeat Phases 1-3 for 6 rounds.</strong> After Round 6, score: commission points from played cards + end values from held cards whose conditions are met + sustainability bonuses. Highest total wins.</li>
+</ol>
+<p>Your cards have two point values — the small number is what you get if you play the card now; the big number in parentheses is what you get if you hold it to the end, but only if the condition is still true then. That’s the gamble.</p>
+<p>Everything else can be learned as it comes up. The Round Cards guide most of the game.</p>
+<h2 id="components">Components</h2>
+<ul>
+<li>5 Role Cards (tracking Population and resources, with variant rules)</li>
+<li>36 Resource Tokens (common pool)</li>
+<li>7 Starting Resources (4 for Player B, 3 for Player D)</li>
+<li>6 Round Cards (played in fixed order, 1 per round)</li>
+<li>35 Economy Cards (7 per player, pre-assigned sets)</li>
+<li>5 Freeze Tokens (one per player)</li>
+<li>1 Starting Token (determines order of play for Harvesting)</li>
+<li>1 Timer (duration set by facilitator)</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<h3 id="seating">Seating</h3>
+<p>Five players sit in a fixed clockwise order: A – B – C – D – E.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>        A (Settlement)</span></span>
+<span class="line"><span>       /              \</span></span>
+<span class="line"><span> E (Homestead)    B (Colony)</span></span>
+<span class="line"><span>      |                |</span></span>
+<span class="line"><span> D (Commune) –––– C (Outpost)</span></span></code></pre>
+<p>Your <strong>neighbors</strong> are the two players directly adjacent to you. Your <strong>non-neighbors</strong> are the two players across from you.</p>
+<h3 id="starting-conditions">Starting Conditions</h3>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Role</th>
+<th style="text-align: center">Starting Population</th>
+<th style="text-align: center">Starting Resources</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>The Settlement</td>
+<td style="text-align: center">4</td>
+<td style="text-align: center">0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>The Colony</td>
+<td style="text-align: center">6</td>
+<td style="text-align: center">4</td>
+</tr>
+<tr>
+<td>C</td>
+<td>The Outpost</td>
+<td style="text-align: center">2</td>
+<td style="text-align: center">0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>The Commune</td>
+<td style="text-align: center">5</td>
+<td style="text-align: center">3</td>
+</tr>
+<tr>
+<td>E</td>
+<td>The Homestead</td>
+<td style="text-align: center">1</td>
+<td style="text-align: center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Place 36 Resource Tokens in the center as the common pool. Each player receives their 7 Economy Cards as a hand. Stack the 6 Round Cards face-down in order (Round 1 on top).</p>
+<h2 id="winning-and-losing">Winning and Losing</h2>
+<p><strong>If your Population reaches 0, you are eliminated.</strong> Other players continue. You keep your face-up Economy Card points (commission already earned). Your held cards are discarded unscored.</p>
+<p><strong>After 6 rounds,</strong> the player with the highest total score wins (see Endgame Scoring). Tied players share the victory. Eliminated players can still win if their commission points are highest.</p>
+<h2 id="round-structure">Round Structure</h2>
+<p>The game lasts 6 rounds. Each round has three phases.</p>
+<h3 id="phase-1--round-card">Phase 1 — Round Card</h3>
+<p>Flip the top Round Card and read it aloud. The card shows:</p>
+<ul>
+<li><strong>Round Event</strong> — resolve immediately. This may give resources to specific players, change populations, or trigger migration.</li>
+<li><strong>Regeneration</strong> — a Flat Bonus and a Rate, visible now but applied at the end of the round.</li>
+</ul>
+<p>Harvest limits depend on the regulation variant being played (see Regulation Variants).</p>
+<h3 id="phase-2--play">Phase 2 — Play</h3>
+<p>Start the timer. Everyone acts freely and simultaneously. You may:</p>
+<ul>
+<li><strong>Harvest</strong> from the common pool, respecting the Harvesting order starting from the player with Starting Token clockwise. The order is only important for Harvesting, not for any other play.</li>
+<li><strong>Negotiate</strong> — make deals, propose agreements, discuss strategy.</li>
+<li><strong>Play ONE Economy Card</strong> for redistribution of resources, if its condition is currently met.</li>
+<li><strong>Gift any resources</strong> to any player or to the common pool.</li>
+</ul>
+<p><strong>Freeze:</strong> Flip your Freeze Token when you’re done acting. Others can still give you resources or target you as a redistribution source. When all players freeze or the timer expires, Phase 2 ends.</p>
+<h3 id="phase-3--feed--grow">Phase 3 — Feed &amp; Grow</h3>
+<p>All players act simultaneously.</p>
+<ol>
+<li><strong>Feed.</strong> Choose how many Population points to feed. Each costs 1 resource. Unfed points are lost. If you have at least 1 resource, you must feed at least 1 Population. If your Population reaches 0, you are eliminated — other players continue.</li>
+<li><strong>Storage Cap.</strong> After Feed, each player may hold extra resources up to their current Population count. Excess is permanently removed from the game — not returned to the pool. This means hoarding of resources is capped: with Population 1 you can store 1 unused resource token; with Population 4 you can store 4 unused resource tokens.</li>
+<li><strong>Auto-Redistribution (Welfare State only).</strong> The player with the most 🔷 gives 1 🔷 to the player with the fewest. (Ties: starting harvester decides.)</li>
+<li><strong>Grow (optional).</strong> You may spend 1 resource to increase Population by 1. Maximum 1 growth per round. Maximum Population: 6.</li>
+<li><strong>Regeneration.</strong> The pool grows: <strong>(Pool + Flat Bonus) × (1 + Rate)</strong>, rounded up. Even an empty pool can recover thanks to the Flat Bonus.</li>
+</ol>
+<h2 id="economy-cards">Economy Cards</h2>
+<h3 id="overview">Overview</h3>
+<p>Each player holds 7 Economy Cards — your personal strategy. Economy Cards score you points while enabling redistribution of resources. Every card has:</p>
+<ul>
+<li><strong>Condition</strong> — must be valid in the moment of playing the card.</li>
+<li><strong>Redistribute</strong> — a resource amount and a source entity.</li>
+<li><strong>Points</strong> — Commission / (End Value).</li>
+</ul>
+<p><strong>Commission</strong> is what you score by playing the card mid-game. <strong>End Value</strong> (in parentheses) is what you score if you hold the card until after the final round when the condition is still met.</p>
+<blockquote>
+<p><strong>The Economy Cards Dilemma:</strong> Play a card now for fewer points but trigger redistribution that helps the group. Or hold it for more points and hope the condition still holds at endgame. High-value cards have ambitious conditions — playing them when they happen to be true is safe; hoarding them is the gamble.</p>
+</blockquote>
+<h3 id="example">Example</h3>
+<p>Card D1 — The Commune, <em>Equality</em>:</p>
+<ul>
+<li><strong>Condition:</strong> Difference between highest and lowest Population is ≤ 2</li>
+<li><strong>Redistribute:</strong> 2 from Highest Population</li>
+<li><strong>Points:</strong> 2 / (5)</li>
+</ul>
+<p>Played mid-game: 2 resources are taken from the highest-Population player, you choose where they go, and you score 2 points.</p>
+<p>Held to endgame: if populations are still within 2 of each other, you score 5 points — but no redistribution happens.</p>
+<h3 id="playing-a-card-max-1-per-round">Playing a Card (max 1 per round)</h3>
+<ol>
+<li><strong>Condition check.</strong> Must be true at this moment.</li>
+<li><strong>Source pays.</strong> The source player(s) must have enough resources. If they can’t pay, the card can’t be played. (“From Each Player” resolves if at least 2 players can contribute.)</li>
+<li><strong>Choose destination.</strong> You decide where the resources go. The destination cannot be the same entity as the source. Valid destinations: a single player, the common pool, or split between multiple players.</li>
+<li><strong>Score.</strong> Place the card face-up and take the commission points.</li>
+</ol>
+<h3 id="sources">Sources</h3>
+<p>Each card specifies who pays. You don’t control this — the card does.</p>
+<p><strong>from Neighbor</strong> — one of your two adjacent players. You choose which.</p>
+<p><strong>from Highest Population</strong> — the player with the highest Population. If tied, you (the card-player) choose which tied player pays. If that’s you, you pay your own tax.</p>
+<p><strong>from Any Player</strong> — you name one player.</p>
+<p><strong>from Each Player</strong> — all players, including you, pay the stated amount. Resolves if at least 2 can contribute; those who can’t are skipped.</p>
+<p><strong>from Non-Neighbor</strong> — one player not adjacent to you. You choose which.</p>
+<h3 id="destinations">Destinations</h3>
+<p>The card-player always chooses the destination(s) freely. This is the same across all regulation variants.</p>
+<h3 id="card-notes">Card Notes</h3>
+<ul>
+<li>Playing is always voluntary.</li>
+<li>You may play before, during, or after harvesting — any time in Phase 2.</li>
+<li>Played cards stay face-up in front of you for the rest of the game.</li>
+<li>Showing or discussing your hand is always allowed, never required.</li>
+</ul>
+<h2 id="endgame-scoring">Endgame Scoring</h2>
+<p>After Round 6’s Phase 3 (including regeneration), all surviving players reveal their remaining hand cards. Score in this order:</p>
+<ol>
+<li><strong>Commission points</strong> — already earned from cards played mid-game.</li>
+<li><strong>Endgame card values</strong> — for each held card whose condition is currently met, score the End Value. If not met, score 0.</li>
+<li><strong>Group pool bonus</strong> — divide the final common pool by the total living Population (all surviving players combined), rounded down. Each surviving player gains that many bonus points. <em>This represents how many more rounds the commons could sustain everyone.</em></li>
+<li><strong>Individual sustainability bonus</strong> — if you have at least 1 stored resource, your bonus equals your current Population. If you have 0 stored resources, your bonus is 0. <em>This rewards ending the game with resilience rather than depleted.</em></li>
+</ol>
+<p>Highest total wins. Tied players share the victory. Eliminated players keep only their commission points (no endgame card values, no sustainability bonuses).</p>
+<h2 id="tie-breaking">Tie-Breaking</h2>
+<p>Ties occur when a rule targets “the player with the highest/lowest Population” and multiple players share that value.</p>
+<p><strong>Economy Card ties:</strong> The player who played the card chooses which tied player is affected.</p>
+<p><strong>Round Card ties:</strong> The current round’s starting harvester chooses which tied player is affected.</p>
+<h2 id="harvesting">Harvesting</h2>
+<p>Harvest happens during Phase 2. The order is always <strong>clockwise</strong>, with the starting player advancing clockwise each round as well.</p>
+<p>When your turn comes, take resources from the pool. You may always take less than any limit allows – maybe you choose to or can not take any resources from the pool: then you tell everyone that you pass your harvest turn. Harvest limits depend on the regulation variant (see Regulation Variants).</p>
+<h2 id="migration">Migration</h2>
+<p>Some Round Cards cause Population to move between players:</p>
+<ul>
+<li>The specified player loses Population.</li>
+<li>Each lost point migrates in the stated direction (clockwise or counterclockwise).</li>
+<li>If the next player is at Population 6, the migrant continues in the same direction to the next player.</li>
+<li>This repeats until every migrant finds a home.</li>
+</ul>
+<h2 id="the-common-pool">The Common Pool</h2>
+<p>The pool is the shared resource at the center of the table, always fully visible.</p>
+<p>Resources <strong>enter</strong> the pool through: voluntary contributions during Phase 2, redistribution directed to the pool, eliminated players’ remaining resources, and regeneration at the end of rounds.</p>
+<p>Resources <strong>leave</strong> the pool through: harvesting during Phase 2.</p>
+<blockquote>
+<p><strong>The Common Pool Dynamic:</strong> The pool regenerates every round: <strong>(Pool + Flat) × (1 + Rate)</strong>, rounded up. This models a sustainable resource pool: when left in the commons, it grows; when harvested and held in private hands, it doesn’t. Conservation is collectively rewarded through the group pool bonus at endgame.</p>
+</blockquote>
+<h2 id="verbal-agreements">Verbal Agreements</h2>
+<p>Players may make verbal deals at all times, propose “laws”, and agree on “sanctions”. These are only socially binding. There is no mechanical enforcement but the social consequences of breaking trust.</p>
+<h2 id="voting">Voting</h2>
+<p>In the <strong>Democracy</strong> variant, a harvest vote occurs each round (starting Round 2). The vote is: <strong>“Raise your hand for Equal Shares.”</strong> Three or more hands = Equal Shares applies (Pool ÷ 5 each, rounded down, remainder stays in pool). Fewer than three = Need-Based applies (harvest up to your Population count, in rotation order). Abstaining counts as not raising your hand — effectively supporting Need-Based as the default.</p>
+<p>In other variants, no formal voting occurs — but players may always use informal show-of-hands to coordinate if they wish.</p>
+<h3 id="equal-shares-reference">Equal Shares Reference</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Pool</th>
+<th style="text-align: center">Each gets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center">5–9</td>
+<td style="text-align: center">1</td>
+</tr>
+<tr>
+<td style="text-align: center">10–14</td>
+<td style="text-align: center">2</td>
+</tr>
+<tr>
+<td style="text-align: center">15–19</td>
+<td style="text-align: center">3</td>
+</tr>
+<tr>
+<td style="text-align: center">20–24</td>
+<td style="text-align: center">4</td>
+</tr>
+<tr>
+<td style="text-align: center">25–29</td>
+<td style="text-align: center">5</td>
+</tr>
+<tr>
+<td style="text-align: center">30–34</td>
+<td style="text-align: center">6</td>
+</tr>
+<tr>
+<td style="text-align: center">35–40</td>
+<td style="text-align: center">7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="information-visibility">Information Visibility</h2>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Visibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common pool size</td>
+<td>Always public</td>
+</tr>
+<tr>
+<td>Each player’s resource count</td>
+<td>Always public</td>
+</tr>
+<tr>
+<td>Each player’s Population</td>
+<td>Always public</td>
+</tr>
+<tr>
+<td>Round Card content</td>
+<td>Always public (read aloud)</td>
+</tr>
+<tr>
+<td>Regeneration rate and flat bonus</td>
+<td>Always public (on the Round Card)</td>
+</tr>
+<tr>
+<td>Economy Cards in hand</td>
+<td>Private — but you may voluntarily show or discuss them</td>
+</tr>
+<tr>
+<td>Economy Cards played (face-up)</td>
+<td>Public for the rest of the game</td>
+</tr>
+<tr>
+<td>Verbal agreements</td>
+<td>Public (spoken at the table) but only socially binding</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regulation-variants">Regulation Variants</h2>
+<p>The base game is the same across all three variants — same Round Cards, same Economy Cards, same starting conditions. Elimination and win conditions are the same: individual elimination, highest individual score wins. The variant changes <strong>harvest governance</strong> and whether <strong>automatic redistribution</strong> occurs.</p>
+<p>Each player’s Role Card includes the active variant’s rules for reference.</p>
+<h3 id="free-market--minimal-regulation">Free Market — Minimal Regulation</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Harvest limits</strong></td>
+<td>No limits (except Round 1: 🎲 count + 1).</td>
+</tr>
+<tr>
+<td><strong>Auto-redistribution</strong></td>
+<td>None.</td>
+</tr>
+<tr>
+<td><em>No governance mechanisms — only social pressure. This is the control condition.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="democracy--moderate-regulation">Democracy — Moderate Regulation</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Harvest limits</strong></td>
+<td>Round 1: 🎲 count + 1. Rounds 2–6: vote each round — “Raise hand for Equal Shares.” 3+ hands = Equal Shares (Pool ÷ 5, rounded down; remainder stays). Fewer = Need-Based (up to 🎲 count).</td>
+</tr>
+<tr>
+<td><strong>Auto-redistribution</strong></td>
+<td>None.</td>
+</tr>
+<tr>
+<td><em>Democratic harvest governance. The group decides between equality and need each round.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="welfare-state--heavy-regulation">Welfare State — Heavy Regulation</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Harvest limits</strong></td>
+<td>Each player may harvest up to their 🎲 count (imposed every round).</td>
+</tr>
+<tr>
+<td><strong>Auto-redistribution</strong></td>
+<td>After Feed each round: player with most 🔷 gives 1 to player with fewest. (Ties: starting harvester decides.)</td>
+</tr>
+<tr>
+<td><em>Imposed limits plus an automatic safety net. No vote, no choice on harvest.</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-variants-do-not-affect">What Variants Do NOT Affect</h3>
+<p>All three variants share:</p>
+<ul>
+<li>Elimination rules (individual — others continue)</li>
+<li>Win condition (highest individual score)</li>
+<li>Economy Card sources (always per card text)</li>
+<li>Economy Card destinations (always player’s free choice)</li>
+<li>Free giving between players (always unrestricted)</li>
+<li>Voluntary pool contributions (always unrestricted)</li>
+<li>Negotiation and verbal agreements (always allowed, socially binding only)</li>
+<li>Growth decisions (always individual)</li>
+<li>Round Card events and regeneration (always identical)</li>
+</ul>
+<h2 id="player-identities">Player Identities</h2>
+<p>Each player has a strategic identity shaped by their starting conditions and Economy Cards. Cards are built around three prototypes — broad themes with variations in difficulty and reward.</p>
+<p><strong>A — The Settlement (Pop. 4).</strong> The diplomat. Rewards: group health, middle positioning, pool stewardship.</p>
+<p><strong>B — The Colony (Pop. 6).</strong> The powerhouse. Rewards: high Population, neighborhood stewardship, transparency.</p>
+<p><strong>C — The Outpost (Pop. 2).</strong> The hustler. Rewards: personal growth, brokering deals, pool conservation.</p>
+<p><strong>D — The Commune (Pop. 5).</strong> The equalizer. Rewards: population equality, collective action, safety nets.</p>
+<p><strong>E — The Homestead (Pop. 1).</strong> The underdog. Rewards: growth from nothing, being helped, group health.</p>
+<hr>
+<h2 id="for-facilitators">For Facilitators</h2>
+<h3 id="teaching-the-game">Teaching the Game</h3>
+<p>Explain in this order:</p>
+<ol>
+<li><strong>Setup and seating.</strong> Hand out components.</li>
+<li><strong>The variant.</strong> Read the variant summary from the Role Card. One sentence: “Free Market: no harvest limits, you’re on your own.” / “Democracy: you vote on harvest limits each round.” / “Welfare State: harvest limits are imposed and there’s automatic redistribution.”</li>
+<li><strong>The goal.</strong> “Score the most points. If your Population hits zero, you’re out — but you keep your played card points. Two sustainability bonuses at the end reward keeping the commons healthy and your own resilience.”</li>
+<li><strong>The card dilemma.</strong> “Your cards have two point values. The small number is what you get now. The big number is what you get at the end — but only if the condition is still true. That’s the gamble.”</li>
+<li><strong>The three phases.</strong> “Flip a card. Play and negotiate. Feed your people.”</li>
+<li><strong>Flip Round 1.</strong> Walk through the first round together. Explain harvesting, the storage cap, and feeding as they happen naturally.</li>
+<li><strong>Economy Cards.</strong> When someone first wants to play a card, explain conditions, sources, destinations, and commission vs. end value.</li>
+<li><strong>Harvest vote (Democracy only).</strong> Before the Round 2 vote: “Equal Shares means the pool is split evenly. Need-Based means you take up to your Population count. Raise your hand for Equal Shares.”</li>
+</ol>
+<p>Most rules are taught through play, not lecture. The Round Cards guide the experience.</p>
+<h3 id="role-rotation">Role Rotation</h3>
+<p>Players rotate seats between games so each participant plays a different role in each session. This maintains engagement (fresh strategic identity each game), generates richer data (same person’s behavior across different power positions), and disrupts social dynamics while the shared knowledge of Round Card content remains a controlled constant.</p>
+<p>The facilitator assigns rotations ensuring no participant repeats a role. Example for one group:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Game</th>
+<th style="text-align: center">Seat A</th>
+<th style="text-align: center">Seat B</th>
+<th style="text-align: center">Seat C</th>
+<th style="text-align: center">Seat D</th>
+<th style="text-align: center">Seat E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">Alice</td>
+<td style="text-align: center">Bob</td>
+<td style="text-align: center">Carol</td>
+<td style="text-align: center">Dave</td>
+<td style="text-align: center">Eve</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: center">Carol</td>
+<td style="text-align: center">Dave</td>
+<td style="text-align: center">Eve</td>
+<td style="text-align: center">Alice</td>
+<td style="text-align: center">Bob</td>
+</tr>
+<tr>
+<td style="text-align: center">3</td>
+<td style="text-align: center">Eve</td>
+<td style="text-align: center">Alice</td>
+<td style="text-align: center">Bob</td>
+<td style="text-align: center">Carol</td>
+<td style="text-align: center">Dave</td>
+</tr>
+</tbody>
+</table>
+<p>Counterbalance variant order across groups (e.g., Group 1 plays Free Market → Democracy → Welfare State; Group 2 plays Democracy → Welfare State → Free Market; etc.) to control for learning effects.</p>
+<h3 id="post-game-debrief">Post-Game Debrief</h3>
+<p>After each game, show the group:</p>
+<ul>
+<li>Total group score and individual scores</li>
+<li>Each player’s archetype performance (score vs. theoretical maximum for their role)</li>
+<li>Group pool bonus and individual sustainability bonuses</li>
+<li>Which held cards scored and which didn’t</li>
+</ul>
+<hr>
+<h2 id="glossary">Glossary</h2>
+<p><strong>Commission</strong> — points earned when playing an Economy Card mid-game. End Value ÷ 2, rounded down (minimum 1).</p>
+<p><strong>Flat Bonus</strong> — fixed amount added to the pool before regeneration percentage. On the Round Card.</p>
+<p><strong>Freeze Token</strong> — signals you’re done with Phase 2 actions.</p>
+<p><strong>End Value</strong> — points earned from a held card at endgame if its condition is met.</p>
+<p><strong>Group Pool Bonus</strong> — endgame bonus per surviving player. Final Pool ÷ Total Living Population, rounded down.</p>
+<p><strong>Harvest</strong> — taking resources from the common pool during Phase 2.</p>
+<p><strong>Neighbor</strong> — a player directly adjacent in the seating order.</p>
+<p><strong>Non-Neighbor</strong> — a player not directly adjacent.</p>
+<p><strong>Regeneration</strong> — end-of-round pool growth: (Pool + Flat) × (1 + Rate), rounded up.</p>
+<p><strong>Storage Cap</strong> — max extra resources a player can hold after Feed = their Population. Excess is removed from the game.</p>
+<p><strong>Sustainability Bonus</strong> — endgame individual bonus. Equals your Population if you have ≥1 stored resource; 0 otherwise.</p>
+<p><strong>Windfall</strong> — resources given to specific players by a Round Card event.</p>
+</div></article></div></div></div><script>(function(){const id = "development";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

@@ -1,0 +1,1079 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rooduijn and van Loon (Coursera) · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="true" tabindex="0" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="false" tabindex="-1" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab"><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/" aria-current="page">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab" hidden><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/sources/">Sources</a></nav><h1 class="note-title">Rooduijn and van Loon (Coursera)</h1><p class="note-subtitle">Statistics (Methods and Statistics in Social Sciences Specialization)</p><p class="note-updated">Updated 2026-11-24</p><div class="note-meta"><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Kind</dt><dd>course</dd><dt>Teacher</dt><dd>Matthijs Rooduijn<br>Emiel van Loon</dd><dt>Status</dt><dd><span class="badge" data-status="mature">mature</span></dd><dt>Tags</dt><dd><a class="tag" href="/tags/statistics/">#statistics</a> <a class="tag" href="/tags/inference/">#inference</a> <a class="tag" href="/tags/course/">#course</a> <a class="tag" href="/tags/methods/">#methods</a></dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h2 id="apa">APA</h2>
+<p>Rooduijn, M., &amp; van Loon, E. (n.d.). <em>Statistics</em> [Online course]. In <em>Methods and Statistics in Social Sciences Specialization</em>. University of Amsterdam, Coursera.</p>
+<h2 id="notes">Notes</h2>
+<p>Matthijs Rooduijn, Dr., Department of Political Science, University of Amsterdam. Emiel van Loon, Assistant Professor, Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam. Course of the Methods and Statistics in Social Sciences Specialization (Coursera). Handwritten notebook notes, transcribed from 18 scanned pages (notebook pp. 44 to 93, pages 54-57, 63-66, 68-73 and 78 missing). The embedded PDF is a formula and table sheet for basic statistics (cheat sheet with formulas, t-tables and similar).</p>
+<hr>
+<p><strong>Reforming the Process</strong></p>
+<p><em>Notebook page 44</em></p>
+<ol>
+<li>Registering the Study
+<ul>
+<li>Research Question</li>
+<li>Research Design</li>
+<li>Statistical Plan</li>
+</ul>
+</li>
+<li>Base Choice of Publication based on the Registration, not the Results</li>
+<li>Public availability of Data and Statistics</li>
+</ol>
+<hr>
+<p><strong>Variables and Cases</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variables</th>
+<th>Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Features of something or someone</td>
+<td>The somethings or someones</td>
+</tr>
+</tbody>
+</table>
+<p>“varies” → no shit, else, they would be constants</p>
+<ul>
+<li><strong>nominal:</strong> there is difference but no order or smaller/bigger ⎫</li>
+<li><strong>ordinal:</strong> differences, but don’t know how much ⎭ → categorical variables</li>
+<li><strong>interval:</strong> difference, order, and similar intervals ⎫</li>
+<li><strong>ratio:</strong> difference, order, intervals AND meaningful ZERO point ⎭ → quantitative variables
+<ul>
+<li>↳ Discrete (set of seperate #)</li>
+<li>↳ Continuous (infinite region of values)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⇒ Need to know Type to know to perform right calculations</p>
+</blockquote>
+<p><em>(circled diagram, right)</em> STUDY — DATA — VAR. / CASES</p>
+<p><strong>DATA MATRIX</strong></p>
+<p>each case is a row
+each variable is a column
+values in a cell are “OBSERVATIONS”</p>
+<p>(Maybe cases need deletions, if Observations are missing and a complete Data Matrix is needed)</p>
+<p>⇒ Complete, but not presentable</p>
+<hr>
+<p><strong>FREQUENCY TABLE</strong></p>
+<p><em>Notebook page 46</em></p>
+<p>shows how the values are distributed over the cases</p>
+<p>e.g.</p>
+<table>
+<thead>
+<tr>
+<th>Hair color</th>
+<th>Frequency</th>
+<th>Percentage</th>
+<th>Cumulative Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blond</td>
+<td>76</td>
+<td>19</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Brown</td>
+<td>134</td>
+<td>33.5</td>
+<td>52.5</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>160</td>
+<td>40</td>
+<td>92.5</td>
+</tr>
+<tr>
+<td>other</td>
+<td>30</td>
+<td>7.5</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>400</td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>↑ CATEGORICAL</p>
+<p>QUANTITATIVE - - - MAKES NO SENSE - - -
+↳ so you make ordinal categories ⇒ recoding from QUANTITATIVE ↓ to CATEGORICAL</p>
+<p><strong>GRAPHS</strong></p>
+<p>e.g. from a frequency table for categorical var. you could do a</p>
+<p><strong>PIE CHART</strong> (little case) or a <strong>BAR CHART</strong> (many cases)</p>
+<p>for quantitative var. (interval / ratio) you can do a <strong>DOTPLOT</strong> (little) or a <strong>HISTOGRAM</strong> (many, recoded to categories)</p>
+<p><em>(three small sketches)</em> single bell, or skewed to the left or right.., two peaks… (bimodal variable)</p>
+<hr>
+<p><strong>Measures of CENTRAL TENDENCY</strong></p>
+<p><em>Notebook page 47</em></p>
+<table>
+<thead>
+<tr>
+<th>MODE</th>
+<th>MEDIAN</th>
+<th>MEAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value that is most frequent (often used in nominal/ordinal). In bimodal distribution there can be TWO MODES</td>
+<td>Middle value (odd number of cases) or Average of the two middle values (even number of cases)</td>
+<td>x̄ = Σx / n ; mean = sum of all values / number of cases</td>
+</tr>
+</tbody>
+</table>
+<p><em>(braces under the three columns)</em> Nominal (mode) ; Ordinal (mode, median) ; Interval, Ratio (all three)</p>
+<p><strong>RANGE, INTERQUARTILE RANGE &amp; BOX PLOT</strong></p>
+<p>↳ if the Mode, Median, and Mean are not expressive</p>
+<p><strong>Range:</strong> highest value − Lowest value
+↳ shows variability not so well</p>
+<p><strong>Interquartile Range:</strong> distribution in 4 equal quartiles; IQR = Q3 − Q1 <em>(sketch of a bell with Q1, Q2, Q3 marked)</em>
+↳ find Median (Q2), then again the middles for Q1 &amp; Q3
+↳ not affected by Outliers → qualified as &lt; Q1 − 1,5 IQR or &gt; Q3 + 1,5 IQR</p>
+<p><strong>Boxplot:</strong> <em>(sketch)</em></p>
+<ul>
+<li>max (not outlier)</li>
+<li>Q3</li>
+<li>Q2 (Median)</li>
+<li>Q1</li>
+<li>min (not outlier) → Minimum score that is Not an outlier</li>
+<li>0 outliers</li>
+<li>IQR = Central 50%</li>
+</ul>
+<p>how long should the whiskers be? → depending on outliers</p>
+<hr>
+<p><strong>VARIANCE and STANDARD VARIATION</strong></p>
+<p><em>Notebook page 48</em></p>
+<p>take into account all the values of the variable</p>
+<p>s² = Σ(x − x̄)² / (n − 1)</p>
+<ul>
+<li>Σ(x − x̄)² ← sum of squares</li>
+<li>x̄ ← mean</li>
+<li>n − 1 ← sample size</li>
+</ul>
+<p>because it is squared we can take the square root
+↳ Standard Variation = √s² = s</p>
+<p><strong>Z-SCORES</strong></p>
+<p>Number of standard deviation removed from the mean
+to evaluate if a specific observation is commonly or exceptional</p>
+<p>z = (x − x̄) / s <em>(x̄ ← mean; s ← standard variation)</em></p>
+<p>if z is positive → above the mean
+z is negative → below the mean</p>
+<p>“MEAN = the balance point”</p>
+<p>If all z-scores are added up = 0</p>
+<p>75% of all data lies between ∓2 z around the mean
+89% of all data lies between ∓3 z around the mean</p>
+<p><em>(worked example, bottom)</em></p>
+<p>Dot plot of values: 1 2 ③ 4 5 6 6 ⑦ 8 8 [?]</p>
+<p>s = √( Σ(x − 6)² / (10 − 1) ) = <del>[illegible]</del> √(87/9) = 3… [cut off at the page edge]</p>
+<p>Deviations: −5² 4² 0² 3² −4² −1²
+25 + 16 + 1 + 9 + 16 + 1 + 1 + 1 + 1 + 16</p>
+<hr>
+<p><strong>Measures of Dispersion</strong></p>
+<p><em>Notebook page 49</em></p>
+<p>What if there is no mode?</p>
+<table>
+<thead>
+<tr>
+<th>RANGE</th>
+<th>INTERQUARTILE RANGE (median of median) Q3 − Q1</th>
+<th>STANDARD DEVIATION</th>
+</tr>
+</thead>
+</table>
+<p>Answer list (self-check):</p>
+<ol>
+<li>Ratio</li>
+<li>64</li>
+<li>categories high [?]</li>
+<li>4</li>
+<li>3.1</li>
+<li>below mean, almost 2</li>
+<li>both false</li>
+<li>10</li>
+<li>(1) Median, (2) 13.5, (3) Mode</li>
+<li>no variability, standard = 0</li>
+<li>varies across cases</li>
+</ol>
+<p>Number line: 10 11 11 11 12 12 14 15 16 21 [?]</p>
+<p><del>3 5 5 6 7.5</del></p>
+<p>1 3 ④ 5 5 ⑤ 6 ⑥ 7.5 10 [?] <em>(vertical line drawn through the middle)</em> ; below, circled: ⑤</p>
+<p>IQR = 2
+1.5 × IQR = 3 <del>[illegible]</del>
+outlier = 5 + 3 = 8
+5 − 3 = 2</p>
+<hr>
+<p><strong>Contingency table / Scatterplot / Pearson’s r</strong></p>
+<p><em>Notebook page 50</em></p>
+<p>Contingency Table → no correlation per se
+you can show percentage wise as conditional proportions or marginal proportions (ignoring one of the two variables)</p>
+<p>↓
+for nominal and ordinary variables
+for quantitative variables (interval &amp; ratio) use <strong>Scatterplot</strong></p>
+<p><em>(axes sketch: dependent variable ↑, independent variable →)</em></p>
+<p>How strong is a [Correlation]?</p>
+<p><strong>[PEARSON’S R]</strong> direction and strength of linear correlation</p>
+<p>between −1 &amp; +1, 0 means no correlation, 1 means perfect correlation</p>
+<p>r = Σ zₓ z_y / (n − 1) ← standardized x &amp; y as products ; z = (x − x̄) / s</p>
+<p>if relation is not linear, Pearson’s r will not be of use</p>
+<p><strong>[Regression]</strong> how to find the closest line, what method?</p>
+<p>residual is the distance (vertical) from a case to the line
+Sum of the <strong>squared</strong> residuals is smallest → best line
+ordinary least squares regression</p>
+<p>How to describe the line? ŷ = a + bx → normal linear formula</p>
+<hr>
+<p><strong>Compute Regression Line</strong></p>
+<p><em>Notebook page 51</em></p>
+<p>means, standard deviations &amp; Pearson’s r</p>
+<p>b = r (s_y / s_x) ; a = ȳ − b(x̄)</p>
+<ul>
+<li>b: regression coefficient (unstandardized version of r)</li>
+<li>r = 0 → b = 0</li>
+<li>r positive → b positive</li>
+</ul>
+<p><strong>EXPLAINED VARIANCE</strong></p>
+<p>Evaluation how <del>well</del> good a regression line is?
+⇒ r² (tells nothing about the direction of the correlation)</p>
+<p>regression line is already much better than the mean <em>(two small sketches: regression, mean)</em></p>
+<p>if r² = 0.69 [?] then predictions error are 69% smaller than when using the mean.</p>
+<p>r² can also be explained like this: it is the amount of variance in your dependent variable (Y) that is explained by your independent variable (X)</p>
+<blockquote>
+<p><strong>CAREFUL WITH CORRELATION:</strong>
+correlation ≠ causation
+confounding or lurking variables
+influential outliers</p>
+</blockquote>
+<hr>
+<p><strong>Causation, confounders, examples</strong></p>
+<p><em>Notebook page 52</em></p>
+<p>With correlation and regression analysis, we can predict outcome
+BUT we can never prove that there is causation</p>
+<p>e.g. <em>(diagram)</em></p>
+<ul>
+<li>genetics (z) ← confounder / lurking <em>(included in study / not included in study)</em></li>
+<li>genetics → chocolate consumption</li>
+<li>genetics → body weight</li>
+<li>chocolate consumption - - - body weight: <strong>spurious</strong></li>
+</ul>
+<p>with just a few cases, outliers weigh heavy !
+so check for them..</p>
+<p><strong>EXAMPLE CONTINGENCY TABLE</strong></p>
+<p>first, check level of measurement for the two variables to see if they need contingency table or [scatter plot]</p>
+<p><em>(small grid sketch: columns IV₁ IV₂ IV₃, rows DV₁ DV₂ DV₃)</em> → make percentages, to observe correlation patterns</p>
+<p><strong>EXAMPLE PEARSONS R AND REGRESSION</strong></p>
+<ol>
+<li>is there a linear relationship? → yes</li>
+<li>what is Pearsons R</li>
+<li>Regression equation and regression line → predicting ŷ</li>
+<li>Size of R²</li>
+</ol>
+<hr>
+<p><strong>PROBABILITY AND RANDOMNESS</strong></p>
+<p><em>Notebook page 53 (top: worked numbers)</em></p>
+<p>n = 5
+x̄ = 2.5 : 2 4 1.5 2 3 ; z_x : −0.5 1.5 1 −0.5 0.5 [?]
+ȳ = 6.4 : [?] 7 3 8 8 6 ; z_y</p>
+<p>s_x = √( Σ(x − x̄)² / 4 ) = 1
+(−0.5)² + (1.5)² + 1 + (−0.5)² + (0.5)² = 4 ; i.e. 0.25 + 2.25 + 1 + 0.25 + 0.25</p>
+<p>s_y = √( Σ(y − ȳ)² / 4 ) = 2.0736 [?]
+(0.6)² + (−3.4)² + (1.6)² + (1.6)² + (−0.4)² = 17.2 ; i.e. 0.36 + 11.56 + 2.56 + 2.56 + 0.16</p>
+<p><strong>PROBABILITY AND RANDOMNESS</strong></p>
+<p>randomness → property of a phenomenon
+randomness → consequence of our knowledge about it</p>
+<p>apophenia → seeing patterns in actually random data</p>
+<p>gambler’s fallacy → not being able to see random events in singularity, because previous outcomes are actually not connected</p>
+<p>Persistence leads the odds
+Irregularity with small samples</p>
+<p>Events &amp; Independent Trials</p>
+<p>Probability is a way to quantify Randomness;
+Relative frequency</p>
+<p><strong>SAMPLE SPACE</strong> → Tree Diagram shows the sample space → all possible Outcomes</p>
+<p>Experimentation or ASIGNING PROBABILITIES</p>
+<hr>
+<p><strong>SET THEORETIC CONCEPTS</strong></p>
+<p><em>Notebook page 58</em></p>
+<p>collections of items
+sample space is the total and an event is a subset</p>
+<table>
+<thead>
+<tr>
+<th>Disjoint events (don’t share any outcomes)</th>
+<th>Collectively Exhaustive events</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(box with separate circles A and B, “Aᶜ ← complement”)</em> disjoint</td>
+<td><em>(box with overlapping circles A and B)</em> intersection ; P(A∩B) = P(A) * P(B)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Practice:</strong> You pick up three shells (Q and R) at random
+Describe:</p>
+<ul>
+<li>experiment → 3 trials</li>
+<li>trial → each time you pick up a shell</li>
+<li>outcome → Q or R, <del>in the end QQR, QRQ</del></li>
+<li>event → the end QQR, QRQ…</li>
+<li>random variable → type of shell that you pick</li>
+</ul>
+<p><strong>[UNION]</strong> of sets and probability</p>
+<p>P(A∪B) = P(A + B) − P(A∩B) <em>(Venn sketch; “(intersection)” noted under the subtracted term)</em></p>
+<p><em>(small tree sketch at the lower left: branches Q and R; a scribbled-out blob next to it)</em></p>
+<hr>
+<p><strong>JOINT &amp; MARGINAL PROBABILITIES</strong></p>
+<p><em>Notebook page 59</em></p>
+<p>contingency table: <em>(sketch: columns 1 2 3 total; rows A B total; inner area labelled “joint prob”; outer sums marked “marginal probabilities”; corner cell 1)</em></p>
+<p>every day life ↓ → proportions ↓ probabilities ↙ joint ↘ marginal</p>
+<p>random sample &amp; trials are prerequisite for the proportions
+(marginal values, the outer sums of frequency table or contingency)</p>
+<p><strong>CONDITIONAL PROBABILITIES</strong></p>
+<p>the probability of an event, given that another event occurs</p>
+<p>⇒ P(A|B) → Probability of A given B occurs</p>
+<p>P(A|B) = P(A and B) / P(B) = <em>(Venn: overlap / circle B)</em> ( P(A|B) ≤ P(B) ) [?]</p>
+<p>equation for joint probability:
+P(A and B) = P(A|B) * P(B)</p>
+<p><strong>[INDEPENDENCE]</strong> of two events → simplifies calculations a lot, but independence is rare and hard to demonstrate (large random sampl[e])</p>
+<p>when P(A|B) = P(A) or,
+P(B|A) = P(B) or,
+P(A and B) = P(A) * P(B) → then independance</p>
+<p>≠ <strong>[DISJOINT]</strong> (indeed very dependent)</p>
+<p><em>(box with circles A and B)</em> P(A and B) = 0</p>
+<hr>
+<p><strong>BAYES’ LAW</strong></p>
+<p><em>Notebook page 60</em></p>
+<p>→ P(A|B) = P(B|A) * P(A) / P(B)</p>
+<p>P(A and B) = P(A|B) * P(B) = P(B|A) * P(A)</p>
+<p><em>(tree sketch, labels: marginal, conditional, joint probability)</em></p>
+<p>→ P(A|B) = P(B|A) * P(A) / Σ(P(B|A) * P(A…)) [cut off at the edge]</p>
+<p>prior and posterior probability</p>
+<hr>
+<p>Assignment probability [with a circled “and” and a “?” pointing at it]</p>
+<p>P(A|B) = P(A and B) / P(B)</p>
+<p>P(0.13 | 0.88) = (0.13 * <del>[illegible]</del> 8) / 0.88 [?]</p>
+<p><em>(tree sketch with many branches; right side:)</em>
+½ heavy ; ½ light
+↓ 0.34 success ; 0.66 late</p>
+<p>0,5 × 49/99 × 48/98 × 47/97 × 46/96 = 0.028
+0.495 0.4898 <del>0.485</del> 0.4791 [?]</p>
+<p>0.028
+0.6 × 0.4 = 0.24
+0.48</p>
+<p><em>(list of pairs, right)</em> 1,4 · 4,6 · 2,3 · 6,4 · 3,2 · 5,5 · 4,1 · 5,5 [?] ; 1/6 × 1/6 ; 0.111 [cut off]</p>
+<hr>
+<p><strong>Joint probability table and answers</strong></p>
+<p><em>Notebook page 61</em></p>
+<table>
+<thead>
+<tr>
+<th>rear light \ front light</th>
+<th>works</th>
+<th>fails</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>works</td>
+<td><strong>(0.74)</strong></td>
+<td>0.16</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>fails</td>
+<td>0.06</td>
+<td>0.04</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td></td>
+<td>0.8</td>
+<td>0.2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Answer list (self-check):</p>
+<ol>
+<li>St. I [?]</li>
+<li>Both</li>
+<li>0.196</li>
+<li>0.15</li>
+<li>A&amp;C, A&amp;D</li>
+<li>81</li>
+<li>0.2</li>
+<li>Longterm [?]</li>
+<li><del>[illegible]</del> 0.68 [?]</li>
+<li>0.42</li>
+<li>0.028</li>
+<li>0.48</li>
+<li><del>[illegible]</del> 2.222</li>
+<li>0.74</li>
+<li>Both corr.</li>
+</ol>
+<p>P(A|B) = 0.34 / 0.5 = 0.17</p>
+<p><del>14 12 13 20</del> [?]</p>
+<p><em>(bottom right, loose arithmetic)</em> 5 5 / 4 over 36 (crossed diagonal) ; 6 4 ; 2 3 × ; 1 4 20 [?]</p>
+<hr>
+<p><strong>Probability Distribution</strong></p>
+<p><em>Notebook page 62</em></p>
+<p>a random variable
+↓
+probability distribution
+table, graph, equation</p>
+<p>⎧ <strong>discrete variables:</strong> (finite and distinct possibb[le] values) → PROBABILITY MASS FUNCTION
+⎩ <strong>continuous variables:</strong> (infinite possible values) → PROBABILITY DENSITY FUNCTION</p>
+<p>↓ <em>(graph: y-axis “probability density” 0, 0.3, 0.6; x-axis “Length (m)” 1 2 3 4; bell curve with the area between 2 and 3 shaded, labelled “0.2” [?])</em></p>
+<p>P(2-3) ← integral over certain <del>interval</del> interval</p>
+<hr>
+<p><strong>[Cumulative Probability Distribution]</strong></p>
+<p>when outcome are disjoint, any union of probabilities = sum of probabilities</p>
+<p>example w/ discrete &amp; disjoint:</p>
+<table>
+<thead>
+<tr>
+<th>outcome</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>probability</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>0.4</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>cumulative probability</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>0.8</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>example w/ continuous:</p>
+<p><em>(left graph: “prob. distr.”, bell curve, area up to 1.0 shaded and labelled 0.5)</em> —integral→ <em>(right graph: “cumulative prob. distribution”, S-curve from 0 to 1, dashed line at 0.5 meeting the curve above 1.0)</em></p>
+<p>P(X ≤ x) = 0.1 ⇔ 0.1 quartile [?] of X</p>
+<p>A cumulative probability of a random variable is the probability <strong>[X ≤ x]</strong> of obtaining a value <u>lower or equal to</u> a threshold value.</p>
+<hr>
+<p><strong>MEAN OF A RANDOM VARIABLE (X) based on probability distribution</strong></p>
+<p><em>Notebook page 67</em></p>
+<p>μ_x</p>
+<p>many observations (x) → expected value of x
+E(x) = μ_x = …</p>
+<p>⎡ mean of a discrete random variable
+⎢ ↳ probability-weighted average of all possible values that the random variable can take
+⎢ ↳ μ_x = E(x) = x₁P(x₁) + x₂P(x₂) + … + xₙP(xₙ)
+⎣ ↳ Σ[xᵢ P(xᵢ)]</p>
+<p>⎡ mean of a continuous random variable
+⎢ ↳ average of all possible values that the random variable can take
+⎢ ↳ μ_x = E(x)
+⎣   ↳ ∫ from −∞ to ∞ of x f(x) dx</p>
+<p>properties: constant add or subtract</p>
+<p>μ_(a+bx) = a + bμ_x</p>
+<p>add or subtract two random variables</p>
+<p>μ_(x+y) = μ_x + μ_y</p>
+<hr>
+<p><strong>Variance of Random Variable X → var(X)</strong></p>
+<p><em>Notebook page 74</em></p>
+<p>= E[(X − μ)²]
+Expected value of the squared deviation of X from its mean μ</p>
+<p>measure of spread — VARIANCE</p>
+<table>
+<thead>
+<tr>
+<th>continuous X</th>
+<th>discrete X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>∫ (x − μ)² · f(x) dx <em>(f(x) circled, labelled “probabilities”)</em></td>
+<td>Σ (xᵢ − μ)² · Pᵢ(xᵢ) <em>(Pᵢ(xᵢ) circled, labelled “probabilities”)</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Standard deviation</strong> ↳ σ(X) = √var(X)</p>
+<p>Unit of Variance = (unit of random variable)²</p>
+<p>var(a + X) → no change
+var(b · X) → b² · var(x) → b · σ(X)</p>
+<blockquote>
+<p><strong>ADDING RANDOM VARIABLES X AND Y</strong> (<del>[illegible]</del> binomische Formel)
+var(aX + bY) = a² var(X) + b² var(Y) + 2ab cov(X,Y)
+var(aY − bY) + a² var(X) + b² var(Y) − 2ab cov(Y,Y) [as written]
+(COVARIANCE INFORMATION IS RARELY GIVEN, BUT WHEN THE TWO RANDOM VAR ARE NOT CORRELATED, THERE IS NO CORRELATION (0) AND THE LINEAR PART GOES AWAY)</p>
+</blockquote>
+<blockquote>
+<p>var(Y + Y + Z + …) = var( Σᵢ₌₁ⁿ Xᵢ ) = Σᵢ₌₁ⁿ var(Xᵢ) [as written]
+σ(X + Y) = √var(X+Y) = √(var(X) + var(Y))
+↳ σ(X+Y) &lt; σ(X) + σ(Y)</p>
+</blockquote>
+<hr>
+<p><strong>NORMAL DISTRIBUTION (Gaussian distribution)</strong></p>
+<p><em>Notebook page 75</em></p>
+<p>a very frequent random Distribution</p>
+<p><em>(bell sketch, μ mean, σ standard deviation)</em></p>
+<p>X ~ N(μ, σ²)</p>
+<blockquote>
+<p>f(x) = 1 / (σ√(2π)) · e^( −0.5 · ((x − μ)/σ)² )</p>
+</blockquote>
+<p>⇓</p>
+<p>cumulative normal probability distribution: (integral)</p>
+<blockquote>
+<p>Φ(x) = ∫ from −∞ to x of 1/√(2π) · e^(−t²/2) dt <em>(the exponent −t²/2 is circled, with a note “−(x−μ)²/2σ²” pointing to the formula above)</em></p>
+</blockquote>
+<p><em>(S-curve sketch: 0, 0.5, 1; “μ mean”; “σ steepness of the curve”; “(sigmoidal shape)”)</em></p>
+<p>↓ probability density of random var X</p>
+<p>(x − μ)/σ ↳ calculation of Z-score (number of standard deviations removed from the mean)</p>
+<p>the higher σ, the lower the peak, because the surface below the bell always equals 1.</p>
+<p>π, e, √2 connects statistical world to the physical world
+e.g. diffusion of particles, information or traffic</p>
+<p><strong>[PROBABILITY DENSITY FUNCTION (PDF)]</strong> probability per unit of the random variable</p>
+<p>an interval expressed as a distance in units of σ around the μ is always the same.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(bell, σ = 9; axis: μ−σ = 11, μ = 20, μ+σ = 29; shaded 0.68)</em></td>
+<td><em>(narrower bell, σ = 6; axis: μ−σ = 24, μ = 30, μ+σ = 36; shaded 0.68)</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>0.68 → 1σ around μ</li>
+<li>0.95 → 2σ around μ</li>
+<li>0.997 → 3σ around μ</li>
+</ul>
+<hr>
+<p><strong>STANDARD NORMAL DISTRIBUTION (Z-DISTRIBUTION)</strong></p>
+<p><em>Notebook page 76</em></p>
+<p>= N(0,1) → μ = 0, σ = 1</p>
+<p>how do you get a z-value?</p>
+<p>X ~ N(μ, σ²)
+x = μ + zσ
+z = (x − μ)/σ ← creates standardized data with μ = 0 and σ = 1</p>
+<p><strong>EXERCISE</strong></p>
+<p>X ~ N(4, 1.3²), P(X ≤ 6)? → z-transform: z = (6 − 4)/1.3 = 1,54</p>
+<p>X ~ N(4, 1.3²), P(2 ≤ X ≤ 5)? → Z-table:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0.04</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.5</td>
+<td>(0.9382) → 93,82 %</td>
+</tr>
+</tbody>
+</table>
+<p>z₁ = (2 − 4)/1.3 = −1.54 → 0.06
+z₂ = (5 − 4)/1.3 = 0.77 → 0.78 [?]
+0.78 − 0.06 = 0.72 = 72%</p>
+<p><em>(right: four lines of crossed-out, scribbled-over z computations; [illegible])</em></p>
+<p>If you are asked about probability percentiles you need to reverse lookup the z-value, then you can calculate small x.</p>
+<hr>
+<p><strong>BINOMIAL PROBABILITY DISTRIBUTION</strong></p>
+<p><em>Notebook page 77</em></p>
+<p>binary, Bernoulli Trial data</p>
+<p>number [sic: “numbe”] of “successes” ofta [sic] follow a binomial distribution</p>
+<ol>
+<li>Binary Bernoulli Trial with constant p</li>
+<li>Observe n trials</li>
+<li>Count number of successes x</li>
+</ol>
+<p>P(x) = n! / (x!(n − x)!) · pˣ (1 − p)^(n−x), x = 0, 1, 2, …, n (discrete number of successes)</p>
+<p>↑ (probability mass function)
+↑ binomial coefficient [written “lenomial”] (n over x): possibilities of x out of n disregarding order</p>
+<p><strong>Cumulative probability distribution</strong></p>
+<p>F(x) = P(X ≤ x) = Σₖ₌₀ˣ n! / (k!(n − k)!) · pᵏ (1 − p)^(n−k)</p>
+<p><em>(three bar-chart sketches: left skewed, middle, right skewed)</em></p>
+<p>σ ~ p standard deviation depends on the value of p
+μ ~ p</p>
+<p>μ = g(p, n)  σ = f(p, n)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[ μ = n · p ]</strong></td>
+<td><strong>[ σ = √(np(1 − p)) ]</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>p = 0 or 1: σ = √(n·0·1) = 0</li>
+<li>p = 0.5: σ = √(n·0.5·0.5) = 0.5 √n</li>
+</ul>
+<hr>
+<p><strong>Sampling and descriptive vs. inferential statistics</strong></p>
+<p><em>Notebook page 79</em></p>
+<p>Work with data from SAMPLES → descriptive statistics
+↳ draw conclusions for POPULATIONS → inferential statistics</p>
+<p>how to draw samples
+(simple random sample)
+(random multi-stage cluster)
+(stratified random sampling)</p>
+<table>
+<thead>
+<tr>
+<th>[SAMPLE]</th>
+<th>→</th>
+<th>[POPULATION]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptive statistics ↓ Roman letters: x̄ = mean, s = standard deviation <em>(in sample)</em></td>
+<td></td>
+<td>inferential statistics → PARAMETERS ↓ Greek letters: μ = mean, σ = standard deviation <em>(in population)</em></td>
+</tr>
+</tbody>
+</table>
+<p>Need of a representative sample → simple random sample (each person is as likely to be picked),</p>
+<p>Undercoverage → <em>(arrow, labelled “best mitigated trough randomness”)</em> → not everyone in the population is included in the sampling frame e.g. list is incomplete</p>
+<p>Sampling bias → not every person in the sampling frame is equally likely to be part of the sample</p>
+<p>Nonresponse bias → some subjects refuse or will not respond</p>
+<p>Response bias → asking leading questions; systematic misrepresentation of specific answers</p>
+<p><u>Random Multi-Stage Cluster Sample</u></p>
+<p>e.g. Clustered by a certain characteristic, take an amount of clusters</p>
+<p><u>Stratified Random Sample</u></p>
+<p>Strata e.g. Universities and then proceed with simple random sampling per stratum</p>
+<hr>
+<p><strong>[SAMPLING DISTRIBUTION OF THE SAMPLE MEAN]</strong></p>
+<p><em>Notebook page 80</em></p>
+<p><strong>Central Limit Theorem:</strong> if sample size is sufficiently large, sampling distribution of the sample mean is aprox. normal distribution, then x̄ = μ and S = σ/√N [as written]</p>
+<p>Sampling Distribution ≠ Sample or Data Distribution ≠ population distribution</p>
+<p>(∞ infinite number of samples) = population mean…</p>
+<table>
+<thead>
+<tr>
+<th>Sampling distribution</th>
+<th>Sample / data distribution</th>
+<th>Population distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>μ_x̄ ; σ_x̄ ; σ_x̄ = σ/√n</td>
+<td>x̄ ; s</td>
+<td><del>[scribble]</del> μ ; σ</td>
+</tr>
+</tbody>
+</table>
+<p>↓ selecting samples ; ↓ individual subjects</p>
+<p>standard distribution [sic] is a way of measuring the precicion in relation to the real population (smaller deviation is more precise)</p>
+<p><em>(a scribbled-out label “sampling Mean” [?] near the middle of the diagram)</em></p>
+<p><strong>[SAMPLING DISTRIBUTION PROPORTIONS π]</strong></p>
+<p><em>(small bell sketch, μ_p = π)</em></p>
+<p>sampling distribution of the sample <u>mean</u> is approximately bell-shaped if population is normally distributed or if sample size is sufficiently large (≥30)</p>
+<p>sampling distribution of the sample <u>proportion</u> is approximately bell-shaped if nπ ≥ 15 and n(1 − π) ≥ 15</p>
+<hr>
+<p><strong>Sampling distribution of the sample proportion, example</strong></p>
+<p><em>Notebook page 81</em></p>
+<p>standard deviation of sampling distribution of sample proportion</p>
+<p>⇓</p>
+<p>σ_p = √( π(1 − π) / n )</p>
+<p>SAMPLE → sample proportion P</p>
+<p>SAMPLING DISTRIBUTION → we do have a mean and a standard deviation</p>
+<p><strong>EXAMPLE</strong></p>
+<p>skewed to the left, peak around zero
+mean μ = −0.75
+σ = 2.89</p>
+<p>① population distribution?
+② sampling distribution?
+③ Sample distribution of simple random sample of n = 3000
+④ probability of selecting a simple random sample with a sample mean between −0.71 and −0.81?</p>
+<p>① <em>(sketch: left-skewed curve, μ marked left of 0)</em></p>
+<p>② μ_x̄ = μ = −0.75 ; σ_x̄ = σ/√n = 2.89/√3000 = 0.05</p>
+<p>③ x̄ is close to μ ; S is close to σ</p>
+<p>④ Sampling Distribution. <em>(bell sketch, axis: −0.81, μ_x̄ = −0.75, −0.71, x̄)</em></p>
+<p>Z = (x̄ − μ_x̄) / σ_x̄</p>
+<p>z₁ = (−0.71 − (−0.75)) / 0.05 = 0.8
+z₂ = (−0.81 − (−0.75)) / 0.05 = −1.2</p>
+<p>} Z-Table: 0.7881 − 0.1151 = <u>0.67</u></p>
+<hr>
+<p><strong>Self-check answers, then CONFIDENCE INTERVAL, STATISTICAL INFERENCE</strong></p>
+<p><em>Notebook page 82</em></p>
+<p>Answer list (checkmarks at the top of most items; items 6 and 7 carry a ✗):</p>
+<p>① descriptive → samples ; inferential → population
+② 1(a), 2(b), 3(d), 4(c)
+③ both are correct
+④ Undercoverage
+⑤ 2.2
+⑥ ✗ sampling distribution approx. bell shape given the sample is large enough <del>and the population distribution is also bellshaped</del>
+⑦ ✗ <del>all true except a) not</del> …is the distribution of an infinite number of sample means &amp; the larger the variability… [partly cut off]
+⑧ population or data distribution
+⑨ σ_p = √(π(1 − π)/n) = √(0.2·0.8/400) = 0.02
+⑩ The sample is biased and does not represent the population well.</p>
+<p><em>(scribbled-out circle below item 10)</em></p>
+<p><strong>CONFIDENCE INTERVAL, STATISTICAL INFERENCE</strong></p>
+<p>Estimation → Point Estimate
+→ Interval Estimate</p>
+<p>x̄ → μ <em>(x̄ “estimate for” μ)</em> but a single point is not precise
+show the likely precision by an interval:
+confidence of 0.95 is standard for estimating population mean</p>
+<p>x̄ = 2.6
+S = 0.9
+σ = 1.1 ← very unlikely that standard deviation in population is known</p>
+<p><em>(bell sketch: 0.95 in the middle, 0.025 in each tail, μ_x̄ at the center, double arrow “1.96 σ_x̄ (Margin of Error)”)</em></p>
+<p>μ_x̄ = μ ; σ_x̄ = σ/√n → confidence interval <strong>[ x̄ ± 1.96 σ_x̄ ]</strong>
+↓
+95% confidence that x̄ is around 1.96σ of μ_x̄</p>
+<hr>
+<p><strong>What if you don’t know population standard deviation?</strong></p>
+<p><em>Notebook page 83</em></p>
+<p>x̄ ± 1.96 σ_x̄ → x̄ ± z₉₅% σ_x̄
+where: σ_x̄ = σ/√n but we don’t know σ, so we don’t know σ_x̄</p>
+<p><strong>[SOLUTION]</strong> ⇒ estimate the population standard deviation with the sample standard deviation</p>
+<p>x̄ ± z₉₅% (se) → x̄ ± t₉₅% (se)
+where: se = s/√n <em>(se labelled “standard error”)</em></p>
+<p>t-distribution to take into account the extra error <em>(sketch: bell with a slightly flatter, thicker-tailed dashed curve; “μ = 0”)</em></p>
+<p><strong>[2. ASSUMPTIONS for confidence]</strong></p>
+<ul>
+<li>randomization (random sample)</li>
+<li>approximately normal population distribution
+<ul>
+<li>↳ with t-table it is robust against a violation of this second assumption</li>
+</ul>
+</li>
+<li>+ be wary of extreme outliers in the data</li>
+</ul>
+<p>thicker tails than a standard normal distribution
+Shape depends on the degree of freedom
+df = n − 1
+df ≈ 30 almost standard normal distribution
+t with df = ∞ → standard normal distribution
+t-table can be used instead of z-table</p>
+<hr>
+<p><strong>CONFIDENCE INTERVAL FOR PROPORTION</strong></p>
+<p><em>Notebook page 84 (left margin: partly visible circled numbers, cut off)</em></p>
+<p><em>(bell sketch, 0.95, double arrow “1.96 σ_p”)</em></p>
+<p>μ_p = π ; σ_p = √( π(1 − π)/n )</p>
+<p>p ± 1.96 σ_p
+↓
+p ± z₉₅% σ_p</p>
+<p>BUT WE DON’T KNOW Population Proportion π
+so:
+p ± z₉₅% (se)
+where: se = √( p(1 − p)/n ) ← standard error</p>
+<p>↓ use of standard normal distribution (z-table), but with the assumption of at least 15 successes and 15 failures</p>
+<p>np ≥ 15 and n(1 − p) ≥ 15</p>
+<p><strong>(CONFIDENCE LEVELS)</strong></p>
+<p>how to change confidence levels?
+what are the consequences?
+<u>confidence</u> vs. <u>precision</u></p>
+<p>e.g. 99% <em>(bell: 0.99, tails 0.005 each, z = −2.58 and z = 2.58)</em>
+e.g. 90% z = 1,645</p>
+<p>confidence interval for the [MEAN]
+↳ t-score, degrees of freedom (n − 1)</p>
+<hr>
+<p><strong>Constructing a confidence interval</strong></p>
+<p><em>Notebook page 85</em></p>
+<blockquote>
+<p>① which confidence level?
+② Proportion or Mean? → (proportion) Z-Distribution ; (mean) T-Distribution and df
+③ Compute endpoints of interval
+④ Interpret Results substantively</p>
+</blockquote>
+<p><strong>[SAMPLE SIZE &amp; CONFIDENCE LEVEL]</strong></p>
+<p>e.g. simple random sample</p>
+<p><u>Sample size for MEANS</u></p>
+<p>① magnitude of desired margin of error (Precision) <em>(the letter “m” is written above)</em>
+② Confidence level
+③ Variability (large S → large n needed)</p>
+<p>n = σ² z² / m²
+σ population standard deviation is not known, so you need an educated guess!</p>
+<p>e.g. 95% → z = 1.96
+m = 0.3
+if most data is between 0 and 5, so σ = 1.25 <em>(sketch: bell over 0, 2.5, 5; the span from 2.5 to 5 marked “2σ”)</em></p>
+<p><u>Sample size for PROPORTIONS</u></p>
+<p>n = p(1 − p) z² / m²
+again, p is unknown; you can go for 50%-50%, this makes for the largest n</p>
+<hr>
+<p><strong>SIGNIFICANCE TEST &amp; STATISTICAL HYPOTHESIS</strong></p>
+<p><em>Notebook page 88</em></p>
+<p>significance test ← null hypothesis H₀ ; alternative hypothesis Hₐ
+based on previous study or theory
+expectations about population</p>
+<p>H₀: the parameter you’re interested in takes a SPECIFIC value; will be rejected if the data in your sample suggest that it is a highly unlikely expectation</p>
+<p>Hₐ: claims that the parameter you’re interested in falls in an alternative RANGE of values</p>
+<p><em>(oval linking the two with arrows: “mutually exclusive”)</em></p>
+<p>when doing a significance test we assume that H₀ is <strong>TRUE</strong> UNLESS convincing evidence proofs otherwise !</p>
+<p>Hₐ is only accepted when convincing evidence shows this is the case.</p>
+<p>example: <em>(branching arrow, “actual research practice”)</em></p>
+<table>
+<thead>
+<tr>
+<th>opposite but only SINGLE VALUE → H₀</th>
+<th>expectation about the parameter you’re interested in → Hₐ</th>
+</tr>
+</thead>
+</table>
+<hr>
+<p><strong>Test about proportion</strong></p>
+<p><em>Notebook page 89</em></p>
+<p>H₀: π = 0.03
+Hₐ: π ≤ 0.03   ex.
+n = 1000
+p = 0.02 (sampling proportion)</p>
+<p><em>(sketch: bell; “sample value 0.02” and “H₀ value 0.03” marked; distance −1.85 to 0)</em></p>
+<p>Test statistic = number of standard errors sample value is removed from H₀ value</p>
+<p>How likely is a sample proportion of 0.02 if the population proportion is 0.03
+↳ [compute test statistics]</p>
+<p>the number of <u>standard errors</u> the sample statistic is removed from the assumed population parameter ↔ Z-SCORES</p>
+<p>} BUT failing to reject the null hypothesis doesn’t mean it is true !</p>
+<p>test statistic = z = (p − π₀) / se₀ , where se₀ = √( π₀(1 − π₀)/n )</p>
+<p>z = (0.02 − 0.03) / 0.005 = −1.85 ; se₀ = √( 0.03 · 0.97 / 1000 ) = 0.005</p>
+<hr>
+<p><strong>SIGNIFICANCE LEVEL α</strong> → normally at 0.05, and normally two-tail-test</p>
+<table>
+<thead>
+<tr>
+<th>one tail test</th>
+<th>two tail test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hₐ: π ≤ 0.03 ; <em>(bell, left tail 0.05, rest 0.95, boundary −1.64, “rejection region”)</em></td>
+<td>Hₐ: π ≠ 0.03 ; <em>(bell, 0.025 / 0.95 / 0.025, boundaries −1.96 and 1.96)</em></td>
+</tr>
+</tbody>
+</table>
+<p><del>[illegible, two struck words at the bottom]</del></p>
+<hr>
+<p><strong>Test about mean</strong></p>
+<p><em>Notebook page 90</em></p>
+<p>n = 100  x̄ = 62  S = 5  H₀: μ = 60  Hₐ: μ &gt; 60</p>
+<p>↳ we assess if it is likely that the sample we have collected actually comes from a population with a mean that equals the value formulated in the null hypothesis</p>
+<p><em>(sketch: sampling distribution of the sample mean, with 60 = H₀ μ and 62 = x̄ marked)</em></p>
+<p>(test statistic)
+↳ number of standard errors the sample mean is removed from H₀ mean
+↳ to compute we need to know σ
+↳ we don’t know σ (population standard deviation)
+↳ we estimate σ with S (sample standard deviation)
+↳ extra error, so t-distribution is used</p>
+<p>t = (x̄ − μ₀) / se ; se = S/√n</p>
+<p>t @60df <em>(bell: 0.95, α = 0.05, rejection region, boundary 1.67)</em> } t₉₀%</p>
+<hr>
+<p><strong>STEP BY STEP SIGNIFICANCE TEST</strong></p>
+<p><em>Notebook page 91</em></p>
+<p>① “more than half” π ; “mean number of…” μ</p>
+<p>② Formulate hypotheses
+H₀: π = π₀ ; μ = μ₀
+Hₐ: π ≠ π₀ ; μ ≠ μ₀ (two-tail) ; π &gt; π₀ ; μ &gt; μ₀ (right-tail) ; π &lt; π₀ ; μ &lt; μ₀ (left-tail)</p>
+<p>③ Check assumptions:
+<u>randomised sample</u> or <u>randomised experiment</u>
+for proportion: nπ ≥ 15 and n(1 − π) ≥ 15
+for mean: population distribution approx. normal</p>
+<p>④ Determine α, Significance level e.g. 0.05</p>
+<p>⑤ Compute test statistics</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>z = (p − π₀) / se₀ ; se₀ = √( π₀(1 − π₀)/n )</td>
+<td>t = (x̄ − μ₀) / se ; se = s/√n</td>
+</tr>
+</tbody>
+</table>
+<p>⑥ Draw sampling distribution (rejection region &amp; test statistic)</p>
+<p>⑦ Find location of test statistic</p>
+<p>⑧ Reject H₀ ?</p>
+<p>⑨ Interpret Findings — the decision to not reject H₀ ≠ Accepting H₀</p>
+<hr>
+<p><strong>SIGNIFICANCE TEST &amp; CONFIDENCE INTERVAL</strong></p>
+<p><em>Notebook page 92</em></p>
+<p>ex. n = 500, x̄ = 36, s = 8, aprox. normal distribution
+→ Inference on population mean μ</p>
+<p>① Inference about INTERVAL ESTIMATION
+② Inference about point estimation through SIGNIFICANCE TEST</p>
+<p>H₀ = μ = 35 } assumptions met
+Hₐ = μ ≠ 35</p>
+<blockquote>
+<p>t = (x̄ − μ₀) / se where se = s/√n</p>
+</blockquote>
+<p>t = (36 − 35) / (8/√500) = 2.80 &gt; 1.984 (Rejection Region of two-tail 95%)</p>
+<p>x̄ ± t₉₅% (se) where se = s/√n
+36 ± 1.984 (8/√500) = <strong>(35.29, 36.71)</strong></p>
+<p>⇒ with repeated sampling, this interval would contain the actual population mean 95% of the time
+⇒ the population mean μ ≠ 35</p>
+<blockquote>
+<p>Results of a two-tails significance test are in line with conclusions coming from a confidence interval</p>
+</blockquote>
+<p>if the p-value in a two-tailed significance test is equal to or smaller 0.05, a 95% confidence interval does not contain the null hypothesis.</p>
+<hr>
+<p><strong>TYPE I and TYPE II ERRORS</strong></p>
+<p><em>Notebook page 93</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not rejected</th>
+<th>rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H₀ true</td>
+<td>✓</td>
+<td>type I error (false positive), α</td>
+</tr>
+<tr>
+<td>H₀ false</td>
+<td>type II error (false negative), β</td>
+<td>✓ ; power: 1 − β</td>
+</tr>
+</tbody>
+</table>
+<p>unknown, but we can control the probability of making a <del>decision</del> incorrect decision</p>
+<p>decrease the significance level α → decrease the probability of making a type I error
+↵ β INCREASE the probability of making a type II error</p>
+<blockquote>
+<p>Power 1 − β → helps you determine n you need</p>
+</blockquote>
+<p><strong>EXAMPLE:</strong></p>
+<p>n = 258  x̄ = 8.3  S = 3.4</p>
+<p>H₀: μ = 8
+H₁: μ ≠ 8
+H₂: μ &gt; 8
+H₃: μ &lt; 8
+α = 0.1</p>
+<ol>
+<li>randomization ✓</li>
+<li>aprox. normal sample distribution</li>
+</ol>
+<p>t = (8.3 − 8) / (3.4/√258) ≈ 1.42 → H₀ can’t be rejected</p>
+<p><em>(left graph: bell, 0.90 in the middle, boundaries 1.66 [?] and left, 0.05 in each tail, test statistic 1.42 marked, “H₀ μ”)</em>
+<em>(right graph: bell, 0.90, tail 0.1, t = 1.29 [?], “8”)</em></p>
+<p>H₂ rejected
+H₃ not rejected</p>
+</div><footer class="note-links"><section><h2>Linked from</h2><ul><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a> <span class="muted">Topics</span></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a> <span class="muted">Topics</span></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a> <span class="muted">Topics</span></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a> <span class="muted">Topics</span></li></ul></section></footer></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

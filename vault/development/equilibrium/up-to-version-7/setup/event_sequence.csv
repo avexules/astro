@@ -1,0 +1,17 @@
+     1→Round,Event,Effect,Notes
+     2→1,Heatwave,All players lose 1 water,Immediate pressure - creates initial deficits
+     3→2,Emergency care,Poorest water player gains 1 water from each neighbor (as redistribution),First redistribution opportunity; skips normal redistribution
+     4→3,Localized Rain,Players with odd OR even population gain 1 water (wherever the gain is smaller),Rewards Near East (9) and Far East (9)
+     5→4,Water pollution,Richest water player decreases a single die by 2,Hits Oceania (11 water) - forces balance
+     6→5,Fertility increase,"Players who earn commission value this round, increase their dice by a total of said value",Incentivizes card use; opportunity for growth
+     7→6,Refugee wave,Richest water player takes 2 population from poorest (as migration),Major migration event; skips normal migration
+     8→7,Water imbalance,Highest population player gains 1 water; lowest population playerS loses 1 water,Creates inequality - tests cooperation
+     9→8,Helping unites,Richest water player decides: increase dice by a total of 3 (as migration) OR send 3 water to poorest water player (as redistribution),Group decision - migration vs redistribution
+    10→9,Rain & Drought,All lose 1 water except richest water player gains 2,Rich get richer - forces cooperation
+    11→10,Missing supplies,All odd OR even population players lose 2 water (wherever the loss is greater),Final challenge - group must choose wisely
+    12→11,Vulnerability crisis,All players with total population ≤ 6 lose 1 water,Penalizes smaller populations
+    13→12,Windfall & scarcity,All players lose 1 water except one richest water player gains 2.,Amplifies inequality
+    14→13,Surplus strain,All players gain 1 water except one poorest water player loses 2.,Help or let fall behind
+    15→14,Social upheaval,All player switch two of their dice (switching the population of two classes),Forces class restructuring
+    16→15,Lower class drought,"All players where the L-die is one of their highest, lose 1 water ",Targets those with large lower classes
+    17→16,Elite prosperity,"All player where the H-die is one of their highest, gain 1 water",Rewards concentration of wealth

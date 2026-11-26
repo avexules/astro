@@ -1,0 +1,560 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cevolani and De Benedetto (IMT 2026) · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="true" tabindex="0" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="false" tabindex="-1" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab"><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/" aria-current="page">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab" hidden><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/sources/">Sources</a></nav><h1 class="note-title">Cevolani and De Benedetto (IMT 2026)</h1><p class="note-subtitle">Philosophy of Science</p><p class="note-updated">Updated 2026-11-26</p><div class="note-meta"><details class="fold" data-fold="outline"><summary>Outline</summary><ul class="toc"><li class="toc-2"><a href="#apa">APA</a></li><li class="toc-2"><a href="#notes">Notes</a></li><li class="toc-3"><a href="#brainstorming-what-is-science">Brainstorming: What is Science?</a></li><li class="toc-3"><a href="#defining-science">Defining Science</a></li><li class="toc-3"><a href="#defining-evidence">Defining Evidence</a></li><li class="toc-3"><a href="#underdetermination">Underdetermination</a></li><li class="toc-3"><a href="#theory-ladeness">Theory-ladeness</a></li><li class="toc-3"><a href="#theory-testing-and-theory-choice">Theory testing and Theory choice</a></li><li class="toc-3"><a href="#kuhn-paradigms--revolutions">Kuhn: Paradigms &amp; Revolutions</a></li></ul></details><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Kind</dt><dd>course</dd><dt>Year</dt><dd>2026</dd><dt>Teacher</dt><dd>Gustavo Cevolani<br>Matteo De Benedetto</dd><dt>Status</dt><dd><span class="badge" data-status="seed">seed</span></dd><dt>Tags</dt><dd><a class="tag" href="/tags/philosophy/">#philosophy</a> <a class="tag" href="/tags/inference/">#inference</a> <a class="tag" href="/tags/course/">#course</a> <a class="tag" href="/tags/validity/">#validity</a> <a class="tag" href="/tags/theory/">#theory</a> <a class="tag" href="/tags/methods/">#methods</a></dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h2 id="apa">APA</h2>
+<h2 id="notes">Notes</h2>
+<p><strong>Cevolani</strong></p>
+<ul>
+<li>philosophy of sciences</li>
+<li>cognitive sciences
+<strong>De Benedetto</strong></li>
+<li>logic</li>
+<li>mathematics</li>
+</ul>
+<p><em>What they both base their research on:</em></p>
+<ul>
+<li>Probability theory</li>
+<li>Bayesian theory</li>
+</ul>
+<p><strong>Main Topics</strong></p>
+<ul>
+<li>Theory and evidence</li>
+<li>The development of science</li>
+<li>Bayesian philosophy of science</li>
+</ul>
+<p><strong>Main Readings</strong></p>
+<ul>
+<li>Popper (1963)</li>
+<li>Hempel (1966)</li>
+<li>Okasha (2016)</li>
+<li>Godfrey-Smith (2003)</li>
+<li>Ladyman (2001)</li>
+</ul>
+<p>Whatever is meant with science, it has changed a lot through history.
+Hypothesis level</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>H ---------</span></span>
+<span class="line"><span>      ↑</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>E ---------</span></span></code></pre>
+<p>Evidence level
+H progresses, meaning it changes over time in a way that improves – but understanding what an improvement is, is a big question in philosophy of science.
+Acknowledging progress also means to acknowledge regress.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>---|-----|-----|---&gt; t</span></span>
+<span class="line"><span>   A     B     C</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>A &lt; B, meaning B is a progress over A.</span></span>
+<span class="line"><span>Sometimes C &lt; B, meaning C is a regress.</span></span></code></pre>
+<p>So we have to define the “beterness” or “worseness”. What is improvement, what is progress and thus what is regress?
+Confirmation of H is unusual if not impossible, we may just find H plausible until it gets rejected.
+Mathematics as a science? Where is the real-world evidence?
+A proof is a way of argumentation in logic &amp; mathematics. In other sciences there is no proofs.</p>
+<p>Newell &amp; Simon (1976), Turing-award lecture: COMPUTER SCIENCE AS AN EMPIRICAL SCIENCE</p>
+<blockquote>
+<p>EPISTEMOLOGY: theory of knowledge</p>
+</blockquote>
+<h3 id="brainstorming-what-is-science">Brainstorming: What is Science?</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learning</td>
+<td>World</td>
+<td>Method</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Observation</td>
+<td>Idea</td>
+</tr>
+<tr>
+<td>Experience</td>
+<td>Theory</td>
+<td>Intuition</td>
+</tr>
+<tr>
+<td>Experiments</td>
+<td>Empirical</td>
+<td></td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>Model</td>
+<td></td>
+</tr>
+<tr>
+<td>Reproducability</td>
+<td>Induction</td>
+<td></td>
+</tr>
+<tr>
+<td>Inventions</td>
+<td>Deduction</td>
+<td></td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>Abduction</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>DEDUCTION: starting from premises, assumptions we deduce to conclusions and hypotheses. Conclusions will always be right, as long as premises are right and complete.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>deduction:</span></span>
+<span class="line"><span>P1 (premises,</span></span>
+<span class="line"><span>P2  axioms)</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>PN</span></span>
+<span class="line"><span>------</span></span>
+<span class="line"><span>C → H</span></span></code></pre>
+<blockquote>
+<p>INDUCTION: starting with no theory in mind, simply observing series of events that make you conclude to a hypothesis. Conclusions may be wrong and need reassessing. May be good for gathering initial ideas for hypotheses. <em>Confirmation bias is a risk!</em></p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>induction:</span></span>
+<span class="line"><span>E1 (events,</span></span>
+<span class="line"><span>E2  observations)</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>EN</span></span>
+<span class="line"><span>======</span></span>
+<span class="line"><span>C → H</span></span></code></pre>
+<blockquote>
+<p>ABDUCTION: not certain, but is used widely in science. Starting from an observation (evidence) that needs explaining, we look for a hypothesis that would make it expected, and conclude that this hypothesis is plausible. Conclusions may be wrong, because other hypotheses may explain the same evidence. Choosing among them is choosing the <em>best explanation</em>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>abduction:</span></span>
+<span class="line"><span>P1 H → E   (if H were true, E would be expected)</span></span>
+<span class="line"><span>P2 E        (E is observed)</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>PN</span></span>
+<span class="line"><span>======</span></span>
+<span class="line"><span>C → H      (H is plausible, not proven)</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Deduction</th>
+<th>Induction</th>
+<th>Abduction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Rule</em></td>
+<td>It rains → the grass is wet</td>
+<td><em>concluded</em></td>
+<td>It rains → the grass is wet</td>
+</tr>
+<tr>
+<td><em>Case</em></td>
+<td>It rained</td>
+<td>It rained (many mornings)</td>
+<td><em>concluded</em></td>
+</tr>
+<tr>
+<td><em>Result</em></td>
+<td><em>concluded:</em> the grass is wet</td>
+<td>The grass was wet (each time)</td>
+<td>The grass is wet</td>
+</tr>
+<tr>
+<td><em>Direction</em></td>
+<td>from general rule to a specific result</td>
+<td>from specific observations to a general rule</td>
+<td>from an observed result back to a possible cause</td>
+</tr>
+<tr>
+<td><em>Certainty</em></td>
+<td>certain, if premises are true</td>
+<td>probable, may be wrong</td>
+<td>plausible, may be wrong</td>
+</tr>
+<tr>
+<td><em>Adds new content?</em></td>
+<td>no, only unpacks the premises</td>
+<td>yes, a general rule</td>
+<td>yes, a new hypothesis</td>
+</tr>
+<tr>
+<td><em>Typical role in science</em></td>
+<td>derive predictions, test H</td>
+<td>gather ideas for H from data</td>
+<td>come up with H to explain surprising E</td>
+</tr>
+<tr>
+<td><em>Main risk</em></td>
+<td>false or incomplete premises</td>
+<td>confirmation bias, too few observations</td>
+<td>rival explanations fit E equally well (sprinkler, dew)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to keep them apart.</strong></p>
+<ul>
+<li>Deduction <em>applies</em> a rule: rule + case → result.</li>
+<li>Induction <em>builds</em> a rule: case + result → rule.</li>
+<li>Abduction <em>guesses a cause</em>: rule + result → case. It runs the rule backwards.</li>
+</ul>
+<p><strong>Why abduction is not valid deduction.</strong> Its schema (H → E, E, therefore H) is the fallacy of affirming the consequent: E can be true while H is false. Abduction is therefore a way of proposing hypotheses, not of proving them. What turns it into a method is comparing rival explanations of the same E and keeping the best one, which is why it is also called inference to the best explanation. Later the hypothesis is tested by deduction (derive further predictions from H, then check them), and the observations that follow feed back into induction and new abductions. In short: abduction proposes H, deduction derives what H predicts, induction learns from what is observed.</p>
+<h3 id="defining-science">Defining Science</h3>
+<p>mainly we do that, so we know what is <em>not</em> science or what is pseudo-science.
+This is not for a terminological discourse, but for a conceptual one.</p>
+<p><strong>I)</strong> 17th century Galileo. From a mathematical model, start to extract quantities – then check through experiments with empirical methods.
+→ this excludes mathematics from scientific fields.
+What about history? Where is the mathematical modelling → maybe it is more about knowledge in the epistemic way.</p>
+<p><strong>II)</strong> You may focus for definition either on the</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Goals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mathematics</td>
+<td>knowledge</td>
+</tr>
+<tr>
+<td>observation</td>
+<td>truth</td>
+</tr>
+<tr>
+<td>testability</td>
+<td>empirical adequacy</td>
+</tr>
+<tr>
+<td>Knowledge and truth is what philosophy and epistemology is based on. Something like astrology also adds “beliefs”.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Difference in FOUNDATIONAL and APPLIED</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>non-science                  science       expert practices</span></span>
+<span class="line"><span>            pseudo-science</span></span>
+<span class="line"><span>---------------------------|----------|--------------------</span></span>
+<span class="line"><span>- religion   - homeopathy                  - engineering</span></span>
+<span class="line"><span>- art        - astrology                   - medecine</span></span>
+<span class="line"><span>- philosophy</span></span></code></pre>
+<p>mathematics? → maybe the language of science, way of thinking in science</p>
+<blockquote>
+<p>CONTINGENCY: Does it exist as a law or could it have been different?</p>
+</blockquote>
+<p>Verifiability as a criterion might be excluding too many field from science. Maybe <strong>Reproducability</strong> is the lowest common denominator.</p>
+<h3 id="defining-evidence">Defining Evidence</h3>
+<p>Evidence may be data, but it is broader.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>THEORY(H1, H2, ...)-----------DATA-------------------REALITY</span></span>
+<span class="line"><span>                    ←   can confirm or reject    ←   creates collectable</span></span>
+<span class="line"><span>                        </span></span></code></pre>
+<p>You may get different results even when using the same methods/instruments → INDUCTION problem</p>
+<h3 id="underdetermination">Underdetermination</h3>
+<p>Hypothesis level</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>H --------- "support" "disconfirmation"</span></span>
+<span class="line"><span>      ↑</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>E --------- observational level → you have "control"</span></span></code></pre>
+<p>Evidence level</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>H --------- theories hypotheses and models</span></span>
+<span class="line"><span>      ↑</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>E --------- data level</span></span>
+<span class="line"><span>      ↑</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>R --------- reality "the univers" "human brain activity"</span></span></code></pre>
+<p>Evidence must be reliable for assumptions on the Hypothesis level.
+Interpolation between data points is not at the Data level but on the Hypotheses level.</p>
+<p>Reality is different for everyone → CONSCIOUSNESS.
+Is there actually objective reality or are there infinite realities? We may disregard Reality level altogether → REALISM vs. ANTIREALISM.</p>
+<p>Maybe you have collected data and you want a function that explains through a law the measured data points and any possible future data points.
+You may argue for a linear function. You may argue for a quadratic function. You may argue for a complex polynomial.
+With easier functions, you may fail to connect your data points, so you have to explain them e.g. as measurement errors.
+Complex functions are maybe good for all of your already collected data points but they can be really bad for any data points to come in the future/prediction of data points.
+→ “simpler models are more likely to be true, i.e. finding regularity in data”</p>
+<p><strong>Heliocentric model</strong> proposed by Aristarchus, picked up by Kopernikus, Galileo and proved by Newton…</p>
+<p>Comparing two <strong>Geocentric models</strong>: eccentric and epicyclic, you can see both are geometrically and empirically equivalent. Meaning both can explain looping behaviours of planets that simpler geocentric models could not.
+But with such competing models, we cannot decide which one of both is <em>true</em> because both models are empirically equivalent. The two models predict the same observations.
+⇢ <strong>Underdetermination</strong>
+Disagreement on the theoretical interpretation, even though you can agree on the empirical observation.
+So what can be done?</p>
+<ul>
+<li>Create and test a new model altogether</li>
+<li>Try a new understanding of reality</li>
+</ul>
+<p><strong>Underdetermination:</strong></p>
+<ul>
+<li>empirically equivalent theories</li>
+<li>problem with theory-choice</li>
+<li>empirical adequacy vs. non-empirical virtues (simplicity? …)</li>
+<li>cf. statistical model selection</li>
+</ul>
+<p>Difference between empirical equivalence and empirical adequacy:</p>
+<ul>
+<li><strong>Empirical equivalence</strong> compares <strong>two theories with each other</strong>. T1 and T2 are empirically equivalent if they make the same predictions about everything observable, now and in the future, so no possible observation could tell them apart.</li>
+<li><strong>Empirical adequacy</strong> compares <strong>one theory with the world</strong>. T is empirically adequate if what it says about observable things and events is true: it fits all the observations, past, present and future. Van Fraassen (1980) takes this, not truth, as the aim of science.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Empirical equivalence</th>
+<th>Empirical adequacy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relation between</td>
+<td>theory and theory</td>
+<td>theory and observations</td>
+</tr>
+<tr>
+<td>Question</td>
+<td>do T1 and T2 predict the same observations?</td>
+<td>does T fit the observations?</td>
+</tr>
+<tr>
+<td>Can be tested by data?</td>
+<td>no, by definition data cannot separate T1 from T2</td>
+<td>yes, an observation that contradicts T makes it inadequate</td>
+</tr>
+<tr>
+<td>Consequence</td>
+<td>underdetermination: data cannot decide between T1 and T2</td>
+<td>the theory stays or is replaced when an observation contradicts it</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><em>Equivalence, from the lecture:</em> the eccentric and the epicyclic geocentric models. Both reproduce the looping paths of the planets, so the observations cannot decide which one is true.</li>
+<li><em>Equivalence:</em> Bohmian mechanics and standard quantum mechanics make the same predictions for measurement outcomes, so experiments cannot separate them. Lorentz’s ether theory and Einstein’s special relativity were empirically equivalent in their predictions too, and physicists chose relativity for non-empirical reasons such as simplicity.</li>
+<li><em>Adequacy:</em> Newton’s gravitation fitted the observed planetary motion for 200 years. It then met two problems. The orbit of Uranus did not fit; adding a further planet (Neptune, predicted by Le Verrier in 1846 and then observed) restored the fit. The 43 arcseconds per century of extra Mercury perihelion shift could not be fixed that way, so Newton’s theory was empirically inadequate there, and general relativity fits it.</li>
+<li><em>Adequacy:</em> the Ptolemaic system was adequate for the naked-eye observations of its time but not for Galileo’s telescope observations, such as the phases of Venus.</li>
+</ul>
+<p>If T1 and T2 are empirically equivalent, they are both adequate or both inadequate, because the observations treat them the same. So adequacy can never choose between equivalent theories. That is why underdetermination needs something beyond data: non-empirical virtues such as simplicity, or in statistics, model-selection criteria. The reverse does not hold. Two theories may both be adequate for the data so far without being equivalent, because they may still disagree about future observations. That is the curve-fitting example above: a complex polynomial fits all collected points (adequate so far) but may predict the next points badly, where a simpler function might not.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>t</span></span>
+<span class="line"><span>H---H1--H2--</span></span>
+<span class="line"><span>    ↑  ↑ ↑ </span></span>
+<span class="line"><span>   [    ] ]</span></span>
+<span class="line"><span>E-----------</span></span></code></pre>
+<p>both H1 &amp; H2 at the time t, “save the phenomenon” and “account for the evidence E”.</p>
+<h3 id="theory-ladeness">Theory-ladeness</h3>
+<p>→ how your theory can influence your Evidence
+e.g. the gnomon
+Theories on spherical Earth were developing in the 5th century BC.
+Gnomon use to calculate the Earths circumference is assuming the Earth is spherical AND the Sun must be so big and far away that all sunrays reaching the Earth can be considered parallel to eachother and perpendicular to the tropic.
+In China, the gnomon was used to try to compute the distance to the Sun (using the same experiment)…
+→ the result is completely different and depends much on your assumed Theories.
+Your experiments are not something neutral, but you construct them already using your worldviews and assumptions.</p>
+<blockquote>
+<p>Only in the 18th century, the Chinese knew of the Earth being spherical because there was no communication between them and the Western scientists before.</p>
+</blockquote>
+<p>Theory-ladeness shows something like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>t</span></span>
+<span class="line"><span>H---H1--H2--</span></span>
+<span class="line"><span>     ↓   ↓ </span></span>
+<span class="line"><span>    [     ]</span></span>
+<span class="line"><span>E-----------</span></span></code></pre>
+<h3 id="theory-testing-and-theory-choice">Theory testing and Theory choice</h3>
+<p>How do we decide what to believe, what theories are “more adequate”?</p>
+<p>Given H1 there will always be ¬H1 → Nullhypotheses (H0)</p>
+<p><strong>Popper</strong> (Austrian philosopher) * Start of 20th century.
+In a time of revolutions in science, just after WW1.
+Trained as a psychologist. Psychoanalysis was something quite different to e.g. Physics.
+He supports a concept called FALSIFIABILITY, meaning that if you want to confirm a theory, you should not be able to falsify it/reject it through opposite evidence.
+(Because of theory-ladeness, confirming a theory with a bit of evidence is not that hard…)
+So confirmation of the theory may come after you fail to falsify your theory.</p>
+<p>H → E … but if you find ¬E → ¬H is true</p>
+<p><strong>Eliminating Possibilities:</strong>
+What does my theory not accommodate? I want to research what may not be supported by my theory. If I do the opposite, I am prone to confirmation bias.
+<em>There are a couple of theories that inherently cannot be falsified, like “Rational Choice Theory”… what about them?</em></p>
+<p><strong>Summary</strong>
+For Popper, you need virtually infinite pieces of evidence for <strong>verification</strong>; hence it is much more efficient to go by <strong>falsifiability</strong>.
+Falsifiability as a criterion of demarcation between science and non-science. E.g.:</p>
+<ul>
+<li>Einstein’s general relativity theory ☑️</li>
+<li>Marx’ Theory of History ☒</li>
+<li>Freud’s &amp; Adler’s Psychoanalysis ☒</li>
+</ul>
+<p>If H → E is falsified because ¬E, we know at least one part of H (the conjunction of H1⌃H2⌃…Hn ) is false</p>
+<p><strong>Neptune’s discovery (1846)</strong> (Galileo, Bouvard, Adams, Le Verrier)
+<strong>Uranus’ discovery</strong> → Hipparchus (128 B.C.), Herschel &amp; others (1781-83)<br>
+⇢ its predicted orbit was falsified, but why?<br>
+↳ Neptune was not yet observed, so there was evidence missing<br>
+⇢ “false experiment” and “missing measurements/evidence” was not a reason to abandon the theory of Newton Mechanics yet</p>
+<p>Also, Mercury’s perihelion could not be accommodated until Einstein’s Mechanics. Until then, e.g. a “Vulcan” planet was made up to explain the abnormality of Mercury’s orbit.</p>
+<p><strong>SEMANTIC HOLISM, HOLISM CONFIRMATION</strong> → “the total thing is more than the sum of its parts”</p>
+<p>There is already a problem with Underdetermination and theory-ladenness. Assuming we have 2 conjunctions of hypotheses (2 Theories), H1 &amp; H2, the number of assumptions needed is huge because of big Underdetermination (e.g. Particle Physics), so we cannot simplify the conjunctions.</p>
+<p><strong>EPISTEMIC VALUES</strong><br>
+“lucky knowledge” → Pluto mass and distance errors</p>
+<h3 id="kuhn-paradigms--revolutions">Kuhn: Paradigms &amp; Revolutions</h3>
+<p>Main Work (1962)<br>
+While Popper suggested always being in a state of <strong>doubt</strong>, hence the Falsifiability approach, Thomas Kuhn (physicist) sees two main problems with Poppers view:</p>
+<ul>
+<li>not much choice &amp; falsification in scientific history</li>
+<li>there is probably no real individual approach to science; significance &amp; statistical error etc. are inherent to the scientific community (know-how of theory and evidence)</li>
+</ul>
+<p><strong>Main difference is the perspective:</strong> Popper → how science should be done; Kuhn → how science is done (with respect to institutions, norms, influence …)</p>
+<p><strong>Main difference in Normality:</strong> Popper → there are always new Hypotheses; Kuhn → there is one paradigm at a time with no alternative</p>
+<p><strong>PARADIGMS:</strong><br>
+Kuhn explains that science works in Paradigms. A Paradigm holds the hypotheses, the models, the tools, the values, the exemplars, the know-how, all with implicit/tacit knowledge (e.g. what you get teached at university, what your supervisors tell you, etc.). Paradigms are hard to change. The Paradigm defines the way evidence is collected (Kuhn attributes a lot to → <span class="wikilink unresolved" title="Not published">Theory-ladeness</span>).</p>
+<p>Conjunctions of Hypotheses make it so that Falsification shows at least one of the Hypotheses is false. Kuhn states that when you look at Physics History, there are not so many falsifications; e.g. there were 3 centuries of non-contradicted Newton Theories. He claims that the evidence and hypotheses are part of the Theory ⇢ PARADIGMS → mutual agreements of science community</p>
+<ul>
+<li>The whole Paradigm touches the evidence</li>
+<li>Community is big for Kuhn</li>
+<li>If evidence shows error in a Paradigm, this may not fall back on the scientist as much as on the paradigm</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>T__O__← the Paradigm</span></span>
+<span class="line"><span>E_____</span></span>
+<span class="line"><span>R_____</span></span></code></pre>
+<p>“the Theory straps itself” → <span class="wikilink unresolved" title="Not published">Theory-ladeness</span> is very strong for Kuhn.</p>
+<p>Kuhn claims that Humanities, Social Sciences, Economics etc. don’t have a Paradigm (yet).</p>
+<p><strong>3 STAGES OF DEVELOPMENT OF A SCIENCE</strong></p>
+<ol>
+<li>Premature Science:
+<ul>
+<li>Schools period</li>
+<li>No Paradigm yet</li>
+<li>No specific shared practice; missing agreements<br>
+↓ vague process, some unification happening</li>
+</ul>
+</li>
+<li>Mature Science:
+<ul>
+<li>You have a Paradigm that you can agree on (the only way for a Science to mature)</li>
+<li>Once you reach the Paradigm, you will not come back to Premature stage, you may only evolve the Paradigm or revolutionise it</li>
+</ul>
+</li>
+<li>Extraordinary Science:
+<ul>
+<li>Revolution of a Paradigm to a new one (this is a complete change of how Science is done → not to be confounded with inflational use of the term ‘revolution’)</li>
+<li>Old Paradigm enters a crisis, so a new paradigm is built and suggested</li>
+</ul>
+</li>
+</ol>
+<p>What happens when a Paradigm needs to change?</p>
+<ul>
+<li>You see anomalies you cannot explain through the Paradigm</li>
+<li>People come up with an opposite series of Hypotheses</li>
+</ul>
+<p><strong>INCOMMENSURABILITY</strong></p>
+<ul>
+<li>Semantically
+<ul>
+<li>Different Paradigms assign a different meaning to the same concept</li>
+</ul>
+</li>
+<li>Methodological
+<ul>
+<li>Differences in standards, aims, methods and values<br>
+↳ sufficient conditions, but it is disputed if there is necessity for both types of Incommensurability</li>
+</ul>
+</li>
+<li>Old Paradigm may be very successful, a lot of models and concepts are covered → you may need a certain optimism to stand in for a new Paradigm</li>
+</ul>
+<p><strong>NORMAL SCIENCE..?</strong></p>
+<p><strong>RATIONAL DISAGREEMENT</strong></p>
+</div></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

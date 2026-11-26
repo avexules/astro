@@ -1,0 +1,46 @@
+Endgame Reward,Commission Reward,Condition
+1$,1$,You migrated this round.
+1$,1$,You redistributed water this round.
+1$,1$,You discarded another card this round.
+1$,1$,Any die shows 6.
+1$,1$,Any die shows 5.
+1$,1$,Any die of yours is equal any die of a neighbor.
+1$,1$,Lowest die ≤ 3.
+1$,1$,Total population is odd.
+1$,1$,Total population is even.
+2$,1$,Total population ≤ 9.
+2$,1$,Your lowest die is lower than any neighbor die.
+2$,1$,Any die shows double another die.
+2$,1$,You gave asylum this round.
+2$,1$,Your total water matches exactly with one population die.
+2$,1$,Any pair of your dice differ by ≤ 1.
+2$,1$,You have exactly 4 water tokens.
+2$,1$,You are tied in total population with at least one neighbor.
+3$,1$,Highest die and lowest die differ by ≥ 4.
+3$,1$,You migrated to or gave asylum for both of your neighbors.
+3$,1$,Total population ≥ 7.
+3$,1$,Any of your die shows exactly 1.
+3$,1$,All of your dice different values.
+3$,1$,You have fewer water than at least one neighbor with lower or equal total population.
+3$,1$,Two of your dice total ≥ 6.
+4$,1$,Any two dice are equal.
+4$,1$,Total population ≤ 6.
+4$,1$,Total population ≥ 9.
+4$,1$,All dice show 3 or less.
+4$,1$,Your total population and a neighbors total population sum up to ≥ 15.
+4$,1$,Exactly one player has more water than you.
+5$,2$,Your total water is exactly matching another player's total population.
+5$,2$,Your total population is exactly matching another player's total water.
+5$,2$,You are the highest total population player.
+5$,2$,You are the lowest total population player.
+5$,2$,You gave or received ≥ 3 water this round.
+6$,2$,All dice show 3.
+6$,2$,Any two dice show 6 each.
+6$,2$,All dice show 2.
+6$,2$,You have fewer water than both neighbors.
+7$,3$,Three dice show 1.
+7$,3$,Total population ≥ 13.
+7$,3$,Your water is exactly twice your total population.
+8$,3$,You were at total population ≤ 3 this round but then you survived.
+8$,3$,All players have total water ≥ total population.
+9$,3$,All players have exactly matching total water and total population.

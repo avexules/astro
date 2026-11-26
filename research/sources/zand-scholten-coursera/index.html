@@ -1,0 +1,873 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Zand Scholten (Coursera) · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="true" tabindex="0" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="false" tabindex="-1" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab"><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/" aria-current="page">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab" hidden><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/sources/">Sources</a></nav><h1 class="note-title">Zand Scholten (Coursera)</h1><p class="note-subtitle">Quantitative Methods (Methods and Statistics in Social Sciences Specialization)</p><p class="note-updated">Updated 2026-11-24</p><div class="note-meta"><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Kind</dt><dd>course</dd><dt>Teacher</dt><dd>Annemarie Zand Scholten</dd><dt>Status</dt><dd><span class="badge" data-status="mature">mature</span></dd><dt>Tags</dt><dd><a class="tag" href="/tags/methods/">#methods</a> <a class="tag" href="/tags/research-design/">#research-design</a> <a class="tag" href="/tags/course/">#course</a></dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h2 id="apa">APA</h2>
+<p>Zand Scholten, A. (n.d.). <em>Quantitative methods</em> [Online course]. In <em>Methods and Statistics in Social Sciences Specialization</em>. University of Amsterdam, Coursera.</p>
+<h2 id="notes">Notes</h2>
+<p>Annemarie Zand Scholten, Assistant Professor, Economics and Business, University of Amsterdam. Course of the Methods and Statistics in Social Sciences Specialization (Coursera). Handwritten notebook notes, transcribed from 17 scanned pages (notebook pp. 9 to 43).</p>
+<hr>
+<p><strong>Page 1</strong> <em>(notebook p. 9)</em></p>
+<p><strong>My thoughts on scientific knowledge</strong></p>
+<p><em>(margin note, top right)</em> <em>different sources that show transparent references based on real observation → <strong>EVIDENCE</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Non-scientific:</strong> <em>(subjective, error prone)</em></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intuition / belief</td>
+<td>→ doesn’t mean true; there can be opposing beliefs. We can count consensus and believe the majority → also not always true</td>
+</tr>
+<tr>
+<td>Consensus</td>
+<td></td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>→ also not objective</td>
+</tr>
+</tbody>
+</table>
+<p>Opinion // Evidence</p>
+<ul>
+<li>↳ Problem: selective observations, informal logic</li>
+</ul>
+<p><strong>Scientific:</strong> Systematic observation. Formal Logic, consistently applied.</p>
+<ol>
+<li>empirically testable (observation, real, physical)</li>
+<li>replicable (repeated confirmation, keeps being true)</li>
+<li>objective (no matter who performs the study; clear assumptions, concepts, procedures)</li>
+<li>transparent (publicly shared)</li>
+<li><strong>falsifiable</strong> (we can imagine what a contradiction would be)</li>
+<li>logically consistent / coherent (hypothesis and conclusion…)</li>
+</ol>
+<p><strong>Scientific attitude</strong> → critical, open, transparent. Then science works like an evolutionary system where only the fittest, i.e. most plausible, hypothesis persist.</p>
+<hr>
+<p><strong>Page 2</strong> <em>(notebook pp. 10–11)</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Scientific Claims</strong></p>
+<ul>
+<li><strong>Statements</strong></li>
+<li><strong>Observation</strong> <em>(accurate/inaccurate)</em> — no general relation → used to confirm or contradict hypotheses</li>
+<li><strong>Explanation</strong></li>
+<li><strong>Hypotheses</strong> <em>(describes, explains a pattern / general relation)</em> — can be not, or strongly, supported → connects to <strong>Law</strong></li>
+<li><strong>Theory</strong> — connects to <strong>Law</strong> <em>(strongly supported)</em>, often mathematical formulas</li>
+</ul>
+<p><strong>Theory</strong></p>
+<ul>
+<li>broad, overarching explanation</li>
+<li>many hypotheses</li>
+<li>most well established
+<ul>
+<li>↳ still no certainty</li>
+</ul>
+</li>
+</ul>
+<p><strong>Development of scientific method:</strong></p>
+<ul>
+<li>Classic Period: Plato, Aristoteles — 390 / 350 BC</li>
+<li>Syllogism: Premises → Conclusion</li>
+<li>Ptolemy → wrong solar system — 40 AC</li>
+<li>Islamic 1000 A.C. — Experimentation</li>
+<li>Bacon → Induction, Deduction → Empiricism</li>
+<li>Kopernikus → planets move around sun — 1500 A.C.</li>
+<li>Galileo Galilei, Rene Descartes — 1600 A.C.
+<ul>
+<li>↳ Enlightenment</li>
+<li>↳ <em>cogito, ergo sum</em> — “i think, therefore i am”</li>
+</ul>
+</li>
+<li>1740 A.C. Hume — Problem of Induction: new observations can never conclusively show truth</li>
+<li>1830 A.C. German idealism</li>
+<li>1930 A.C. Logical Positivism — meaningful statements
+<ul>
+<li>Analytical — a priori, formal logic</li>
+<li>Synthetic — dependance verified through observation</li>
+</ul>
+</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Logical Empiricism</strong></p>
+<ul>
+<li>falsification (Popper) — maximise chance to falsify</li>
+<li>Duhem–Quine thesis → no hypothesis can be verified in isolation</li>
+<li>Kuhn → science works in paradigms</li>
+</ul>
+<p><strong>ACTUAL: Hypothetico-deductive method</strong></p>
+<ul>
+<li>induction &amp; deduction</li>
+<li>falsifiable</li>
+<li>replication → provisional confirmation</li>
+</ul>
+<p><strong>empirical adequacies</strong> <em>(constructive empiricism)</em></p>
+<ul>
+<li>↳ Scientific claim is ‘true’ only as far as the observables go!</li>
+<li><em>“current best explanation for our observations”</em></li>
+</ul>
+<ol>
+<li><strong>ONTOLOGY</strong> — study of being. What is the nature of reality.</li>
+<li><strong>EPISTEMOLOGY</strong> — study of knowledge
+<ul>
+<li>reasoning fro[m] rational[ism] [?] (Plato)</li>
+<li>Empiricism — knowledge through senses (Aristoteles), <em>tabula rasa</em></li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>Page 3</strong> <em>(notebook pp. 12–13, physical numbers not clearly legible)</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Ontology</strong></p>
+<table>
+<thead>
+<tr>
+<th>Particulars</th>
+<th>Universals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>specific instances</td>
+<td>abstract, unobservable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Existence of external reality?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outside</th>
+<th>Only in mind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Materialism</strong> — everything is physical matter; feeling &amp; thoughts are byproducts</td>
+<td><strong>Idealism</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Realism</strong> — platonic / scientific</p>
+<p><strong>Nominalism</strong> — ↳ no universals</p>
+<p>— RISE OF SOCIAL SCIENCES —</p>
+<p><strong>1880–1920</strong></p>
+<ul>
+<li>Ontological view: Realism</li>
+<li>Epistemological view: Positivist (Empiricist)
+<ul>
+<li>Constructivism } often Qualitative</li>
+<li>Interpretivism</li>
+</ul>
+</li>
+</ul>
+<p>Hermeneutics — Phenomenology / Investigation of meaning for subject — <strong>Verstehen</strong> (Max Weber)</p>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>Layered interpretation</li>
+<li>Lack of comparability</li>
+<li>Difference in frame of reference</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Objectivist / Positivist</strong> } often Quantitative</p>
+<ul>
+<li>quantifiable, aggregation over subjects</li>
+<li>inference to a large population</li>
+<li>possibly universal explanation</li>
+</ul>
+<p><strong>Mixed-Methods:</strong> Qualitative &amp; Quantitative</p>
+<ul>
+<li>Universalistic research → very general and for all people</li>
+<li>Particularistic research → explanation for very particular phenomena</li>
+</ul>
+<p><em>(margin, vertical: “APPLIED”)</em></p>
+<ul>
+<li>improve human condition through solutions</li>
+<li>often particularistic</li>
+</ul>
+<p><em>(margin, vertical: “FUNDAMENTAL”, German: “Grundlagen”)</em></p>
+<ul>
+<li>for the sake of knowledge</li>
+<li>showing off relations, not solutions</li>
+<li>often universalistic</li>
+</ul>
+<hr>
+<p><strong>Page 4</strong> <em>(notebook pp. 14–15[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Empirical Cycle</strong> — hypothetico-deductive approach</p>
+<p>Testing → Evaluation → Observation … research question → Deduction ← Induction → prediction / methodology ← hypothesis
+<em>(cyclical diagram: Testing leads to Evaluation, which leads to Observation/research question, which leads down to Deduction and Induction, which lead to prediction/methodology and hypothesis respectively)</em></p>
+<p><strong>Confirmation / Disconfirmation</strong></p>
+<ul>
+<li>a confirmation is never conclusive</li>
+<li>hypotheses cannot be proven but can be provisionally supported…</li>
+<li>plausible failures → research design, background variables, methodological issues</li>
+<li>often hypotheses are preserved and redesign research, or adjusted by specification</li>
+</ul>
+<p><strong>Criteria for evaluation</strong></p>
+<ul>
+<li>Reliability → Replicability</li>
+<li>Validity → reflecting reality
+<ul>
+<li>↳ construct: measured and manipulated as intended (accurately)</li>
+<li>internal: causal relation, maybe plausible alt. explanation</li>
+<li>external: results may generalize to other patterns; the findings are the same over settings</li>
+</ul>
+</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Causality</strong></p>
+<ol>
+<li>Cause → Effect are connected</li>
+<li>Cause precedes Effect</li>
+<li>Cause and Effect covary consistently</li>
+<li>No alternative explanations (C → E, Alt. ✗) — <strong>Difficult!</strong></li>
+</ol>
+<blockquote>
+<p><strong>Correlation does not imply Causation</strong></p>
+</blockquote>
+<p><strong>Threats to INTERNAL validity</strong> → due to participants</p>
+<ul>
+<li><strong>Maturation:</strong> natural change over time of research — solution: control group</li>
+<li><strong>Selection:</strong> systematic differences in the exp. group — solution: randomization</li>
+<li><strong>Selection by maturation:</strong> systematic differences in maturation — solution: also randomization</li>
+</ul>
+<p><strong>Threats to INTERNAL validity</strong> → due to instruments</p>
+<ul>
+<li><strong>Low construct validity:</strong> no focus on the intended concepts, so no conclusions can be made on the intended hypothesis</li>
+<li><strong>Instrumentation:</strong> change in measurement systems over the course of the research</li>
+<li><strong>Testing / sensitization:</strong> when the measurements/experiments affect behavior
+<ul>
+<li>↳ control group! but may not be enough</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Page 5</strong> <em>(notebook pp. 16–17[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Threats to INTERNAL validity (still)</strong> → due to artificiality</p>
+<ul>
+<li><strong>Experimenter expectancy:</strong> solution: experimenter blind design</li>
+<li><strong>Demand characteristics:</strong> participants change behaviour when they know which group they are in… — solution: double blind design and <strong>COVER STORY</strong> → minimize bias</li>
+</ul>
+<p><strong>Threats to INTERNAL validity</strong> → due to research setup</p>
+<ul>
+<li><strong>Ambiguous temporal precedence:</strong> when hypothesised cause is unclear to precede the observed effect.</li>
+<li><strong>History:</strong> some event that provides an alt. effect, e.g. “the experimenter faints in the experiment” — hard to eliminate, you need to discard some results/observations</li>
+<li><strong>Mortality:</strong> drop-outs of the study, especially when exp. and control group drop-outs differ strongly — solution: document reasons for drop-out</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>RESEARCH VARIABLES</strong></p>
+<p><strong>Construct</strong> → abstract phenomena
+<strong>Variable vs. constant:</strong> variable is an operationalized, concrete expression of a construct
+<strong>Independent vs. dependent variable</strong></p>
+<ul>
+<li>↳ when there’s cause and effect in the hypothesis
+<ul>
+<li>cause / explanatory / input / predictor → <strong>VARIABLE</strong></li>
+<li>effect / response / outcome / output → <strong>VARIABLE</strong></li>
+</ul>
+</li>
+</ul>
+<p>There are other extraneous properties, variables of interest, that may be cause for alt. explanations:</p>
+<ul>
+<li><strong>Confounders</strong> (also called “lurking variables”): related to both independent and dependent variables, and not included in the hypothesis as well as often not measured</li>
+<li><strong>Control variables:</strong> like a confounder but is part of the study and measured</li>
+<li><strong>Background variables:</strong> not directly in relation with the independent and dependent variable, but the generalizability, like sex, age, ethnic/cultural, socio-economic status, education level… — you need to control for it or keep it constant</li>
+</ul>
+<hr>
+<p><strong>Page 6</strong> <em>(notebook pp. 18–19[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>RESEARCH DESIGNS</strong></p>
+<p><strong>True Experiments</strong> <em>(maximize internal validity, e.g. by randomized control trials (RCT))</em></p>
+<ul>
+<li><strong>Manipulation:</strong> eliminating ambiguous temporal precedence by having the cause under full control so it definitely precedes the effect — creating a situation where the causal variable is present</li>
+<li><strong>Comparison:</strong> compare to an effect where the cause is absent (eliminates Maturation)</li>
+<li><strong>Random assignment:</strong> randomization for assigning to experimental &amp; control (no systematic difference, in theory, other than the causal variable)</li>
+<li><strong>and Replication</strong> — to rule out any chance</li>
+</ul>
+<p>Experiments with different levels of the independent variable</p>
+<ul>
+<li>↳ separate and combined effect ⇒ <strong>factorial design</strong></li>
+<li>↳ exposition of participants to all levels of the independent variable ⇒ <strong>repeated measures design</strong></li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Factorial Design</strong></p>
+<p>Several independent variables (or ‘factors’) — ↳ simultaneous investigation</p>
+<blockquote>
+<p>e.g. 3 different dosages of a drug × 2 different genders = 6 different conditions</p>
+<p>⇒ effects of dosage, effects of genders } main effect
+interaction effect { effects of dosage and gender combined (two way) }</p>
+</blockquote>
+<p>There may be “incomplete designs” where not every factorial condition is observed.</p>
+<p><strong>Repeated Measures Design &amp; Longitudinal design (longer)</strong></p>
+<p><strong>Between</strong> vs <strong>Within</strong> subject design</p>
+<ul>
+<li>between: participants are split amongst conditions</li>
+<li>within: all participants experience all conditions</li>
+</ul>
+<p>within &amp; between can also be combined → more <strong>efficient</strong>
+→ correlational or quasi-experimental</p>
+<hr>
+<p><strong>Page 7</strong> <em>(notebook pp. 20–21[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Manipulation:</strong> control over independent variable → creating different conditions</p>
+<ul>
+<li>Level / Condition / Group are different terms for the same</li>
+<li>If independent variable is absent → control group</li>
+</ul>
+<p>Experimental variable → fully controlled by researcher, vs. Individual difference variable → cannot be fully controlled, like intrinsic properties</p>
+<p>Seemingly non-manipulable variables that can be manipulated…</p>
+<p><strong>Manipulation check:</strong> after the measurement of the dependent variable, to not influence the participants’ behaviour. How does that look like? Check perception!</p>
+<p><strong>IDEAL CASE:</strong> each condition is identical to the others except the independent variable! ⇒ <em>“Ceteris paribus”</em></p>
+<ul>
+<li>↳ very difficult in social sciences because it is so hard to control all variables (external)</li>
+</ul>
+<p><strong>LAB vs. FIELD</strong> <em>(ethics?)</em> → higher ecological validity (experimental setting close to natural occurrence of phenomenon)</p>
+<p>maximising internal validity –– but low ecological validity
+“room with same conditions” / “same day of week or time of day” — not bad always ≠ low construct or external validity</p>
+<p><strong>Randomization:</strong></p>
+<ul>
+<li>can fail with small groups…</li>
+<li>↳ randomization check</li>
+<li>↳ restricted randomization (strategised): blocking for equal group size, or for assignment for several characteristics combined</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Randomization</strong> with repeated measures in within-subject</p>
+<ul>
+<li>↳ randomization is necessary, else risk of Maturation or Habituation effect</li>
+<li>⇒ order of conditions randomized for <strong>COUNTERBALANCING</strong>, making sure with blocking that no order is over-/under-represented!</li>
+</ul>
+<p><strong>Standard Research Designs — EXPERIMENTAL</strong></p>
+<ul>
+<li><strong>Two-Group:</strong> N → randomization → Control (cause absent) / Experiment (cause present)</li>
+<li><strong>Two-Group Pre/Post</strong> (for small groups): N → random. → PRE (on the dependent) → Control → POST (also on the dependent) / PRE (on the dependent) → Experimental → POST — good when threat of maturation, or to quantify increase/decrease. Pretest can sometimes sensitize, have practice effect, or alert to purpose.</li>
+<li><strong>Solomon 4-Group:</strong> N → random. → [PRE random. → Control → POST; PRE random. → Experiment → POST; random. → Control → POST; random. → Experiment → POST]</li>
+<li><strong>Within (Repeated Measures):</strong> N → rand. → A → Control → TEST → Experiment → POST; B → Experiment → TEST → Control → POST — randomization for A/B determines the order of the conditions experienced.</li>
+</ul>
+<hr>
+<p><strong>Page 8</strong> <em>(notebook pp. 22–23[?], “EPSON ET16605” printed mark bottom left)</em></p>
+<p><strong>Left page</strong></p>
+<p>When random assignment is impossible, the study is <strong>quasi-experimental</strong> — a method to approximate randomisation is called <strong>matching</strong>.</p>
+<p><strong>MATCHING:</strong> when random assignment is not possible because of pragmatic/ethical reasons, or the independent variable is an individual difference variable</p>
+<ul>
+<li>↳ on relevant background variables to try and exclude alt. explanation</li>
+</ul>
+<p><strong>Phenomenon of Undermatching:</strong> due to regression to[wards] the mean (when a second measurement scores lower/more average than a first measurement) — can occur if related to variables of interest &amp; measured with some errors (as per usual in social sciences)</p>
+<p><strong>QUASI-EXPERIMENTAL DESIGN</strong></p>
+<ul>
+<li>when it lacks Randomization. Sometimes even Manipulation or Comparison — <strong>BUT!</strong></li>
+<li>investigates causal relation</li>
+<li>values are selected, not manipulated (like Correlational studies) <em>(of independent variable)</em></li>
+</ul>
+<p><strong>Standard Designs:</strong></p>
+<ol>
+<li>Static group comparison <em>(like Two-Group)</em></li>
+<li>Pre/posttest non-equivalent control group — ↳ controls for threat of selection &amp; maturation <em>(pre) (post)</em></li>
+<li>Interrupted time-series <em>(one group pre/posttest)</em> — ↳ history threats!</li>
+<li>Replicated interrupted time-series → with a control group, to rule out history threat</li>
+</ol>
+<p><strong>Right page</strong></p>
+<p><strong>CORRELATIONAL DESIGNS</strong></p>
+<ul>
+<li>no manipulation of independent variable — OR —</li>
+<li>no independent variable identified, because the hypothesis doesn’t specify a causal relationship</li>
+</ul>
+<p>⇒ no manipulation, no selection, just measuring!</p>
+<p><strong>Standard Designs:</strong></p>
+<ol>
+<li><strong>Cross-sectional</strong> — large group of N, several properties measured at once</li>
+<li><strong>Time-series</strong> — e.g. 1 person is measured often, in fixed intervals</li>
+<li><strong>Panel design</strong> <em>(time-series cross-sectional, TSCS)</em> — so combo of 1 &amp; 2. ↳ <strong>Cohort</strong>, when the cross-section shares a certain property repeated</li>
+</ol>
+<p><strong>OTHER IMPORTANT TERMS</strong></p>
+<ul>
+<li><strong>Longitudinal</strong> → general term for measuring repeatedly over long period of time, no matter if EXPERIMENTAL, QUASI-EXPERIMENTAL or CORRELATIONAL DESIGNS.</li>
+<li><strong>Time-Series</strong> either → CORRELATIONAL, when it’s about 1 person, or → QUASI-EXPERIMENTAL, when it’s groups; sometimes → EXPERIMENTAL, 1 person measured over time in all conditions (N=1 study)</li>
+<li><strong>Repeated Measures</strong> → EXPERIMENTAL, at least 1 independent variable was manipulated or selected</li>
+</ul>
+<hr>
+<p><strong>Page 9</strong> <em>(notebook pp. 24–25[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>SPECIAL / OTHER DESIGNS</strong></p>
+<ul>
+<li><strong>Case Study</strong> — one person or a group as a whole. Quantitative: time-series / N=1 study. Qualitative: generating hypotheses more than testing. <em>(Interesting: case studies can be of good use to reject a hypothesis ⇒ negative case analysis)</em></li>
+<li><strong>Evaluation research</strong> — evaluate effect of policy/program (in sociology, communication, political sciences); can be summative: check outcome, can be formative: check process. Applied, usually non-experimental because of ethical reasons.</li>
+<li><strong>Intervention study</strong> <em>(developmental, clinical psychology)</em> — effect of treatment on individuals, usually (quasi-)experimental.</li>
+<li><strong>Validation study</strong> <em>(psychometrics, sociometrics)</em> — assess quality of a measurement instrument like a survey or questionnaire/test. Check if answers show high internal consistencies. Check if expected patterns emerge.</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p><strong>Operationalization</strong> vs. <strong>Variable</strong> vs. <strong>Construct</strong></p>
+<ul>
+<li>↳ concrete method to measure or manipulate a construct</li>
+<li>↳ operationalized construct (more abstract)</li>
+<li>Some may be better than others</li>
+<li>What aspect of the construct is the operationalization measuring?</li>
+</ul>
+<p><strong>Measurement</strong> → hard to communicate in social sciences</p>
+<p>Relations between objects on a certain attribute using numbers: (Empirical Relations — Numerical Relations)</p>
+<ol>
+<li>Differentiation/Inequality</li>
+<li>Order (correct relations)</li>
+<li>Comparison of difference</li>
+<li>Comparison of ratios</li>
+<li><del>Inequality</del> <em>(struck through)</em></li>
+</ol>
+<p><em>(margin note: Measurement Tools &amp; Instruments matter!)</em></p>
+<p><strong>Measurement LEVELS</strong></p>
+<ol>
+<li>Differentiation/Inequality</li>
+</ol>
+<ul>
+<li><strong>Nominal:</strong> only 1. Differentiation/Inequality</li>
+<li><strong>Ordinal:</strong> 1. &amp; 2. (Order)</li>
+<li><strong>Interval:</strong> 1. &amp; 2. &amp; 3. (Comparison of difference) — (arbitrary zero-point)</li>
+<li><strong>Ratio:</strong> 1. &amp; 2. &amp; 3. &amp; 4. (Comparison of ratios) — (non-arbitrary zero-point)</li>
+</ul>
+<p>You can categorize variables to lose interval &amp; ratio levels on purpose, e.g. for Age-Groups.</p>
+<hr>
+<p><strong>Page 10</strong> <em>(notebook pp. 26–27[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>Types of Variables according to their measurement characteristics</strong></p>
+<p><strong>Categorical</strong></p>
+<ul>
+<li>nominal or ordinal</li>
+<li>can be dichotomous: exactly 2 (natural or created by researcher) or polytomous: more than 2</li>
+<li>but distances (comparison or difference) stay unmeasurable, so stick to “mode” &amp; “median” or “frequencies”</li>
+</ul>
+<p><strong>Quantitative</strong></p>
+<ul>
+<li>interval or ratio</li>
+<li>statistics like the “mean” will work</li>
+</ul>
+<p><strong>Discrete</strong> — nominal &amp; ordinal are discrete by nature; interval or ratio CAN also be discrete; limited set of values depending on the measurement
+<strong>Continuous</strong> — there will always be occurrences between measurements</p>
+<p><strong>Right page</strong></p>
+<p><strong>About MEASURING INSTRUMENTS</strong> — validity, reliability; self-reported, observational</p>
+<p><strong>Validity:</strong> measurements reflect the construct interested in; measurements are accurate</p>
+<ul>
+<li><strong>Face validity:</strong> experts assessments</li>
+<li><strong>Predictive/Criterion validity:</strong> direct empirical verification, as in qualitatively assessed</li>
+<li><strong>Convergent/discriminant validity:</strong> ↳ multi-trait multi-method matrix — different instruments to measure two (or more) traits, e.g. once self-reported, once observational</li>
+</ul>
+<p><strong>Reliability:</strong> consistency, stability, precision</p>
+<ul>
+<li><strong>Test-Retest Reliability</strong> → does not work when memory of subjects is a factor</li>
+<li><strong>Internal Consistency</strong> → part 1, part 2 of a questionnaire measuring the same construct</li>
+<li><strong>Intra-observer Reliability</strong>, and</li>
+<li><strong>Inter-Rater Reliability</strong></li>
+</ul>
+<p><strong>Systematic Error:</strong> threat to Validity
+<strong>Random Error:</strong> threat to Reliability
+But Reliability is required for Validity (vice-versa not true)</p>
+<hr>
+<p><strong>Page 11</strong> <em>(notebook pp. 28–29[?])</em></p>
+<p><strong>Left page</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>High Reliability</th>
+<th>High Reliability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High Validity</strong></td>
+<td>●</td>
+<td>○</td>
+</tr>
+<tr>
+<td><strong>Low Reliability / High Validity</strong></td>
+<td>⊛</td>
+<td>⊚</td>
+</tr>
+</tbody>
+</table>
+<p><em>(2×2 target diagram: High Reliability/High Validity, High Reliability/Low Validity, Low Reliability/High Validity, Low Reliability/Low Validity — illustrated as dart-board style scatter patterns)</em></p>
+<p><strong>SURVEYS, QUESTIONNAIRES, TESTS</strong> → often self-report</p>
+<ul>
+<li>Clear instructions</li>
+<li>Cover Story</li>
+</ul>
+<p>Items &amp; stages (Q’s) (Å’s) — Item → 1. Question → Response options</p>
+<p><strong>LIKERT SCALE</strong></p>
+<ul>
+<li>Monotone items → each item is clearly for or against the construct</li>
+<li>Summative scale → as such, all items can be summed up to form a total score</li>
+<li>(Cumulative scale): when items progressively get more indicative towards the construct</li>
+</ul>
+<p>Items should be: well formulated (short &amp; simple), unambiguous, not suggestive, answerable, avoid extreme wording (purely, never, always)</p>
+<p>Response options should be: unambiguous, consistent, exhaustive, mutually exclusive</p>
+<p><strong>Right page</strong></p>
+<p><strong>Response Sets/Styles</strong> → specific type of systematic error in measurement instruments</p>
+<ul>
+<li><strong>Acquiescence:</strong> bias to agree (easy to detect with negated answers)</li>
+<li><strong>Social desirability:</strong> bias to acceptable responses, socially</li>
+<li><strong>Extreme response style:</strong> not thinking about the degree…</li>
+<li><strong>Bias towards the middle:</strong> can be mitigated a bit when there is no middle response option</li>
+</ul>
+<p><strong>Response bias in rating</strong></p>
+<ul>
+<li>Halo Effect</li>
+<li>Generosity Error</li>
+<li>Severity Error</li>
+</ul>
+</br>
+<p><em>(The lower half of this page is blank in the scan.)</em></p>
+<hr>
+<p><strong>Page 12</strong> <em>(notebook pp. 30–31[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>EXTERNAL VALIDITY (Generalization)</strong></p>
+<p>for other persons, settings and times</p>
+<table>
+<thead>
+<tr>
+<th><strong>History Threat</strong> <em>(other times)</em></th>
+<th><strong>Setting Threat</strong> <em>(other environments or situations)</em></th>
+</tr>
+</thead>
+</table>
+<p>both → two threats associated with the <strong>ARTIFICIALITY</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Pretesting</strong></th>
+<th><strong>Reactivity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>closely related to the internal validity threat of Testing</td>
+<td>participant and researcher expectancy, e.g. nervousness</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Selection Threat</strong> — problems with sample. Solutions: ↳ Random sampling, ↳ Replication</p>
+<ul>
+<li><strong>Population</strong> → everyone to whom the hypothesis is supposed to apply</li>
+<li><strong>Sample</strong> → subset of the population to represent them</li>
+<li><strong>Element</strong> → single entity of the population — <em>(margin: WEAK)</em></li>
+<li><strong>Stratum</strong> → subset of several elements from the population that share a characteristic — <em>(margin: MODERATE)</em></li>
+<li><strong>Census</strong> → count of population</li>
+<li><strong>Sampling Frame</strong> → way of contacting elements, e.g. through a list — <em>(margin: STRONG)</em></li>
+</ul>
+<hr>
+<p><strong>Page 13</strong> <em>(notebook p. 34)</em></p>
+<p>For probability sampling you need a <strong>Sampling Frame</strong>.</p>
+<p><strong>Accuracy of Sample estimate</strong> — “margin of error” → estimate of how much the sample average will differ from the population average.</p>
+<p><strong>Confidence Interval</strong> ↳ provide a fairly confident statement that a certain percentage of the population will lie within a certain range from the sample estimate.</p>
+<p>Two basic types of probability sampling:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Simple Random Sampling</strong></th>
+<th><strong>Systematic Sampling</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>independent; every unique combination is equally likely</td>
+<td>first element is randomly chosen, every next element is systematically chosen based on the previous one</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Stratified random sampling</strong></th>
+<th><strong>Multi-Stage Cluster Sampling</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stratum (like gender) ↳ then random (same proportion of any) sub-population; weighing subsamples according to stratum size</td>
+<td>Sampling frame (like school districts); selection stratified; further random selection</td>
+</tr>
+</tbody>
+</table>
+<p>↓ larger margin of error &amp; harder to obtain, but dramatical reduction in cost &amp; effort</p>
+<hr>
+<p><strong>Page 14</strong> <em>(notebook p. 37 — lower section on this scan may belong to a different page, possibly 38–39)</em></p>
+<p><strong>Upper section</strong></p>
+<p><strong>Non Probability Sampling</strong></p>
+<p>margin of error? No representativeness.</p>
+<ul>
+<li><strong>Quota Sampling</strong> (like stratified… but not random) — still convenient sampling</li>
+<li><strong>Purposive Sampling</strong> — mostly qualitative, judgment of researcher</li>
+<li><strong>Convenience Sampling</strong> (high bias) — no sampling frame needed</li>
+<li><strong>Snowball Sampling</strong> — make participants bring other participants, closer communities…</li>
+</ul>
+<p><em>(diagram: arrows from Convenience Sampling toward Purposive Sampling and Quota Sampling; Snowball Sampling branches off Convenience Sampling)</em></p>
+<p>↳ CAUTION WITH GENERALISATIONS</p>
+<p><strong>SAMPLING ERRORS</strong> — difference from population to sample from randomness</p>
+<p>True value (of population) is always unknown, so we cannot provide an exact ERROR of the sample. BUT we can estimate sampling error:</p>
+<ul>
+<li>↳ draw several random samples from population</li>
+<li>↳ standard error → margin of error → confidence interval</li>
+</ul>
+<p><strong>Confidence interval</strong> allows us to say that with repeated sampling, in a certain percentage of these samples, the true population value will differ from the sample value by no more than the margin of error.</p>
+<hr>
+<hr>
+<p><strong>Page 15</strong> <em>(notebook p. 38)</em></p>
+<p><strong>NON-SAMPLING ERROR</strong> — differences between population and sample due to sources other than sampling error</p>
+<table>
+<thead>
+<tr>
+<th>Sampling bias</th>
+<th>Error due to non-response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>systematic(!) underrepresentation</td>
+<td>Lack of response, drop out, invalid data, not serious, didn’t understand</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other sources</strong></p>
+<ul>
+<li>Inaccurate sampling frame</li>
+<li>Error in the Data Collection ↳ measurement instrument…</li>
+<li>Data Entry Errors</li>
+<li>Error in Data Processing</li>
+</ul>
+<p><em>(both columns converge toward a note at bottom right:)</em> Hard to assess and estimate non-sampling errors — sometimes random, sometimes systematic.</p>
+<hr>
+<p><strong>Page 16</strong> <em>(notebook pp. 40–41[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>SAMPLE SIZE</strong></p>
+<p>on a large a sample as we can afford. Bigger → Better, but as the sample size grows, the decrease of margin of error gets smaller and smaller. So it is not worth as much anymore — ↳ not linear.</p>
+<p><strong>VARIABILITY:</strong> very heterogeneous population → larger margin of error</p>
+<p>margin of error is based on relative size of sample to population, NOT absolute size in sample</p>
+<p><strong>Margin of Error + Confidence Level</strong> } minimum Sample size — it uses Random Sampling &amp; we have estimate of the Variability in the population (previous data, census data, guess)</p>
+<p><strong>Compensation for NON-RESPONSE</strong> ↳ e.g. use information of previous research</p>
+<p><strong>Assignment:</strong> critical review of</p>
+<ul>
+<li>the manipulation</li>
+<li>measurement instruments</li>
+<li>external validity</li>
+<li>sampling method</li>
+</ul>
+<p><em>(instruction note)</em> Ignore statistical results and technical infos — min. 2 critical arguments (regarding measurement instr.), min. 2 positive, no manipulation check on playtime, only on “progress”</p>
+<p><em>(The following block is written in dense capitals with heavy strike-throughs and overlapping corrections — transcribed as legibly as possible; several words remain uncertain.)</em></p>
+<ul>
+<li>Critical manipulation: COVARIATE ADJUSTMENTS, BUT CONFOUND FOR VIOLENCE, DIFFICULTY, FUN</li>
+<li>Critical manipulation: AGGRESSION ONLY IF REPORTED [?] — BASELINE EQUIVALENCE CONFIRMED [?]</li>
+<li>Positive manipulation: the effects are mainly from the exposure, since [it doesn’t] stay much — a higher exposure, EEG data is objective &amp; Natural play setting</li>
+<li>Measurement instruments: no behavioural measure for aggression (violent/nonviolent game[s were] perceived); a higher exposure, EEG data is objective</li>
+<li>Measurement instruments: [diminished?] characteristics of BPQ, only 1 subscale reached significance [?] — the game differs on multiple levels, not only violence (not isolated); passive task ↳ incidental neural response</li>
+<li>Critical external validity/Sampling: no mention on how the random assignment was done, how many males/females played the violent/nonviolent [game]; only 1 violent game</li>
+<li>Critical external validity/Sampling: no findings on children/adults that are more seasoned players; amount of increase [in] physical aggression, any behavioural change in real life [?]</li>
+<li>Critical external validity/Sampling: stated as no correlation, but baseline should be covariate and more N is needed for correlation</li>
+<li>don’t know how sample were created</li>
+<li>No power analysis. Low external validity, single game, single culture, non-gamers, obsolete platform (all discussed)</li>
+<li>more exploratory than confirmatory</li>
+</ul>
+<p><strong>Right page</strong></p>
+<p>Longitudinal? and ERP₂ event-related potentials
+Facial expression recognition &amp; aggression (questionnaire) — how long does it last after the playing ceased</p>
+<p>Video game violence exposure — 5 games with 1–7 for how often, 1–7 for how violent } <em>own assessment (underlined)</em> — voted much, just conducted the sample, it, not gaming a lot [X]</p>
+<p><em>(margin, vertical: “QUESTIONNAIRE”)</em></p>
+<p>frequency from 1–7 not at all to everyday, and duration from 1–7, 15min to &gt;3h</p>
+<p><strong>Buss–Perry Aggression Questionnaire</strong></p>
+<p>And assign 1 Video Game to violence from 1–5 } for internal validity? — difficulty, fun/enjoyment — <em>(circled note: it was not said how the random assignment ended up being [X])</em></p>
+<p>Task
+10 factors</p>
+<p>Assessments pre and post video game exposure — Measurement always the questionnaire &amp; the task — Play at least 4h/week → 16h total min. — <del>One week after the playtime was the long term effect measured</del> <em>(struck through)</em>
+} EEG results: only greater P2 latency with angry faces, but no correlation to that</p>
+<p><strong>ANOVA — Video Game Rating</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>violent/nonviolent</th>
+<th>covariate: difficulty &amp; enjoyment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>female</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>male</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ANOVA — BPQ</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>violent/nonviolent</th>
+<th>before/after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>female</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>male</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>⇒ no correlation, so the [# of] effects were independent — the null result of non-significant correlation is not [conclusive/is not sufficient?] — assume baseline equivalence… ⇒ N needed</p>
+<p>3 months later: BPQ slightly normalizes, EEG approx. stayed — <strong>ANCOVA use baseline as covariate</strong></p>
+<hr>
+<p><strong>Page 17</strong> <em>(notebook p. 43[?])</em></p>
+<p><strong>Left page</strong></p>
+<p><strong>STORAGE OF DATA</strong></p>
+<p>Clear description:</p>
+<ul>
+<li>Hypothesis</li>
+<li>Design</li>
+<li>Predictions</li>
+<li>Procedures</li>
+<li>Instruments</li>
+<li>Contacting participants</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Data</li>
+<li>Data manipulation</li>
+<li>Statistics</li>
+<li>Interpretation</li>
+</ul>
+<p><strong>Research Protocol</strong> — what happens to the participants from start to end, including briefing and debriefing.</p>
+<p><strong>Statistical Plan</strong> — planned choice of statistics before actually analysis.</p>
+<p><strong>Data Management</strong> — Store, Processing, Analysis; store every step. subj. | var 1 | var 2… #1 / #2 / #3 → DATA SHEET</p>
+<p>↳ Syntax File — for replicating exact processing of Data.</p>
+<p><strong>RESEARCH ETHICS</strong> — research integrity and ethics towards subject → Belmont Report is the base.</p>
+<ol>
+<li><strong>Respect:</strong> voluntary consent vs. coercion — well informed, all relevant info is transparent <em>(margin: sometimes Deception is necessary and needs checks; note struck through above)</em></li>
+<li><strong>Beneficence:</strong> subjects should not be harmed — privacy, no retracing of the data <em>(margin: False Feedback — can even be harmful, with a debrief because of Perseverance Effects)</em></li>
+<li><strong>Justice:</strong> no preferential treatment nor exploitation from certain groups or subjects</li>
+</ol>
+<p><strong>Right page</strong></p>
+<p><strong>Research Integrity</strong></p>
+<ul>
+<li><strong>FRAUD</strong> → Fabrication or Falsification of Data</li>
+<li><strong>PLAGIARISM</strong> → redundant information and copyright infringement</li>
+<li><strong>CONFLICTS OF INTEREST</strong> → frequent in medical sciences, when companies hold an interest in the outcome of the study</li>
+<li><strong>PERSONAL VALUES</strong> → not accepting critique and counter-arguments</li>
+</ul>
+<p><strong>Questionable Research Practices</strong> — Massaging of Findings</p>
+<ul>
+<li><strong>HARKing:</strong> Hypothesizing After Results are Known (Posteriori)</li>
+<li><strong>P-Hacking:</strong> manipulate data e.g. p-value (probability) more favorable based on arbitrary choices</li>
+<li><strong>Cherry Picking:</strong> omission of results favorable to hypothesis</li>
+<li><strong>Data Snooping:</strong> collection of data until results show a favorable p-value — ↳ sample size should be determined beforehand</li>
+</ul>
+<p>⇒ most important is transparency to the READER, so they can evaluate for themselves if this is critical.</p>
+<p><strong>PEER REVIEW PROCESS</strong></p>
+<p>to assess the quality of manuscripts. Reviewers work for free. Redo/Revision Process until published. Journals determine their quality based on how often they are cited — Citation scores → Impact.</p>
+<p><strong>PUBLICATION BIAS</strong> — confirmatory, successful, significant, and NEW</p>
+<p><strong>FILE-DRAWER PROBLEM</strong> — null result studies are not published because work that may not even get published.</p>
+</div><footer class="note-links"><section><h2>Linked from</h2><ul><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a> <span class="muted">Topics</span></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a> <span class="muted">Topics</span></li></ul></section></footer></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

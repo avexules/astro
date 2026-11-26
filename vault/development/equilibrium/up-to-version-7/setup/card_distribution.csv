@@ -1,0 +1,43 @@
+Player,Card_Endgame,Card_Commission,Condition,Valid_at_Start
+Northwestern,1,1,Any die equals neighbor die,YES
+Northwestern,1,1,Total population is even,YES
+Northwestern,2,1,Any pair differ by ≤1,YES
+Northwestern,4,1,Any two dice equal,YES
+Northwestern,3,1,Total population≥7,YES
+Northwestern,1,1,You received water this round,NO
+Northwestern,5,2,Water matches another's population,NO
+Near_East,3,1,All dice different,YES
+Near_East,1,1,Total population is odd,YES
+Near_East,4,1,Pop+neighbor≥15,YES
+Near_East,1,1,You received water this round,NO
+Near_East,3,1,Fewer water than neighbor≤pop,YES
+Near_East,5,2,Gave/received≥3 water,NO
+Near_East,2,1,You gave asylum,NO
+Far_East,4,1,Any two dice equal,YES
+Far_East,3,1,Any die shows 1,YES
+Far_East,1,1,Total population is odd,YES
+Far_East,4,1,Pop≥9,YES
+Far_East,2,1,You gave asylum,NO
+Far_East,5,2,Highest total population,YES
+Far_East,1,1,You received water this round,NO
+Africa,4,1,Any two dice equal,YES
+Africa,4,1,Total population≤6,YES
+Africa,4,1,All dice≤3,YES
+Africa,2,1,Lowest die<any neighbor,YES
+Africa,1,1,You received water this round,NO
+Africa,2,1,You gave asylum,NO
+Africa,3,1,Migrated/asylum both neighbors,NO
+Oceania,3,1,All dice different,YES
+Oceania,1,1,Total population is even,YES
+Oceania,4,1,Total population≤6,YES
+Oceania,1,1,Lowest die≤3,YES
+Oceania,3,1,Any die shows 1,YES
+Oceania,2,1,You gave asylum,NO
+Oceania,5,2,Lowest total population,YES
+Americas,3,1,All dice different,YES
+Americas,1,1,Total population is odd,YES
+Americas,3,1,Total population≥7,YES
+Americas,3,1,Two dice total≥6,YES
+Americas,1,1,You redistributed,NO
+Americas,4,1,Pop+neighbor≥15,YES
+Americas,6,2,Fewer water than both neighbors,NO

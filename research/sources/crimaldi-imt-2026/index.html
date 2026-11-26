@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Crimaldi (IMT 2026) · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="true" tabindex="0" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="false" tabindex="-1" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab"><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/" aria-current="page">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab" hidden><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/sources/">Sources</a></nav><h1 class="note-title">Crimaldi (IMT 2026)</h1><p class="note-subtitle">Foundations of Probability and Statistical Inference</p><p class="note-updated">Updated 2026-11-24</p><div class="note-meta"><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Kind</dt><dd>course</dd><dt>Year</dt><dd>2026</dd><dt>Teacher</dt><dd>Irene Crimaldi</dd><dt>Status</dt><dd><span class="badge" data-status="seed">seed</span></dd><dt>Tags</dt><dd><a class="tag" href="/tags/statistics/">#statistics</a> <a class="tag" href="/tags/inference/">#inference</a> <a class="tag" href="/tags/probability/">#probability</a> <a class="tag" href="/tags/course/">#course</a></dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h2 id="apa">APA</h2>
+<h2 id="notes">Notes</h2>
+<p>First part is the introduction to statistics (10h)
+Second is the core part on statistics (20h)</p>
+<p>There will be an exam that combines both parts, probably in january</p>
+<p>Randomness is when we don’t know the outcome in advance. We can only make predictions with uncertainty.
+The probability is not a property of the event but has to do with the information of the individual
+e.g. 30 balls (10 red and 20 black)
+Intuitively, if we don’t know about the composition in parentheses, it would be 1/2 (50%)
+but with the information about the composition, we can form a probability of 1/3 (33%)</p>
+<ol>
+<li>Ω = {1,2,3,4,5,6} → sample space of a d6, the set that collects all possible outcomes of an experiment</li>
+<li><em>A</em> = P(Ω), A ∈ <em>A</em> → fix class of events, for instance A = {2,4,6} represents the event “the outcome is an even number”</li>
+<li>P: <em>A</em> → [0,1]; A ↦ P(A) = probability of A → define a probability measure, that is a map with suitable properties</li>
+</ol>
+<blockquote>
+<p>The number P(A) represents a measure of the degree of belief that you feel toward the occurrence of the event A.</p>
+</blockquote>
+<p>$$
+P({⍵}) = \frac{1}{card(Ω)} = \frac{1}{6}
+$$
+$$
+P(A) = \sum_{\mathclap{⍵∈A}} P({⍵}) = \frac{card(A)}{card(Ω)}=\frac{card(A)}{6}
+$$
+Therefore
+$$
+P(A) = \frac{\text{number favorable outcomes (to A)}}{\text{number of possible outcomes}}
+$$
+This approach works with the prerequisites of mutual exclusiveness and equal likelihood of the events.
+A countable set → finite or countably infinite (integers)</p>
+<blockquote>
+<p>card → cardinality, meaning amount of elements in that set</p>
+</blockquote>
+<p>In the geometric distribution, {X = +∞} is a negligible event.</p>
+<p><strong>Example: a negligible event.</strong> Roll a fair die until the first 6 appears. X = number of the roll on which it happens, so X is geometric with p = 1/6:
+$$
+P(X=k) = \left(\tfrac{5}{6}\right)^{k-1}\cdot\tfrac{1}{6},\qquad k=1,2,3,\dots
+$$
+{X = +∞} means “a 6 never appears”: the sequence of rolls goes on forever with no 6. This is not logically impossible, since every single roll can come up non-6. To have no 6 in the first n rolls we need n non-6 results in a row:
+$$
+P(X&gt;n)=\left(\tfrac{5}{6}\right)^{n}
+$$</p>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>P(no 6 in n rolls)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>≈ 0.16</td>
+</tr>
+<tr>
+<td>50</td>
+<td>≈ 0.00011</td>
+</tr>
+<tr>
+<td>100</td>
+<td>≈ 0.000000012</td>
+</tr>
+</tbody>
+</table>
+<p>{X = +∞} is contained in {X &gt; n} for every n, so P(X = +∞) ≤ (5/6)ⁿ for every n. The only number below all of these is 0:
+$$
+P(X=+\infty)=\lim_{n\to\infty}\left(\tfrac{5}{6}\right)^{n}=0 .
+$$
+Second check: the probabilities P(X = k), k = 1, 2, 3, …, already add up to 1, so no probability is left for +∞.</p>
+<p>Negligible is not the same as impossible. ∅ is the impossible event and contains no outcome. {X = +∞} is not empty: the infinite sequence without a 6 is a real outcome ω in Ω, it just has probability 0. So X is finite <em>almost surely</em> (a.s.): P(X &lt; ∞) = 1. That is why the geometric distribution can be defined on {1, 2, 3, …} and ignore +∞. The same holds for any p &gt; 0, because (1 − p)ⁿ → 0.</p>
+<p>macroprocesses
+advanced models in statistics</p>
+<hr>
+<blockquote class="callout" data-callout="info">
+<p class="callout-title">Cheat Sheet</p><p>Three areas: sets and probability (Ω, ω, A, P, ∈, ∪, ∩, ⊆), measure theory (σ-field, µ, λ, δ) random variables (X, E[X], I<sub>A</sub>, f, Var[X]) and statistics (x̄, θ̂, H₀, α).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ω</td>
+<td>sample space</td>
+<td>the set of all possible outcomes of an experiment</td>
+<td>die: Ω = {1,2,3,4,5,6}</td>
+</tr>
+<tr>
+<td>⍵ (read ω, small omega)</td>
+<td>outcome</td>
+<td>one single element of Ω</td>
+<td>ω = 4</td>
+</tr>
+<tr>
+<td>A</td>
+<td>event</td>
+<td>a subset of Ω, a set of outcomes we care about; it “happens” if the outcome ω lies in A</td>
+<td>A = {2,4,6} = “even”</td>
+</tr>
+<tr>
+<td>𝒜 (written <em>A</em> in the notes above)</td>
+<td>class of events</td>
+<td>the collection of all subsets of Ω to which we give a probability; must be a σ-field. For a finite Ω one may take all subsets, 𝒜 = P(Ω)</td>
+<td>𝒜 = P(Ω) for a d6</td>
+</tr>
+<tr>
+<td>P</td>
+<td>probability measure</td>
+<td>a function P: 𝒜 → [0,1] with P(Ω) = 1 and P(A∪B) = P(A) + P(B) for disjoint A, B (countable additivity in general)</td>
+<td>P(A) = card(A)/card(Ω)</td>
+</tr>
+<tr>
+<td>P(…)</td>
+<td>probability of …</td>
+<td>the number P assigns to the event in the brackets; the degree of belief that it occurs. <em>Do not confuse with P(Ω) as power set of Ω, which is the set of all subsets.</em></td>
+<td>P({2,4,6}) = 1/2</td>
+</tr>
+<tr>
+<td>P(A|B)</td>
+<td>conditional probability</td>
+<td>probability of A given that B happened: P(A∩B)/P(B), defined if P(B) &gt; 0</td>
+<td>P(even | ≥ 4) = P({4,6})/P({4,5,6}) = 2/3</td>
+</tr>
+<tr>
+<td>A ⊥ B</td>
+<td>independence</td>
+<td>A and B do not affect each other: P(A∩B) = P(A)·P(B)</td>
+<td>two separate die rolls</td>
+</tr>
+<tr>
+<td>↦</td>
+<td>maps to</td>
+<td>sends an input to its output; A ↦ P(A) sends each event to its probability</td>
+<td>A ↦ P(A)</td>
+</tr>
+<tr>
+<td>S</td>
+<td>a set</td>
+<td>in measure theory, a (measurable) subset of the space whose size we measure with µ</td>
+<td>S ⊆ ℝ</td>
+</tr>
+<tr>
+<td><em>M</em></td>
+<td>collection of measurable sets</td>
+<td>the σ-field of sets on which a measure µ is defined, the measure-theory counterpart of 𝒜</td>
+<td>(Ω, <em>M</em>, µ) = measure space</td>
+</tr>
+<tr>
+<td>\</td>
+<td>set difference (“without”)</td>
+<td>A \ B = outcomes in A that are not in B</td>
+<td>{1,2,3} \ {2} = {1,3}</td>
+</tr>
+<tr>
+<td>∈</td>
+<td>is an element of</td>
+<td>ω ∈ A: the outcome ω belongs to the set A</td>
+<td>4 ∈ {2,4,6}</td>
+</tr>
+<tr>
+<td>∪</td>
+<td>union (“or”)</td>
+<td>A ∪ B = outcomes in A or in B (or both)</td>
+<td>{1,2} ∪ {2,3} = {1,2,3}</td>
+</tr>
+<tr>
+<td>∁</td>
+<td>complement (“not”)</td>
+<td>A∁ = Ω \ A, everything that is not in A; also written A^c. P(A∁) = 1 − P(A)</td>
+<td>{2,4,6}∁ = {1,3,5}</td>
+</tr>
+<tr>
+<td>∩</td>
+<td>intersection (“and”)</td>
+<td>A ∩ B = outcomes in both A and B</td>
+<td>{1,2} ∩ {2,3} = {2}</td>
+</tr>
+<tr>
+<td>∅</td>
+<td>empty set</td>
+<td>the set with no elements, the impossible event; P(∅) = 0</td>
+<td>{2,4} ∩ {1,3} = ∅</td>
+</tr>
+<tr>
+<td>σ-field (σ-algebra)</td>
+<td></td>
+<td>a class 𝒜 of subsets of Ω that contains Ω, is closed under complement (A ∈ 𝒜 ⇒ A∁ ∈ 𝒜) and under countable unions. Guarantees that “not A” and “A or B or C or …” are again events</td>
+<td>P(Ω) is always one</td>
+</tr>
+<tr>
+<td>⊆</td>
+<td>is a subset of</td>
+<td>A ⊆ B: every outcome of A is also in B. (A ⊂ B sometimes means strict subset.)</td>
+<td>{2,4} ⊆ {2,4,6}</td>
+</tr>
+<tr>
+<td>card(A), |A|</td>
+<td>cardinality</td>
+<td>number of elements of A</td>
+<td>card({2,4,6}) = 3</td>
+</tr>
+<tr>
+<td>µ</td>
+<td>measure</td>
+<td>a function that assigns a size (≥ 0) to sets, additive over disjoint sets. A probability measure is a measure with µ(Ω) = 1</td>
+<td>length, area, counting</td>
+</tr>
+<tr>
+<td>µ(S)</td>
+<td>measure of S</td>
+<td>the size of the set S under the measure µ</td>
+<td>µ([0,3]) = 3 for length</td>
+</tr>
+<tr>
+<td>∀</td>
+<td></td>
+<td>universal quantifie, “for all”. ∀ω ∈ Ω means “for every outcome”</td>
+<td>∀x: x² ≥ 0</td>
+</tr>
+<tr>
+<td>∃</td>
+<td>existential quantifier</td>
+<td>“there exists”; ∃x means for at least one x</td>
+<td>∃x: x² = 4</td>
+</tr>
+<tr>
+<td>Σ, ∏</td>
+<td>sum, product</td>
+<td>add up or multiply the terms over an index range</td>
+<td>Σᵢ₌₁³ i = 6</td>
+</tr>
+<tr>
+<td>⇒, ⇔</td>
+<td>implies, if and only if</td>
+<td>A ⇒ B: if A holds then B holds; A ⇔ B: each implies the other</td>
+<td>ω ∈ A∁ ⇔ ω ∉ A</td>
+</tr>
+<tr>
+<td>λ</td>
+<td>Lebesgue measure</td>
+<td>the standard measure on ℝ: length of intervals (area in ℝ², volume in ℝ³). <em>In statistics λ is also the rate parameter of the Poisson and exponential distributions; the context decides.</em></td>
+<td>λ([a,b]) = b − a</td>
+</tr>
+<tr>
+<td>X</td>
+<td>random variable</td>
+<td>a function X: Ω → ℝ that turns each outcome into a number (strictly: a measurable function, so that “X ≤ x” is an event)</td>
+<td>X = outcome of the die</td>
+</tr>
+<tr>
+<td>E[X]</td>
+<td>expected value (mean)</td>
+<td>the probability-weighted average of X: Σ x·P(X=x) for discrete X, ∫ x·f(x)dx for continuous X</td>
+<td>die: (1+…+6)/6 = 3.5</td>
+</tr>
+<tr>
+<td>I<sub>A</sub></td>
+<td>indicator function</td>
+<td>I<sub>A</sub>(ω) = 1 if ω ∈ A, otherwise 0. Useful identity: E[I<sub>A</sub>] = P(A)</td>
+<td>I<sub>{even}</sub>(4) = 1</td>
+</tr>
+<tr>
+<td>density function f</td>
+<td>probability density</td>
+<td>for a continuous X, the function f with P(a ≤ X ≤ b) = ∫ₐᵇ f(x) dx. f ≥ 0 and the total area is 1. f(x) itself is not a probability</td>
+<td>normal bell curve</td>
+</tr>
+<tr>
+<td>δ</td>
+<td>Dirac measure (delta)</td>
+<td>δₓ(A) = 1 if x ∈ A, else 0: all probability sits on the single point x. <em>Kronecker delta δᵢⱼ (1 if i = j, else 0) is a different use of the same letter.</em></td>
+<td>δ₃({1,2,3}) = 1</td>
+</tr>
+<tr>
+<td>Var[X]</td>
+<td>variance</td>
+<td>E[(X − E[X])²] = E[X²] − (E[X])², the average squared distance from the mean. Its square root is the standard deviation σ</td>
+<td>die: 35/12 ≈ 2.92</td>
+</tr>
+<tr>
+<td>σ, σ²</td>
+<td>standard deviation, variance</td>
+<td>σ² = Var[X], σ = √Var[X]. <em>Here σ is a spread, not the σ of σ-field.</em></td>
+<td>die: σ ≈ 1.71</td>
+</tr>
+<tr>
+<td>µ (as a mean)</td>
+<td>mean of a distribution</td>
+<td>the same number as E[X], often written µ. <em>µ as a measure and µ as a mean are different uses of one letter; context decides.</em></td>
+<td>µ = 3.5 for a fair die</td>
+</tr>
+<tr>
+<td>Cov(X,Y)</td>
+<td>covariance</td>
+<td>E[(X−E[X])(Y−E[Y])]: do X and Y move together? Cov = 0 if X, Y are independent (the reverse does not hold)</td>
+<td>height and weight: positive</td>
+</tr>
+<tr>
+<td>F(x)</td>
+<td>cumulative distribution function</td>
+<td>F(x) = P(X ≤ x), rises from 0 to 1</td>
+<td>die: F(4) = 4/6</td>
+</tr>
+<tr>
+<td>inf{…} (and sup{…})</td>
+<td>infimum (supremum)</td>
+<td>the greatest lower bound of a set of numbers: the largest number that is ≤ every element of the set. It is the “minimum” that also exists when the set has no smallest element. sup is the mirror image, the smallest number that is ≥ every element (least upper bound). inf{} of the empty set is +∞ by convention.</td>
+<td>inf{x ∈ ℝ : x &gt; 0} = 0, although no smallest positive number exists; inf{2,4,6} = 2; sup{x : x &lt; 1} = 1. A typical use in probability: the quantile function F⁻¹(p) = inf{x : F(x) ≥ p}, the smallest x at which the cumulative distribution function reaches p</td>
+</tr>
+<tr>
+<td>X ~ F</td>
+<td>has distribution</td>
+<td>X follows the distribution F</td>
+<td>X ~ N(µ, σ²)</td>
+</tr>
+<tr>
+<td>k (and n)</td>
+<td>integer index or count</td>
+<td>a whole number counting something; context decides. (1) a <strong>value or count</strong> of a discrete variable: P(X = k) is the probability of exactly k successes, k = 0, 1, …, n, with n the number of trials or the sample size. (2) a <strong>summation index</strong>: Σₖ₌₁ⁿ. (3) a <strong>binomial coefficient</strong> “n choose k” = n!/(k!(n−k)!), the number of ways to pick k items out of n. (4) an <strong>order</strong>: E[Xᵏ] is the k-th moment of X (k = 1 gives the mean, k = 2 relates to the variance). (5) a <strong>number of groups, classes or parameters</strong>.</td>
+<td>P(X = 3) for 10 coin flips; C(5,2) = 10</td>
+</tr>
+<tr>
+<td>i.i.d.</td>
+<td>independent and identically distributed</td>
+<td>random variables that are independent of each other and share the same distribution; the standard model of a random sample</td>
+<td>repeated rolls of one die</td>
+</tr>
+<tr>
+<td>x̄</td>
+<td>sample mean</td>
+<td>(x₁ + … + xₙ)/n, the average of the observed data</td>
+<td>x̄ of 2, 4, 6 is 4</td>
+</tr>
+<tr>
+<td>θ, θ̂</td>
+<td>parameter, estimate</td>
+<td>θ is an unknown parameter of the distribution; the hat marks its estimate computed from data</td>
+<td>θ = µ, θ̂ = x̄</td>
+</tr>
+<tr>
+<td>H₀, H₁, α</td>
+<td>hypotheses, significance level</td>
+<td>null and alternative hypothesis; α is the accepted probability of wrongly rejecting H₀</td>
+<td>H₀: µ = 3.5, α = 0.05</td>
+</tr>
+</tbody>
+</table>
+</div></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

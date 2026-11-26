@@ -1,0 +1,36 @@
+Card_ID,Player,Player_Role,Starting_Pop,Prototype,Condition,Redistribute_Amount,Redistribute_Source,Commission_Points,Full_Points
+A1,A,The Settlement,4,Census,All 5 players are alive,1,Highest Pop,1,3
+A2,A,The Settlement,4,Census,All 5 players are alive,1,Each Player,2,5
+A3,A,The Settlement,4,Census,At least 3 players have Pop >= 3,1,Any Player,1,2
+A4,A,The Settlement,4,Middle Ground,Your Pop is neither the highest nor the lowest,2,Neighbor (your choice),1,3
+A5,A,The Settlement,4,Middle Ground,Your Pop is neither the highest nor the lowest,1,Non-Neighbor,1,2
+A6,A,The Settlement,4,Surplus Management,Common pool has at least 10 tokens,2,Highest Pop,2,4
+A7,A,The Settlement,4,Surplus Management,Common pool has at least 5 tokens,1,Neighbor (your choice),1,2
+B1,B,The Colony,6,Endurance,Your Pop is 5 or 6,1,Each Player,2,4
+B2,B,The Colony,6,Endurance,Your Pop is 6,2,Highest Pop,2,5
+B3,B,The Colony,6,Endurance,Your Pop is 4 or higher,1,Neighbor (your choice),1,2
+B4,B,The Colony,6,Stewardship,Both your neighbors have Pop >= 3,1,Each Player,1,3
+B5,B,The Colony,6,Stewardship,Both your neighbors have Pop higher than their starting Pop,1,Any Player,2,4
+B6,B,The Colony,6,Coalition,All other players have played an Economy Card,1,Non-Neighbor,2,4
+B7,B,The Colony,6,Coalition,At least 10 Economy Cards are played face-up across all players,1,Any Player,1,2
+C1,C,The Outpost,2,Efficient Growth,Your Pop is at least 2 higher than your starting Pop (2),1,Highest Pop,2,4
+C2,C,The Outpost,2,Efficient Growth,Your Pop is at least 1 higher than your starting Pop (2),1,Neighbor (your choice),1,2
+C3,C,The Outpost,2,Efficient Growth,Your Pop is at least 3 higher than your starting Pop (2),2,Neighbor (your choice),2,5
+C4,C,The Outpost,2,Broker,Two other players each give at least 1 resource to each other this round,1,Any Player,1,3
+C5,C,The Outpost,2,Broker,Another player gives at least 2 resources to another player this round,1,Non-Neighbor,1,2
+C6,C,The Outpost,2,Pool Steward,Common pool has at least 15 tokens,1,Highest Pop,1,3
+C7,C,The Outpost,2,Pool Steward,Common pool has at least 8 tokens,1,Neighbor (your choice),1,2
+D1,D,The Commune,5,Equality,Difference between highest and lowest Pop is 2 or less,2,Highest Pop,2,5
+D2,D,The Commune,5,Equality,Difference between highest and lowest Pop is 3 or less,1,Any Player,1,3
+D3,D,The Commune,5,Equality,Difference between highest and lowest Pop is 3 or less,1,Each Player,1,2
+D4,D,The Commune,5,Solidarity,At least 2 other players voluntarily returned resources to the pool this round,1,Highest Pop,2,4
+D5,D,The Commune,5,Solidarity,At least 1 other player voluntarily returned resources to the pool this round,1,Neighbor (your choice),1,2
+D6,D,The Commune,5,Safety Net,No player has Population 1,1,Non-Neighbor,1,3
+D7,D,The Commune,5,Safety Net,All 5 players are alive,1,Neighbor (your choice),1,2
+E1,E,The Homestead,1,Thriving,Your Pop is 4 or higher,2,Highest Pop,2,5
+E2,E,The Homestead,1,Thriving,Your Pop is 3 or higher,1,Neighbor (your choice),1,3
+E3,E,The Homestead,1,Thriving,At least 2 other players have Pop higher than their starting Pop,1,Any Player,1,3
+E4,E,The Homestead,1,Sheltered,At least 1 other player gave you resources this round,1,Non-Neighbor,1,2
+E5,E,The Homestead,1,Sheltered,At least 2 other players gave you resources this round,1,Each Player,1,2
+E6,E,The Homestead,1,Symbiosis,All players are alive and common pool has at least 5 tokens,1,Any Player,1,3
+E7,E,The Homestead,1,Symbiosis,Common pool has at least 12 tokens,1,Highest Pop,2,4

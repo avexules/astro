@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Collection of Watershed Games · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="canonical" href="/research/topics/collection-of-watershed-games/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="false" tabindex="-1" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="true" tabindex="0" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab" hidden><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab"><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/" aria-current="page">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/topics/">Topics</a></nav><h1 class="note-title">Collection of Watershed Games</h1><p class="note-updated">Updated 2026-11-17</p><div class="note-meta"><details class="fold" data-fold="outline"><summary>Outline</summary><ul class="toc"><li class="toc-2"><a href="#relevant-design-patterns">Relevant design patterns</a></li><li class="toc-2"><a href="#summary-matrix">Summary matrix</a></li><li class="toc-2"><a href="#game-by-game-extraction">Game-by-game extraction</a></li><li class="toc-3"><a href="#1-wat-a-game-wag">1. Wat-A-Game (WAG)</a></li><li class="toc-3"><a href="#2-concerteau-the-wag-in-contrats-de-rivière-row">2. Concert’eau (the “WAG in contrats de rivière” row)</a></li><li class="toc-3"><a href="#3-river-basin-game-mkoji-tanzania">3. River Basin Game (Mkoji, Tanzania)</a></li><li class="toc-3"><a href="#4-murray-darling-basin-game-goulburn-broken-scoping-case">4. Murray-Darling Basin Game (Goulburn-Broken scoping case)</a></li><li class="toc-3"><a href="#5-simbasin-magdalena-cauca-colombia">5. SimBasin (Magdalena-Cauca, Colombia)</a></li><li class="toc-3"><a href="#6-pomca-campoalegre-serious-game-colombia">6. POMCA Campoalegre serious game (Colombia)</a></li><li class="toc-3"><a href="#7-facing-floods-tu-delft">7. Facing Floods (TU Delft)</a></li><li class="toc-3"><a href="#8-virtual-river-game-netherlands">8. Virtual River Game (Netherlands)</a></li><li class="toc-3"><a href="#9-lords-of-the-valley-hypothetical-valley">9. Lords of the Valley (hypothetical valley)</a></li><li class="toc-3"><a href="#10-get-the-grade-wwf-and-umces">10. Get the Grade (WWF and UMCES)</a></li><li class="toc-3"><a href="#11-commod-lingmuteychu-bhutan">11. ComMod Lingmuteychu (Bhutan)</a></li><li class="toc-2"><a href="#references">References</a></li></ul></details><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Status</dt><dd><span class="badge" data-status="seed">seed</span></dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><p>Agent Setup, Rules, Gameplay Structure and Platform</p>
+<h2 id="relevant-design-patterns">Relevant design patterns</h2>
+<ul>
+<li><strong>Upstream-downstream asymmetry as the core mechanic</strong>: WAG, River Basin Game, Lingmuteychu. Water as a token that moves physically.</li>
+<li><strong>Role swapping</strong> to build perspective: River Basin Game (head-enders and tail-enders), Lingmuteychu (third session).</li>
+<li><strong>Individual then collective phase</strong>: River Basin Game moves from private search to collective sharing; Lingmuteychu moves from intra- to inter-village. This mirrors a competitive-to-cooperative (coopetition) sequence.</li>
+<li><strong>Model-coupled vs model-free</strong>: SimBasin, Murray-Darling and Virtual River are coupled to real models; POMCA uses an expert matrix; WAG, River Basin Game and Facing Floods are analogue.</li>
+<li><strong>Institutional outputs</strong>: only the River Basin Game (draft agreements) and Lingmuteychu (a signed committee) report institutions created after play; POMCA feeds an official plan.</li>
+</ul>
+<h2 id="summary-matrix">Summary matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Game</th>
+<th>Agents (who plays)</th>
+<th>Core mechanic</th>
+<th>Time structure</th>
+<th>Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wat-A-Game (WAG)</td>
+<td>Roles defined per case (farmers, decision-makers, citizens, fishers…)</td>
+<td>Activity cards on land-plot cards capture resource tokens flowing along a river</td>
+<td>Rounds; resources renew between rounds</td>
+<td>Analogue (cards, balls/pebbles); NetLogo version ana-wag</td>
+</tr>
+<tr>
+<td>Concert’eau (ex “WAG in contrats de rivière”)</td>
+<td>Local water stakeholders</td>
+<td>Switching between “orders of worth” to reach compromise</td>
+<td>n.r.</td>
+<td>n.r.</td>
+</tr>
+<tr>
+<td>River Basin Game</td>
+<td>30 to 35 water users (+ observers, up to 50-60)</td>
+<td>Marbles flow down a sloped wooden board; sticks act as weirs</td>
+<td>5 phases on Day 1; institutional Day 2</td>
+<td>Physical board (about 3 m)</td>
+</tr>
+<tr>
+<td>Murray-Darling (Goulburn) Game</td>
+<td>5 government, 6 consumptive-user types, environmental water holder, 2 guardians</td>
+<td>Water trading and allocation over a stocks-and-flows model</td>
+<td>Weekly trading steps nested in 5-10 yr regulatory steps (planned)</td>
+<td>Computer simulation; REALM hydrology</td>
+</tr>
+<tr>
+<td>SimBasin (Magdalena-Cauca)</td>
+<td>Groups of policy-makers, scientists, non-experts</td>
+<td>Development decisions; 7 indicators kept above thresholds</td>
+<td>30 simulated years</td>
+<td>Web layer over WEAP</td>
+</tr>
+<tr>
+<td>POMCA Campoalegre</td>
+<td>Groups of up to 10 sector representatives + moderator</td>
+<td>Weighting 11 components; choosing action packages for 4 challenges</td>
+<td>4 challenge scenarios</td>
+<td>R/Shiny web app (offline RStudio option)</td>
+</tr>
+<tr>
+<td>Facing Floods</td>
+<td>5 stakeholders + consultant + facilitator</td>
+<td>Budgeted proposals; negotiation; criteria dashboard</td>
+<td>2-3 rounds, news event after each</td>
+<td>Printable board game (A4/A3)</td>
+</tr>
+<tr>
+<td>Virtual River</td>
+<td>Experts and non-experts in assigned roles</td>
+<td>Swap tangible pieces on 143 hex tiles; models score each design</td>
+<td>Multiple sessions; n.r. rounds</td>
+<td>Hybrid tangible board coupled to models; projection</td>
+</tr>
+<tr>
+<td>Lords of the Valley</td>
+<td>15-25 players: farmers, local government, water board, bank, NGO</td>
+<td>Land use, taxation, loans, flood infrastructure under floods/droughts</td>
+<td>7 rounds (years), 2 community meetings</td>
+<td>Online on tablets/computers</td>
+</tr>
+<tr>
+<td>Get the Grade (WWF)</td>
+<td>Stakeholders seated by sub-basin tables</td>
+<td>Build a basin report card, then govern to raise the grade</td>
+<td>n.r.</td>
+<td>Table board game with map and dice</td>
+</tr>
+<tr>
+<td>ComMod Lingmuteychu</td>
+<td>Farmers of 2 villages (cycle 1), then 7 villages (cycle 2)</td>
+<td>Water cards (plus crops, money, labour in cycle 1) on a 2D board</td>
+<td>3 sessions per cycle: intra-, inter-village, swapped roles</td>
+<td>Board RPG, then CORMAS multi-agent model</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="game-by-game-extraction">Game-by-game extraction</h2>
+<h3 id="1-wat-a-game-wag">1. Wat-A-Game (WAG)</h3>
+<ul>
+<li><strong>Nature.</strong> A toolkit, not one game. It supplies generic “bricks”, guidelines, training and online support so managers, technicians or teachers can build their own water RPGs (Abrami et al. 2012). Invented by Nils Ferrand in 2009. It is part of the CoOPLAGE family from UMR G-EAU (Montpellier). More than 100 games have been built since 2008 (Balaton Group); your table says 150+, which may be a newer count.</li>
+<li><strong>Space.</strong> Land-plot cards connected by hydrological elements (river cards).</li>
+<li><strong>Agents.</strong> Roles chosen by the designers (farmers, decision-makers, citizens, fishers, etc.). Each role carries:
+<ul>
+<li>objectives (general goals or specific indicators);</li>
+<li>initial assets (budget, parcels, water access, activities);</li>
+<li>rules of action (allowed activities, interactions, indicator dynamics).</li>
+</ul>
+</li>
+<li><strong>Resources (colour-coded balls/tokens).</strong>
+<ul>
+<li>Blue: mobile, flow in the river, captured by activities as they pass (water).</li>
+<li>Green: located on plots, renewed between rounds by fixed rules (biodiversity).</li>
+<li>Yellow: held by players, spendable or tradeable (money).</li>
+</ul>
+</li>
+<li><strong>Rules and gameplay.</strong> Players place activity cards on their plots. Water tokens are released upstream and captured in sequence downstream, so upstream-downstream asymmetry is built in. The model is designed while it is played.</li>
+<li><strong>Design process.</strong> Framing; system cartography (hydrology, users, activity zones); defining roles, events and monitoring; producing cards and tokens; session with animation and debriefing.</li>
+<li><strong>Implementation levels.</strong> Includes Self-WAG (a blank kit and booklet for building your own catchment game). Known variants: Wet-WAG (wetlands), WAG/Reuse (water reuse with agriculture, industry and urban roles), Waste-WAG (sanitation, Senegal), L’eau en Têt (4 games on the Têt river, France).</li>
+<li><strong>Platform.</strong> Non-computerised (cards, pebbles, marbles). A NetLogo version, <strong>ana-wag</strong>, lets players play it as a network game or replace them with computer agents (Bonté et al. 2019).</li>
+<li><strong>Gaps.</strong> Turn sequence and scoring are case-specific and in member-only manuals.</li>
+</ul>
+<h3 id="2-concerteau-the-wag-in-contrats-de-rivière-row">2. Concert’eau (the “WAG in contrats de rivière” row)</h3>
+<ul>
+<li><strong>Source.</strong> Richard-Ferroudji (2008), thesis surveying three basins (Gardons, Lentilla, Orb), with a game experiment among its methods. The Irstea record describes the game as Concert’eau, used in the Lentilla and Llech case.</li>
+<li><strong>Purpose.</strong> Players move between pragmatic regimes and between different water-management “orders of worth” (Boltanski-Thévenot) to reach compromises.</li>
+<li><strong>Agents, rules, rounds, platform.</strong> n.r. in accessible sources. The full thesis PDF is behind HAL’s bot protection; open it in a browser for chapter detail.</li>
+</ul>
+<h3 id="3-river-basin-game-mkoji-tanzania">3. River Basin Game (Mkoji, Tanzania)</h3>
+<ul>
+<li><strong>Board.</strong> Wooden board about 290-300 cm long, raised about 15 cm at the top end. A central river runs from upper catchment to downstream wetland. Intakes of varying size feed fields with holes that represent crop water need. Also: school/livestock farm, state farm, tail-enders on drain water. Splits into 4 parts; a three-quarter-size version and options (storage dam, boreholes) exist.</li>
+<li><strong>Water.</strong> Glass marbles released at the top. Few marbles = dry year; many = wet year.</li>
+<li><strong>Agents.</strong> About 30-35 water users from upstream, midstream and tail-end; also domestic users, pastoralists, fisherfolk and some leaders. Rain-fed farmers are excluded. Observers (irrigation officers, basin office) bring the room to 50-60. Staff: facilitator, technical assistants, note-takers, video.</li>
+<li><strong>Rules.</strong> Sticks are weirs. Thin sticks = traditional intakes (leaky). Large sticks = modern intakes (block most flow). A plot holding the right number of marbles is adequately irrigated. Golden rules: rehearse all phases; go slowly; clear marbles after each round; allow free discussion before each round; summarise each phase; never skip stages; stress that the board is a model, not a map.</li>
+<li><strong>Structure (Day 1, about 3-4 h).</strong>
+<ol>
+<li>Introduction and demonstration (no intakes, many intakes, wet year, dry year; traditional vs modern intakes).</li>
+<li>Individual search for water (usually ends in upstream over-abstraction).</li>
+<li>Search for livelihoods (renting land, labour; optional paper money). Head-enders and tail-enders swap places.</li>
+<li>Collective sharing: weirs are adjusted over several rounds to share by need.</li>
+<li>Group discussion (about 1.5 h), reporting and vote.</li>
+</ol>
+</li>
+<li><strong>Day 2.</strong> Technical focus (water saving) or institutional/legal focus (rights, fees). Brainstorm, vote on priorities, draft agreements naming supporting institutions.</li>
+<li><strong>Scoring.</strong> None. Outcomes are captured through discussion, notes, video and evaluation forms.</li>
+<li><strong>Cost.</strong> Example budget about US$500 for 50 people.</li>
+<li><strong>Limits.</strong> Max about 35 active players; unsuited to piped networks, groundwater or water quality; facilitator-dependent; needs follow-up.</li>
+</ul>
+<h3 id="4-murray-darling-basin-game-goulburn-broken-scoping-case">4. Murray-Darling Basin Game (Goulburn-Broken scoping case)</h3>
+<ul>
+<li><strong>Status.</strong> Conceptual and in development in 2011. Adapted from the University of Virginia Bay Game.</li>
+<li><strong>Agents.</strong>
+<ul>
+<li>5 government authority players (policy varies by scenario).</li>
+<li>6 consumptive-user types; 4 described: perennial irrigators (need high security), annual irrigators (sell, hold or substitute water), district farmers without permanent rights (buy opportunistically), out-of-catchment irrigators.</li>
+<li>Environmental water holder (waters wetlands, may trade within policy).</li>
+<li>2 guardians (advocate for environment and communities; do not trade).</li>
+</ul>
+</li>
+<li><strong>Rules.</strong> Buy, sell or hold water; decide on cropping; release environmental flows; set or follow policy. A causal loop diagram briefs players.</li>
+<li><strong>Time.</strong> Short steps (weeks) for trading and releases, nested in 5-10 year regulatory decisions. Exact step n.r.</li>
+<li><strong>Platform.</strong> Stocks-and-flows simulation (water, money, natural capital). Hydrology from the REALM-based Goulburn System Model; farm functions from ABARES data. Engine software n.r.</li>
+<li><strong>Indicators.</strong> River health (flow duration, height, season), farm income, urban supply security, money and natural-capital stocks.</li>
+</ul>
+<h3 id="5-simbasin-magdalena-cauca-colombia">5. SimBasin (Magdalena-Cauca, Colombia)</h3>
+<ul>
+<li><strong>Agents.</strong> Groups of decision-makers from several sectors, scientists and non-experts. Specific roles n.r. in the abstract.</li>
+<li><strong>Gameplay.</strong> Groups steer a fictional basin, resembling the real one, through 30 years of development decisions. Impacts on agriculture, hydropower, flood risk and environment.</li>
+<li><strong>Indicators.</strong> 7, to be kept above critical thresholds. Each shows the realised value and a band of possible values, so players can tell good management from luck.</li>
+<li><strong>Platform.</strong> Game layer over a WEAP model adapted from a basin-wide model; free online (simbasin.hilab.nl). Developed by UNESCO-IHE with The Nature Conservancy Colombia.</li>
+<li><strong>Gaps.</strong> Session length and round granularity n.r. in accessible sources; the full EMS paper has them.</li>
+</ul>
+<h3 id="6-pomca-campoalegre-serious-game-colombia">6. POMCA Campoalegre serious game (Colombia)</h3>
+<ul>
+<li><strong>Purpose.</strong> Embedded in the formulation phase of the official watershed plan (POMCA): 5 strategic areas, 14 programmes, 25 projects.</li>
+<li><strong>Agents.</strong> Groups of up to 10 drawn from sectors (coffee federation, water utilities, smallholders, NGOs, academics, environmental authority, planning bodies). One moderator per group.</li>
+<li><strong>Rules and phases.</strong>
+<ol>
+<li>Briefing; random allocation to groups; interface training.</li>
+<li>Group assigns consensus weights (0-100, summing to 100%) to 11 performance components. Weights are then locked.</li>
+<li>For each of 4 challenges (rainy season with floods and landslides; tourism/agriculture boom with weak monitoring; dry season with fires and shortages; average season), the group picks an “action package”. A package cannot be reused.</li>
+<li>Written justification, then simulation.</li>
+<li>Review of maps, bar charts and heatmaps; plenary feedback.</li>
+</ol>
+</li>
+<li><strong>Scoring.</strong> Sustainability Points per component and sub-basin, propagating downstream, from an expert Leopold matrix against a baseline. No budget mechanic.</li>
+<li><strong>Platform.</strong> R 4.1.0 with Shiny, online; offline via RStudio. Saves choices for replay.</li>
+<li><strong>Sessions.</strong> Two online workshops, June 2021 (COVID-19), plus survey.</li>
+<li><strong>Limits.</strong> Expert judgment rather than a validated hydrological model; needs a computer and prior basin knowledge.</li>
+</ul>
+<h3 id="7-facing-floods-tu-delft">7. Facing Floods (TU Delft)</h3>
+<ul>
+<li><strong>Setting.</strong> Bendegom, an idealised Dutch town on the fictional Tulla river.</li>
+<li><strong>Agents.</strong> 5 stakeholders, each with goals and a budget: Rijkswaterstaat (lower flood levels rather than higher dikes), Municipality (housing), navigation sector, farmers (land), nature conservationists. A consultant reviews proposals and places agreed measures. A facilitator runs intro and debrief. The guide covers 7 or more players.</li>
+<li><strong>Rules.</strong> Proposals go to the consultant, then negotiation. Farmer and conservation land cannot change without the owner’s consent; the unowned green area is open. Unmet news-event requirements trigger fines.</li>
+<li><strong>Structure.</strong> 2-3 rounds, each followed by a news event (population surge; food self-sufficiency law; shipping demand; nature-based protection law), drawn or chosen. Final debrief.</li>
+<li><strong>Scoring.</strong> 5 criteria (flood safety, urban life, nature, agricultural yield, navigability), each -10 to +10, on a dashboard.</li>
+<li><strong>Platform.</strong> Printable board (A4/A3), CC BY-NC-SA 4.0.</li>
+</ul>
+<h3 id="8-virtual-river-game-netherlands">8. Virtual River Game (Netherlands)</h3>
+<ul>
+<li><strong>Agents.</strong> Domain experts (hydraulic engineers, flood-safety specialists) and non-experts (residents, farmers). Experts played roles unlike their real jobs.</li>
+<li><strong>Rules.</strong> Players swap modular pieces to change a tile’s elevation, land use or both, freely designing Dutch-style interventions. Each tested design updates scores.</li>
+<li><strong>Scoring.</strong> Flood safety, biodiversity, costs.</li>
+<li><strong>Platform.</strong> Hybrid interface with bidirectional coupling: a physical hexagonal board of 143 tiles is converted into a digital elevation model and land-use map; hydrodynamic, ecological and cost models run; outputs are projected on the board and shown on a monitor.</li>
+<li><strong>Evaluation.</strong> Five sessions with experts and non-experts (den Haan et al. 2020).</li>
+</ul>
+<h3 id="9-lords-of-the-valley-hypothetical-valley">9. Lords of the Valley (hypothetical valley)</h3>
+<ul>
+<li><strong>Agents.</strong> 15-25 participants:
+<ul>
+<li>Farmers: choose production per plot (grain, livestock, orchards, fish ponds, forestry); can buy land.</li>
+<li>Local Government: controls free plots, sets taxes, gives subsidies.</li>
+<li>Water Board: builds and maintains dykes and a water-steering system.</li>
+<li>Bank: grants and collects loans.</li>
+<li>Environmental NGO: knows biodiversity effects; can complain to Central Government (played by the moderator).</li>
+</ul>
+</li>
+<li><strong>Environment.</strong> Short river reach with yearly averages; floods and droughts hit production differently by type; intensification raises pest losses.</li>
+<li><strong>Rules.</strong> 7 rounds; free decisions; facilitator restricts talk (no more than three roles at once); 2 community meetings with self-set procedures.</li>
+<li><strong>Outcomes.</strong> Accumulated profit and biodiversity; ecosystem damage feeds back on profit.</li>
+<li><strong>Platform.</strong> Online on tablets and computers. 4-5 h play plus 1-2 h debrief.</li>
+</ul>
+<h3 id="10-get-the-grade-wwf-and-umces">10. Get the Grade (WWF and UMCES)</h3>
+<ul>
+<li><strong>Agents.</strong> Each player is a stakeholder living in a sub-basin. Room = basin; table = sub-basin. Audiences: policy-makers, conservationists, companies, communities.</li>
+<li><strong>Gameplay.</strong> Teams build a Basin Health Report Card for a fictitious basin, then take governance decisions and negotiate partnerships to raise the grade. Grades rest on six values: ecological; water quality and quantity; social and cultural; health and nutrition; management and governance; economic.</li>
+<li><strong>Platform.</strong> Table game with map illustration and dice; scales from small meetings to conferences. Launched in 2016 (Stockholm, Honolulu, New Delhi).</li>
+<li><strong>Gaps.</strong> Dice mechanics, rounds and scoring n.r. publicly; WWF supplies kits on request.</li>
+</ul>
+<h3 id="11-commod-lingmuteychu-bhutan">11. ComMod Lingmuteychu (Bhutan)</h3>
+<ul>
+<li><strong>Context.</strong> Rain-fed stream from a spring at 2400 m; 12 canals irrigate about 180 ha of terraces; a long-running conflict over water at rice transplanting.</li>
+<li><strong>Cycle 1 (2003), “2 villages”.</strong> Upper and lower village farmers. 2D board of land by farm type. Players handle crops, water cards, money and labour. Three sessions: intra-village, inter-village, swapped roles. A new rule was agreed but later rejected by the upper village.</li>
+<li><strong>Cycle 2 (2005), “7 villages”.</strong> All seven villages. Highly abstract board; only water is manipulated. Same three-session design. Result: a Watershed Management Committee, signed by all; bylaws late 2005; formally established December 2005.</li>
+<li><strong>Platform.</strong> Board RPG, translated into a CORMAS multi-agent model for lab scenario runs.</li>
+<li><strong>Gaps.</strong> Player counts, round numbers and MAS parameters n.r.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Abrami, G. et al. (2012). Wat-A-Game, a toolkit for building role-playing games about integrated water management. <a href="https://agritrop.cirad.fr/565254/" target="_blank" rel="noopener noreferrer">Agritrop</a></li>
+<li>WAG bricks and modeling principles. <a href="https://sites.google.com/site/watagame2/tools/wag-and-its-family/wag-bricks-and-modeling-principles" target="_blank" rel="noopener noreferrer">WAG site</a></li>
+<li>WAG methodology steps. <a href="https://sites.google.com/site/watagame2/pages-%C3%A0-trier-ou-sup/wag-methodology" target="_blank" rel="noopener noreferrer">WAG site</a></li>
+<li>Balaton Group, Games page (Wat-A-Game). <a href="https://www.balatongroup.org/games/" target="_blank" rel="noopener noreferrer">balatongroup.org</a></li>
+<li>Bonté, B. et al. (2019). ana-wag. <a href="https://www.comses.net/codebases/5449/releases/1.7.0/" target="_blank" rel="noopener noreferrer">CoMSES</a></li>
+<li>Richard-Ferroudji, A. (2008). L’appropriation des dispositifs de gestion locale et participative de l’eau. <a href="https://hal.inrae.fr/tel-02590578v2/file/pub00024205.pdf" target="_blank" rel="noopener noreferrer">HAL tel-02590578</a></li>
+<li>Concert’eau game record. <a href="https://irsteadoc.irstea.fr/cemoa/PUB00036644" target="_blank" rel="noopener noreferrer">Irstea</a></li>
+<li>Lankford, B. et al. (2004). The River Basin Game: A water dialogue tool. IWMI WP 75. <a href="https://assets.publishing.service.gov.uk/media/57a08cbfe5274a27b20013d3/R8064-IWMI-WorkingPaper75.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+<li>River Basin Game Factsheet. <a href="https://assets.publishing.service.gov.uk/media/57a08d0fed915d622c00174b/R8064-Fact-The_River_Basin_Game_Factsheet.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+<li>Moore, G.A. et al. (2011). The Murray-Darling Basin Game. MODSIM 2011. <a href="https://mssanz.org.au/modsim2011/E15/moore.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+<li>Craven, J. et al. (2017). SimBasin. Env. Modelling &amp; Software 90:78-88. <a href="https://peeref.com/works/3555301" target="_blank" rel="noopener noreferrer">Peeref</a>; EGU 2016 abstract <a href="https://meetingorganizer.copernicus.org/EGU2016/EGU2016-16304.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+<li>González, C. et al. (2024). Supporting multi-stakeholder participation processes. Water 16(11):1581. <a href="https://mdpi.com/2073-4441/16/11/1581/htm" target="_blank" rel="noopener noreferrer">MDPI</a></li>
+<li>Magherini, A. et al. (2025). Facing Floods. <a href="https://repository.tudelft.nl/record/uuid:65568522-2767-4730-85f5-7721f9398b6c" target="_blank" rel="noopener noreferrer">TU Delft repository</a>; <a href="https://oerhub.tesshub.hzdr.de/materials/facing-floods-a-stakeholder-river-management-game" target="_blank" rel="noopener noreferrer">OER Hub</a></li>
+<li>den Haan, R.J. et al. (2020). The Virtual River Game. <a href="https://eld.bl.uk/catalog/100120538978_0x000001" target="_blank" rel="noopener noreferrer">BL record</a>; EGU21 abstract <a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-5430.html" target="_blank" rel="noopener noreferrer">link</a></li>
+<li>Magnuszewski, P. et al. (2018). Exploring the Role of Relational Practices in Water Governance. Water 10(3):346. <a href="https://www.mdpi.com/2073-4441/10/3/346" target="_blank" rel="noopener noreferrer">MDPI</a>; <a href="https://systemssolutions.org/?p=2264" target="_blank" rel="noopener noreferrer">CRS game page</a></li>
+<li>WWF, Get the Grade. <a href="https://www.worldwildlife.org/pages/get-the-grade-a-game-about-natural-resource-and-water-management" target="_blank" rel="noopener noreferrer">WWF</a>; <a href="https://ian.umces.edu/blog/the-report-card-game-get-the-grade-was-launched-in-stockholm-new-delhi-and-honolulu/" target="_blank" rel="noopener noreferrer">IAN-UMCES launch</a></li>
+<li>Gurung, T.R., Bousquet, F. &amp; Trébuil, G. (2006). Ecology &amp; Society 11(2):36. <a href="https://doaj.org/article/19083b3e821442aa8696db5c89562932" target="_blank" rel="noopener noreferrer">DOAJ</a></li>
+<li>Barnaud, C. et al. (2006). Companion modelling for collective learning and action in water management. <a href="https://core.ac.uk/download/132637259.pdf" target="_blank" rel="noopener noreferrer">CORE PDF</a></li>
+</ul>
+</div><footer class="note-links"><section><h2>Linked from</h2><ul><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a> <span class="muted">Arguments</span></li></ul></section></footer></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>

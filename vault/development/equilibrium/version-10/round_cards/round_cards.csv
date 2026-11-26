@@ -1,0 +1,7 @@
+Round,Name,Round_Event,Flat_Bonus,Regen_Rate
+1,Spring,No special effects.,+3,50%
+2,Boom,Each player with 🎲 ≥ 5 gains 2 🔷. Each player with 🎲 ≤ 3 gains 1 🔷 and 1 🎲.,+3,75%
+3,Drought,The player with the highest 🎲 loses 1 🎲. That 🎲 migrates clockwise to their neighbor (continues CW if receiver is at max 6).,+1,10%
+4,Storm,The player with the highest 🎲 loses 2 🎲. 1 migrates clockwise and 1 counterclockwise (each continues in same direction if receiver at max 6). Each player who receives a migrant gains 1 🔷.,+1,10%
+5,Recovery,Each player with 🎲 ≤ 2 gains 2 🔷.,+3,50%
+6,Reckoning,The player with the lowest 🎲 gains 1 🎲 (tie: starting harvester decides).,+2,25%

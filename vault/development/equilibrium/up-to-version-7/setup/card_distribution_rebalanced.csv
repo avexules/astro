@@ -1,0 +1,43 @@
+Player,Card_Endgame,Card_Commission,Condition,Valid_at_Start,Theme
+22,2,1,Total population is even,YES,Generic
+Northwestern,3,1,Any pair of your dice differ by ≤1,YES,Equality theme
+Northwestern,4,1,Any pair of your dice is equal,YES,Equality theme
+Northwestern,4,2,Total population ≥7,YES,Generic
+Northwestern,1,1,You have redistributed water this round (also playable as Redistribution Cost),NO,Cooperation theme
+Northwestern,2,1,You gave asylum last round,NO,Democratic cooperation
+Northwestern,6,3,All players have water ≥ population,NO,SIGNATURE: Ultimate cooperation/equity
+22,4,2,Difference of your highest die and lowest die ≥2,YES,Hierarchy (pyramidal)
+Near_East,1,1,Total population is odd,YES,Generic
+Near_East,4,1,Your population + a neighbors population ≥15,YES,Generic
+Near_East,1,1,You received water this round (also playable as Redistribution Cost),NO,Generic passive
+Near_East,3,1,Fewer water than neighbor with more population,YES,Accepting imbalance
+Near_East,3,2,Gave or received ≥3 water (also playable as Redistribution Cost),NO,Resource control
+Near_East,6,3,You are both highest population AND highest water among all players,NO,SIGNATURE: Total authoritarian dominance
+22,3,1,Any pair of your dice is equal,YES,Polarization (two high equals)
+Far_East,3,1,Any of your die shows 1,YES,Extreme (low)
+Far_East,1,1,Total population is odd,YES,Generic
+Far_East,3,1,Total population ≥9,YES,Generic
+Far_East,2,1,Highest of your dice ≥5,NO,Extreme (high)
+Far_East,4,2,Highest total population among all players,YES,Dominance
+Far_East,6,3,Highest of your dice is 6 AND lowest die is 1,NO,SIGNATURE: Maximum polarization
+22,4,1,Any pair of your dice equal,YES,Starting equality (2=2=2)
+Africa,3,1,Total population ≤6,YES,Scarcity management
+Africa,4,2,All of your dice ≤3,YES,Controlled state
+Africa,2,1,Lowest of your die ≤ neighbor's lowest,YES,Generic comparison
+Africa,1,1,You received water this round (also playable as Redistribution Cost),NO,Generic passive
+Africa,2,1,Total population is even,NO,Generic
+Africa,6,3,All your three dice equal AND population ≤6,YES,SIGNATURE: Egalitarian scarcity state
+22,3,1,Difference of your highest die and lowest die ≤2,YES,Moderate differences (3-2-1)
+Oceania,1,1,Total population is even,YES,Generic
+Oceania,4,2,Total population ≤6,YES,Generic
+Oceania,1,1,Lowest of your die ≤3,YES,Generic
+Oceania,3,1,Any of your die shows 1,YES,Inclusivity
+Oceania,2,1,You gave asylum to migrants last round,NO,Democratic cooperation
+Oceania,8,3,No player eliminated (all survived),NO,SIGNATURE: Collective democratic stability
+22,3,1,All your dice different,YES,Diversity (4≠2≠1)
+Americas,1,1,Total population is odd,YES,Generic
+Americas,3,1,Total population ≥7,YES,Generic
+Americas,3,1,Two dice total ≥6,YES,Generic
+Americas,1,1,You redistributed water this round (also playable as Redistribution Cost),NO,Active engagement
+Americas,4,2,Your population + a neighbor's population ≥15,YES,Generic
+Americas,7,3,Highest water among all players,NO,SIGNATURE: Competitive individual success

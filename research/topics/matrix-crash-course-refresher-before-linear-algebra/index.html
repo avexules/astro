@@ -1,0 +1,761 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Matrix Crash Course - Refresher Before Linear Algebra · Jules Pommier</title><meta name="description" content="My research notes, development log and curriculum vitae in game experimental economics."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/7813c0df257c6c2a.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500 800;font-style:normal;}@font-face{font-family:Manrope-8926e1fe23234377;src:url("/_astro/fonts/542094a31e9ddf9a.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500 800;font-style:normal;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}@font-face{font-family:"Manrope-8926e1fe23234377 fallback: Arial";src:local("Arial");font-display:swap;font-weight:500 800;font-style:normal;size-adjust:147.2631%;ascent-override:72.3875%;descent-override:20.3717%;line-gap-override:0%;}:root{--font-manrope:Manrope-8926e1fe23234377,"Manrope-8926e1fe23234377 fallback: Arial",system-ui,sans-serif;}</style><link rel="preload" href="/_astro/fonts/7813c0df257c6c2a.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/542094a31e9ddf9a.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/34c9ca403acde68e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/918aa4f69dc726f4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/23ceb34721fd8e6e.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/6847247b9e049592.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7b74d385b05b30f5.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/54ba0d09376e3fc4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/97a1c47f4f9a8d25.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/455586e315b770de.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/3f88bd67d2340c6f.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/1d2294b6ca56e7c4.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/b1f142ec0ae0f208.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/ccd18ffff874304b.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/67a32215ab995ebe.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/7a4431a10d3b0e77.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/2a3b4c3f8bbe0b77.woff2") format("woff2");font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c";src:url("/_astro/fonts/8ec5f2d0104517b6.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:italic;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:300;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:400;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:500;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}@font-face{font-family:"IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman";src:local("Times New Roman");font-display:swap;font-weight:600;font-style:normal;size-adjust:96.2462%;ascent-override:106.4978%;descent-override:28.5726%;line-gap-override:0%;}:root{--font-plex-serif:"IBM Plex Serif-b011d55b7a184b8c","IBM Plex Serif-b011d55b7a184b8c fallback: Times New Roman",Georgia,serif;}</style><link rel="preload" href="/_astro/fonts/b1f142ec0ae0f208.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ccd18ffff874304b.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"IBM Plex Mono-318eb1e763583b73";src:url("/_astro/fonts/c7badacef09f3c2d.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"IBM Plex Mono-318eb1e763583b73 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:102.5167%;descent-override:27.5045%;}:root{--font-plex-mono:"IBM Plex Mono-318eb1e763583b73","IBM Plex Mono-318eb1e763583b73 fallback: Courier New",ui-monospace,monospace;}</style><script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script><link rel="stylesheet" href="/_astro/Base.OzIYPnfa.css"></head><body><header class="site-header" id="site-header"><div class="frame"><div class="site-header-inner"><a class="site-brand" href="/"><span class="site-title">Jules Pommier</span></a><nav class="site-nav" aria-label="Main"><a href="/research/" aria-current="page">Research Vault</a><a href="/development/">Development Log</a><a href="/about/">Curriculum Vitae</a></nav><button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="theme-toggle"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg></button></div></div></header><script>
+      // The header takes a second row when the tabs no longer fit beside the name, so the sticky
+      // sidebar and anchor offsets read its real height.
+      {
+        const header = document.getElementById("site-header");
+        const set = () => document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+        set();
+        new ResizeObserver(set).observe(header);
+      }
+    </script><main class="frame"><div class="split split--sticky-left" data-split="research" style="--split-left: 18rem"><div class="split-left"><nav class="sidebar" aria-label="Research Vault notes"><details class="browse" open data-browse><summary>Browse Research Vault</summary><div class="tabs tree-tabs" data-tabs="tree-research"><div class="tablist" role="tablist" aria-label="Research Vault folders"><a class="tab" role="tab" id="tree-research-sources-tab" href="/research/sources/" aria-controls="tree-research-sources-panel" aria-selected="false" tabindex="-1" data-tab="sources">Sources</a><a class="tab" role="tab" id="tree-research-topics-tab" href="/research/topics/" aria-controls="tree-research-topics-panel" aria-selected="true" tabindex="0" data-tab="topics">Topics</a><a class="tab" role="tab" id="tree-research-arguments-tab" href="/research/arguments/" aria-controls="tree-research-arguments-panel" aria-selected="false" tabindex="-1" data-tab="arguments">Arguments</a><a class="tab" role="tab" id="tree-research-outputs-tab" href="/research/outputs/" aria-controls="tree-research-outputs-panel" aria-selected="false" tabindex="-1" data-tab="outputs">Outputs</a></div><div class="tab-panel" role="tabpanel" id="tree-research-sources-panel" aria-labelledby="tree-research-sources-tab" hidden><p class="tree-blurb">What a paper, talk or course says. <span class="count">92 notes</span></p><ul class="tree"><li><a href="/research/sources/abatayo-and-lynham-2016/">Abatayo and Lynham (2016)</a></li><li><a href="/research/sources/abbink-et-al-2010/">Abbink et al. (2010)</a></li><li><a href="/research/sources/accordo-cdf-aniene/">Accordo CdF Aniene</a></li><li><a href="/research/sources/ansink-2009/">Ansink (2009)</a></li><li><a href="/research/sources/balliet-2010/">Balliet (2010)</a></li><li><a href="/research/sources/balliet-et-al-2009/">Balliet et al. (2009)</a></li><li><a href="/research/sources/barrett-and-dannenberg-2012/">Barrett and Dannenberg (2012)</a></li><li><a href="/research/sources/bastiani-2023/">Bastiani (2023)</a></li><li><a href="/research/sources/bayle-et-al-2026/">Bayle et al. (2026)</a></li><li><a href="/research/sources/bednarik-et-al-2019/">Bednarik et al. (2019)</a></li><li><a href="/research/sources/bengtsson-and-kock-2000/">Bengtsson and Kock (2000)</a></li><li><a href="/research/sources/bilancini-imt-2026/">Bilancini (IMT 2026)</a></li><li><a href="/research/sources/bilancini-et-al-2024/">Bilancini et al. (2024)</a></li><li><a href="/research/sources/bo-et-al-2010/">Bó et al. (2010)</a></li><li><a href="/research/sources/bohm-et-al-2020/">Böhm et al. (2020)</a></li><li><a href="/research/sources/boros-et-al-2026/">Boros et al. (2026)</a></li><li><a href="/research/sources/bouncken-et-al-2015/">Bouncken et al. (2015)</a></li><li><a href="/research/sources/brandenburger-and-nalebuff-1996/">Brandenburger and Nalebuff (1996)</a></li><li><a href="/research/sources/buchignani-et-al-2008/">Buchignani et al. (2008)</a></li><li><a href="/research/sources/cardenas-et-al-2011/">Cárdenas et al. (2011)</a></li><li><a href="/research/sources/cardenas-et-al-2015/">Cárdenas et al. (2015)</a></li><li><a href="/research/sources/cecchetti-imt-2026/">Cecchetti (IMT 2026)</a></li><li><a href="/research/sources/cevolani-and-de-benedetto-imt-2026/">Cevolani and De Benedetto (IMT 2026)</a></li><li><a href="/research/sources/chang-et-al-2021/">Chang et al. (2021)</a></li><li><a href="/research/sources/chen-et-al-2014/">Chen et al. (2014)</a></li><li><a href="/research/sources/craven-et-al-2017/">Craven et al. (2017)</a></li><li><a href="/research/sources/crimaldi-imt-2026/">Crimaldi (IMT 2026)</a></li><li><a href="/research/sources/czakon-et-al-2020/">Czakon et al. (2020)</a></li><li><a href="/research/sources/dlgs-152-2006-art-68-bis/">D.Lgs. 152-2006 art. 68-bis</a></li><li><a href="/research/sources/doria-et-al/">D&#39;Oria et al.</a></li><li><a href="/research/sources/dannenberg-et-al-2015/">Dannenberg et al. (2015)</a></li><li><a href="/research/sources/di-guida-imt-2026/">Di Guida (IMT 2026)</a></li><li><a href="/research/sources/di-paolo-and-pizziol-2024/">Di Paolo and Pizziol (2024)</a></li><li><a href="/research/sources/distefano-et-al-2021/">Distefano et al. (2021)</a></li><li><a href="/research/sources/dorn-et-al-2016/">Dorn et al. (2016)</a></li><li><a href="/research/sources/falkenmark-and-rockstrom-2006/">Falkenmark and Rockström (2006)</a></li><li><a href="/research/sources/falstein-lucca-comics-2026/">Falstein (Lucca Comics 2026)</a></li><li><a href="/research/sources/farjam-and-wolf-2021/">Farjam and Wolf (2021)</a></li><li><a href="/research/sources/fathalikhani-et-al-2018/">Fathalikhani et al. (2018)</a></li><li><a href="/research/sources/ferrand-et-al-2009/">Ferrand et al. (2009)</a></li><li><a href="/research/sources/foucault-1995/">Foucault (1995)</a></li><li><a href="/research/sources/galizzi-and-navarro-martinez-2019/">Galizzi and Navarro-Martinez (2019)</a></li><li><a href="/research/sources/gernsheimer-et-al-2021/">Gernsheimer et al. (2021)</a></li><li><a href="/research/sources/gisotti-2025/">Gisotti (2025)</a></li><li><a href="/research/sources/gnecco-imt-2026/">Gnecco (IMT 2026)</a></li><li><a href="/research/sources/gonzalez-et-al-2024/">Gonzalez et al. (2024)</a></li><li><a href="/research/sources/gurung-et-al-2006/">Gurung et al. (2006)</a></li><li><a href="/research/sources/hauser-et-al-2014/">Hauser et al. (2014)</a></li><li><a href="/research/sources/huizinga-1938/">Huizinga (1938)</a></li><li><a href="/research/sources/intrieri-et-al-2023/">Intrieri et al. (2023)</a></li><li><a href="/research/sources/irabor-et-al-2025/">Irabor et al. (2025)</a></li><li><a href="/research/sources/jack-2009/">Jack (2009)</a></li><li><a href="/research/sources/janssen-et-al-2011/">Janssen et al. (2011)</a></li><li><a href="/research/sources/kamijo-et-al-2017/">Kamijo et al. (2017)</a></li><li><a href="/research/sources/kosfeld-et-al-2009/">Kosfeld et al. (2009)</a></li><li><a href="/research/sources/lazzari-et-al-2012/">Lazzari et al. (2012)</a></li><li><a href="/research/sources/lingua-2025/">Lingua (2025)</a></li><li><a href="/research/sources/liu-et-al-2019/">Liu et al. (2019)</a></li><li><a href="/research/sources/liu-et-al-2024/">Liu et al. (2024)</a></li><li><a href="/research/sources/lu-et-al-2013/">Lu et al. (2013)</a></li><li><a href="/research/sources/maas-et-al-2017/">Maas et al. (2017)</a></li><li><a href="/research/sources/malagutti-2026/">Malagutti (2026)</a></li><li><a href="/research/sources/malezieux-and-spiegelman-2025/">Malézieux and Spiegelman (2025)</a></li><li><a href="/research/sources/mantilla-2018/">Mantilla (2018)</a></li><li><a href="/research/sources/milinski-et-al-2008/">Milinski et al. (2008)</a></li><li><a href="/research/sources/miller-and-rose-2013/">Miller and Rose (2013)</a></li><li><a href="/research/sources/moore-et-al-2011/">Moore et al. (2011)</a></li><li><a href="/research/sources/murphy-et-al-2011/">Murphy et al. (2011)</a></li><li><a href="/research/sources/naar-et-al-2022/">Naar et al. (2022)</a></li><li><a href="/research/sources/nutarelli-imt-2026/">Nutarelli (IMT 2026)</a></li><li><a href="/research/sources/ostrom-1990/">Ostrom (1990)</a></li><li><a href="/research/sources/ostrom-and-helfrich-2012/">Ostrom and Helfrich (2012)</a></li><li><a href="/research/sources/peer-et-al-2021/">Peer et al. (2021)</a></li><li><a href="/research/sources/pisor-et-al-2020/">Pisor et al. (2020)</a></li><li><a href="/research/sources/pizziol-and-tavoni-2024/">Pizziol and Tavoni (2024)</a></li><li><a href="/research/sources/pranzini-et-al-2020/">Pranzini et al. (2020)</a></li><li><a href="/research/sources/raggi-and-raggi-1989/">Raggi and Raggi (1989)</a></li><li><a href="/research/sources/rajabu-2007/">Rajabu (2007)</a></li><li><a href="/research/sources/rajasekaran-et-al-2026/">Rajasekaran et al. (2026)</a></li><li><a href="/research/sources/rashidi-sabet-et-al-2022/">Rashidi-Sabet et al. (2022)</a></li><li><a href="/research/sources/redpath-et-al-2018/">Redpath et al. (2018)</a></li><li><a href="/research/sources/reindl-et-al-2019/">Reindl et al. (2019)</a></li><li><a href="/research/sources/rooduijn-and-van-loon-coursera/">Rooduijn and van Loon (Coursera)</a></li><li><a href="/research/sources/roungas-et-al-2019/">Roungas et al. (2019)</a></li><li><a href="/research/sources/squartini-imt-2026/">Squartini (IMT 2026)</a></li><li><a href="/research/sources/sutter-et-al-2010/">Sutter et al. (2010)</a></li><li><a href="/research/sources/tavolo-nazionale-cdf-2015/">Tavolo Nazionale CdF (2015)</a></li><li><a href="/research/sources/tavoni-et-al-2011/">Tavoni et al. (2011)</a></li><li><a href="/research/sources/torres-guevara-and-schluter-2016/">Torres-Guevara and Schlüter (2016)</a></li><li><a href="/research/sources/turner-et-al-1993/">Turner et al. (1993)</a></li><li><a href="/research/sources/zand-scholten-coursera/">Zand Scholten (Coursera)</a></li><li><a href="/research/sources/zhang-et-al-2022/">Zhang et al. (2022)</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-topics-panel" aria-labelledby="tree-research-topics-tab"><p class="tree-blurb">One concept, synthesised from sources. <span class="count">23 notes</span></p><ul class="tree"><li><a href="/research/topics/collection-of-watershed-games/">Collection of Watershed Games</a></li><li><a href="/research/topics/collective-risk-thresholds-and-tipping-points/">Collective Risk, Thresholds and Tipping Points</a></li><li><a href="/research/topics/communication-and-cooperation-in-social-dilemmas/">Communication and Cooperation in Social Dilemmas</a></li><li><a href="/research/topics/contratti-di-fiume/">Contratti di Fiume</a></li><li><a href="/research/topics/cooperation-with-future-generations/">Cooperation with Future Generations</a></li><li><a href="/research/topics/coopetition-as-two-independent-dimensions/">Coopetition as Two Independent Dimensions</a></li><li><a href="/research/topics/cultural-theory-and-worldviews-in-commons-games/">Cultural Theory and Worldviews in Commons Games</a></li><li><a href="/research/topics/endogenous-institutions-and-self-governance-in-commons/">Endogenous Institutions and Self-Governance in Commons</a></li><li><a href="/research/topics/experimental-design-validity-and-sampling/">Experimental Design, Validity and Sampling</a></li><li><a href="/research/topics/external-validity-of-experimental-games/">External Validity of Experimental Games</a></li><li><a href="/research/topics/game-experiments-for-contract-making-in-watersheds/">Game Experiments for Contract-Making in Watersheds</a></li><li><a href="/research/topics/games-as-interventional-and-participatory-research-tools/">Games as Interventional and Participatory Research Tools</a></li><li><a href="/research/topics/group-size-in-common-pool-resource-games/">Group Size in Common-Pool Resource Games</a></li><li><a href="/research/topics/incentives-payment-schemes-and-crowding-out/">Incentives, Payment Schemes and Crowding Out</a></li><li><a href="/research/topics/matrix-crash-course-refresher-before-linear-algebra/" aria-current="page">Matrix Crash Course - Refresher Before Linear Algebra</a></li><li><a href="/research/topics/measuring-social-preferences/">Measuring Social Preferences</a></li><li><a href="/research/topics/natural-funativity-and-the-evolution-of-play/">Natural Funativity and the Evolution of Play</a></li><li><a href="/research/topics/play-as-a-cultural-and-evolutionary-phenomenon/">Play as a Cultural and Evolutionary Phenomenon</a></li><li><a href="/research/topics/probability-conditional-probability-and-bayes-rule/">Probability, Conditional Probability and Bayes&#39; Rule</a></li><li><a href="/research/topics/random-variables-and-probability-distributions/">Random Variables and Probability Distributions</a></li><li><a href="/research/topics/research-integrity-pre-registration-and-publication-bias/">Research Integrity, Pre-registration and Publication Bias</a></li><li><a href="/research/topics/statistical-inference-confidence-intervals-and-power/">Statistical Inference, Confidence Intervals and Power</a></li><li><a href="/research/topics/voice-and-nudges-as-levers-for-long-horizon-cooperation/">Voice and Nudges as Levers for Long-Horizon Cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-arguments-panel" aria-labelledby="tree-research-arguments-tab" hidden><p class="tree-blurb">Building blocks of a proposal or thesis. <span class="count">10 notes</span></p><ul class="tree"><li><a href="/research/arguments/a-rules-advantage-may-not-survive-the-group-that-chose-it/">A rule&#39;s advantage may not survive the group that chose it</a></li><li><a href="/research/arguments/combining-dilemmas-is-justified-by-coopetition/">Combining dilemmas is justified by coopetition</a></li><li><a href="/research/arguments/cooperation-may-be-inherited-beyond-the-inherited-stock/">Cooperation may be inherited beyond the inherited stock</a></li><li><a href="/research/arguments/cooperation-with-the-future-cannot-rest-on-reciprocity/">Cooperation with the future cannot rest on reciprocity</a></li><li><a href="/research/arguments/large-online-groups-are-where-the-question-bites/">Large online groups are where the question bites</a></li><li><a href="/research/arguments/need-for-camaiore-watershed-game/">Need for Camaiore Watershed Game</a></li><li><a href="/research/arguments/participatory-policy-construction-complements-controlled-experiment/">Participatory policy construction complements controlled experiment</a></li><li><a href="/research/arguments/the-game-serves-as-instrument-and-as-dissemination-artefact/">The game serves as instrument and as dissemination artefact</a></li><li><a href="/research/arguments/threshold-transparency-turns-defection-into-coordination/">Threshold transparency turns defection into coordination</a></li><li><a href="/research/arguments/voice-beats-nudge-for-long-horizon-cooperation/">Voice beats nudge for long-horizon cooperation</a></li></ul></div><div class="tab-panel" role="tabpanel" id="tree-research-outputs-panel" aria-labelledby="tree-research-outputs-tab" hidden><p class="tree-blurb">Proposals, papers and talks. <span class="count">5 notes</span></p><ul class="tree"><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/presentations/">presentations</a><span class="count">1</span></summary><ul><li><a href="/research/outputs/presentations/presentation-for-application/">Presentation for Application</a></li></ul></details></li><li><details><summary><span class="chevron" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></span><a href="/research/outputs/proposals/">proposals</a><span class="count">4</span></summary><ul><li><a href="/research/outputs/proposals/proposal-for-the-open-call/">Proposal for the Open Call</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-1/">Proposal for Thematic 1</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5/">Proposal for Thematic 5</a></li><li><a href="/research/outputs/proposals/proposal-for-thematic-5-reworked/">Proposal for Thematic 5 (reworked)</a></li></ul></details></li></ul></div></div><script>(function(){const group = "tree-research";
+
+  // Inline so a tab named in the address is open before the page is painted.
+  window.siteTabs ??= (() => {
+    const tabsOf = (root) => [...root.querySelector(":scope > .tablist").querySelectorAll('[role="tab"]')];
+    const select = (root, name) => {
+      const tabs = tabsOf(root);
+      if (!tabs.some((t) => t.dataset.tab === name)) return false;
+      for (const t of tabs) {
+        const on = t.dataset.tab === name;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+      return true;
+    };
+    const fromHash = (root) => select(root, decodeURIComponent(location.hash.slice(1)));
+
+    return {
+      // Open a tab from other scripts (e.g. about.astro when it merges the CV's two groups).
+      select(group, name) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        return root ? select(root, name) : false;
+      },
+      init(group) {
+        const root = document.querySelector(`[data-tabs="${group}"]`);
+        if (!root) return;
+        const list = root.querySelector(":scope > .tablist");
+        const hash = root.hasAttribute("data-tabs-hash");
+        if (hash) {
+          fromHash(root);
+          addEventListener("hashchange", () => fromHash(root));
+        }
+        list.addEventListener("click", (ev) => {
+          const tab = ev.target.closest('[role="tab"]');
+          if (!tab || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          select(root, tab.dataset.tab);
+          if (hash) history.replaceState(null, "", `#${tab.dataset.tab}`);
+        });
+        list.addEventListener("keydown", (ev) => {
+          const tabs = tabsOf(root);
+          const i = tabs.indexOf(document.activeElement);
+          if (i < 0) return;
+          const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+          if (to !== undefined) {
+            ev.preventDefault();
+            const t = tabs[(to + tabs.length) % tabs.length];
+            t.click();
+            t.focus();
+          } else if (ev.key === " ") {
+            ev.preventDefault();
+            tabs[i].click();
+          }
+        });
+      },
+    };
+  })();
+  window.siteTabs.init(group);
+})();</script></details><script>
+            // On small screens the tree starts folded above the note.
+            if (matchMedia("(max-width: 760px)").matches)
+              document.querySelectorAll("[data-browse]").forEach((d) => d.removeAttribute("open"));
+          </script></nav></div><div class="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize columns" tabindex="0"></div><div class="split-right"><div class="pane"><article class="note"><nav class="crumbs" aria-label="Breadcrumb"><a href="/research/">Research Vault</a> / <a href="/research/topics/">Topics</a></nav><h1 class="note-title">Matrix Crash Course - Refresher Before Linear Algebra</h1><p class="note-updated">Updated 2026-11-12</p><div class="note-meta"><details class="fold" data-fold="outline"><summary>Outline</summary><ul class="toc"><li class="toc-2"><a href="#summary">Summary</a></li><li class="toc-2"><a href="#claims">Claims</a></li><li class="toc-2"><a href="#inferences">Inferences</a></li><li class="toc-2"><a href="#limits">Limits</a></li><li class="toc-2"><a href="#open">Open</a></li><li class="toc-2"><a href="#references">References</a></li><li class="toc-2"><a href="#contents">Contents</a></li><li class="toc-2"><a href="#0-notation-cheat-sheet">0. Notation cheat sheet</a></li><li class="toc-2"><a href="#1-vectors">1. Vectors</a></li><li class="toc-2"><a href="#2-matrices-shapes-and-special-types">2. Matrices: shapes and special types</a></li><li class="toc-2"><a href="#3-matrix-times-vector-the-most-important-idea">3. Matrix times vector (the most important idea)</a></li><li class="toc-2"><a href="#4-matrix-times-matrix">4. Matrix times matrix</a></li><li class="toc-2"><a href="#5-linear-systems-axb">5. Linear systems $Ax=b$</a></li><li class="toc-2"><a href="#6-gaussian-elimination-by-hand">6. Gaussian elimination, by hand</a></li><li class="toc-2"><a href="#7-the-inverse-matrix">7. The inverse matrix</a></li><li class="toc-2"><a href="#8-span-independence-basis-rank">8. Span, independence, basis, rank</a></li><li class="toc-2"><a href="#9-determinants">9. Determinants</a></li><li class="toc-2"><a href="#10-eigenvalues-and-eigenvectors-preview">10. Eigenvalues and eigenvectors (preview)</a></li><li class="toc-2"><a href="#11-orthogonality-and-projections">11. Orthogonality and projections</a></li><li class="toc-2"><a href="#12-norms-and-the-condition-number-preview">12. Norms and the condition number (preview)</a></li><li class="toc-2"><a href="#13-a-little-matrix-calculus-for-least-squares">13. A little matrix calculus (for least squares)</a></li><li class="toc-2"><a href="#14-map-from-this-refresher-to-your-syllabus">14. Map from this refresher to your syllabus</a></li><li class="toc-2"><a href="#15-exercises-with-answers">15. Exercises with answers</a></li><li class="toc-2"><a href="#16-references">16. References</a></li><li class="toc-3"><a href="#notes-on-decisions-made">Notes on decisions made</a></li></ul></details><details class="fold" data-fold="properties"><summary>Properties</summary><dl class="fm"><dt>Status</dt><dd><span class="badge" data-status="seed">seed</span></dd><dt>Sources</dt><dd>Claude</dd></dl></details></div><script>
+    // Outline and Properties start folded; whoever opens one finds it open on the next note too.
+    for (const d of document.querySelectorAll("details[data-fold]")) {
+      const key = `fold:${d.dataset.fold}`;
+      try {
+        if (localStorage.getItem(key) === "open") d.open = true;
+      } catch {}
+      d.addEventListener("toggle", () => {
+        try {
+          localStorage.setItem(key, d.open ? "open" : "closed");
+        } catch {}
+      });
+    }
+  </script><div class="prose"><h2 id="summary">Summary</h2>
+<p><strong>Purpose.</strong> This course gives you only the matrix basics you need to follow your syllabus. Each section ends with a <strong>➜ Where you’ll use this</strong> note that links it to a topic in your course. Your syllabus follows Gilbert Strang’s approach closely (the “four fundamental subspaces”, $PA=LU$, $A=QR$, the SVD). For that reason, Strang’s book and MIT 18.06 lectures are the best companion material (see References).</p>
+<p><strong>How to read it.</strong> Sections 1 to 6 are the core; read them first and do the exercises. Sections 7 to 12 are short previews of ideas your course will develop properly. Section 13 is the small amount of “matrix calculus” you need for least squares.</p>
+<h2 id="claims">Claims</h2>
+<ol>
+<li></li>
+</ol>
+<h2 id="inferences">Inferences</h2>
+<ol>
+<li></li>
+</ol>
+<h2 id="limits">Limits</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="open">Open</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="references">References</h2>
+<hr>
+<h2 id="contents">Contents</h2>
+<ol start="0">
+<li>Notation cheat sheet</li>
+<li>Vectors</li>
+<li>Matrices: shapes and special types</li>
+<li>Matrix times vector (the most important idea)</li>
+<li>Matrix times matrix</li>
+<li>Linear systems $Ax=b$</li>
+<li>Gaussian elimination, by hand</li>
+<li>The inverse matrix</li>
+<li>Span, independence, basis, rank</li>
+<li>Determinants</li>
+<li>Eigenvalues and eigenvectors (preview)</li>
+<li>Orthogonality and projections</li>
+<li>Norms and the condition number (preview)</li>
+<li>A little matrix calculus (for least squares)</li>
+<li>Map from this refresher to your syllabus</li>
+<li>Exercises with answers</li>
+<li>References</li>
+</ol>
+<hr>
+<h2 id="0-notation-cheat-sheet">0. Notation cheat sheet</h2>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$a, \lambda, c$</td>
+<td>scalars (ordinary numbers)</td>
+</tr>
+<tr>
+<td>$\mathbf{x}, \mathbf{v}, \mathbf{b}$ (or just $x, v, b$)</td>
+<td>vectors, written as <strong>columns</strong> by default</td>
+</tr>
+<tr>
+<td>$A, B, Q, L, U$</td>
+<td>matrices</td>
+</tr>
+<tr>
+<td>$a_{ij}$</td>
+<td>entry of $A$ in row $i$, column $j$</td>
+</tr>
+<tr>
+<td>$A \in \mathbb{R}^{m\times n}$</td>
+<td>$A$ has $m$ rows and $n$ columns, real entries</td>
+</tr>
+<tr>
+<td>$A^T$</td>
+<td>transpose (rows become columns)</td>
+</tr>
+<tr>
+<td>$I$ (or $I_n$)</td>
+<td>identity matrix</td>
+</tr>
+<tr>
+<td>$A^{-1}$</td>
+<td>inverse of $A$</td>
+</tr>
+<tr>
+<td>$\det A$, $\operatorname{tr} A$</td>
+<td>determinant, trace (sum of diagonal entries)</td>
+</tr>
+<tr>
+<td>$\lVert x\rVert$</td>
+<td>length (norm) of $x$</td>
+</tr>
+<tr>
+<td>$x^T y$</td>
+<td>dot product of $x$ and $y$</td>
+</tr>
+<tr>
+<td>$\operatorname{rank} A$</td>
+<td>number of independent columns (= number of pivots)</td>
+</tr>
+<tr>
+<td>$C(A), N(A)$</td>
+<td>column space, null space</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb on sizes.</strong> Always write the size under a matrix when you are unsure. Most beginner errors are size errors.</p>
+<hr>
+<h2 id="1-vectors">1. Vectors</h2>
+<p>A vector in $\mathbb{R}^n$ is an ordered list of $n$ numbers, written as a column:
+$$
+v=\begin{bmatrix}1\3\end{bmatrix}\in\mathbb{R}^2,\qquad
+w=\begin{bmatrix}2\-1\0\end{bmatrix}\in\mathbb{R}^3 .
+$$
+Think of it as an arrow from the origin to a point.</p>
+<p><strong>Two basic operations</strong> (they are done entry by entry):</p>
+<ul>
+<li>Addition: $\begin{bmatrix}1\3\end{bmatrix}+\begin{bmatrix}2\4\end{bmatrix}=\begin{bmatrix}3\7\end{bmatrix}$</li>
+<li>Scalar multiplication: $5\begin{bmatrix}1\3\end{bmatrix}=\begin{bmatrix}5\15\end{bmatrix}$</li>
+</ul>
+<p><strong>Linear combination.</strong> Combine both operations: $c,v + d,w$. <em>This is the central operation of all linear algebra.</em> Every later concept (span, column space, solving $Ax=b$) is a question about linear combinations.</p>
+<p><em>Expanded: how to build and read a linear combination.</em></p>
+<p><strong>Recipe.</strong> A linear combination of vectors $v_1,\dots,v_k$ is any vector of the form
+$$
+c_1v_1+c_2v_2+\dots+c_kv_k ,
+$$
+where the numbers $c_1,\dots,c_k$ are called the <strong>weights</strong> (or coefficients). You do two things only: scale each vector by its own weight, then add the results entry by entry. All vectors must have the same length, otherwise the sum is undefined.</p>
+<p><strong>Worked example.</strong> Take $v=\begin{bmatrix}1\3\end{bmatrix}$ and $w=\begin{bmatrix}2\4\end{bmatrix}$, with weights $c=2$ and $d=-1$:
+$$
+2v-w = 2\begin{bmatrix}1\3\end{bmatrix}+(-1)\begin{bmatrix}2\4\end{bmatrix}
+=\begin{bmatrix}2\6\end{bmatrix}+\begin{bmatrix}-2\-4\end{bmatrix}
+=\begin{bmatrix}0\2\end{bmatrix}.
+$$
+Changing the weights gives a different vector from the same two ingredients: $c=1,\ d=1$ gives $\begin{bmatrix}3\7\end{bmatrix}$, $c=0,\ d=0$ gives the zero vector, $c=1,\ d=0$ gives $v$ itself. So $v$, $w$ and $0$ are all special cases of one formula.</p>
+<p><strong>Geometric picture.</strong> Draw $v$ and $w$ as arrows from the origin. The weight $c$ stretches or flips $v$ along its own line, the weight $d$ does the same to $w$, and the sum is the diagonal of the parallelogram built from the two stretched arrows (place the tail of one at the tip of the other). Think of $v$ and $w$ as two directions you may walk in, and of $(c,d)$ as how far you walk in each. The combination is where you end up.</p>
+<p><strong>The question linear algebra keeps asking: which vectors can I reach?</strong></p>
+<ul>
+<li><em>Forward direction.</em> Given weights, compute the vector. This is just arithmetic, as above.</li>
+<li><em>Backward direction.</em> Given a target $b$, find weights that produce it. Example: can we reach $b=\begin{bmatrix}4\10\end{bmatrix}$ with the same $v,w$? We need $c,v+d,w=b$, that is
+$$
+c+2d=4,\qquad 3c+4d=10 .
+$$
+The first equation gives $c=4-2d$. Substituting into the second: $12-6d+4d=10$, so $d=1$ and $c=2$. Check: $2v+w=\begin{bmatrix}2\6\end{bmatrix}+\begin{bmatrix}2\4\end{bmatrix}=\begin{bmatrix}4\10\end{bmatrix}$. Yes.</li>
+</ul>
+<p>The backward direction is exactly a linear system, and the system is $Ax=b$ with the vectors as columns of $A$ and the weights as the unknown $x$:
+$$
+\underbrace{\begin{bmatrix}1&amp;2\3&amp;4\end{bmatrix}}<em>{A=[,v\ \ w,]}
+\underbrace{\begin{bmatrix}c\d\end{bmatrix}}</em>{x}
+=\underbrace{\begin{bmatrix}4\10\end{bmatrix}}_{b}.
+$$
+This is why section 3 says that $Ax$ is a combination of the columns of $A$.</p>
+<p><strong>Not every target is reachable.</strong> The set of all combinations of some vectors is their <strong>span</strong>. Two vectors in $\mathbb{R}^2$ that point in different directions can reach every point of the plane. But if they point along the same line, for instance $v=\begin{bmatrix}1\2\end{bmatrix}$ and $w=\begin{bmatrix}2\4\end{bmatrix}$ (here $w=2v$), every combination $c,v+d,w=(c+2d),v$ stays on that one line. The target $b=\begin{bmatrix}1\0\end{bmatrix}$ would need $c+2d=1$ and $2c+4d=0$, which contradict each other, so no weights exist. In the same way, two vectors in $\mathbb{R}^3$ reach only a plane through the origin, for example $v=\begin{bmatrix}1\0\1\end{bmatrix}$ and $w=\begin{bmatrix}0\1\1\end{bmatrix}$ give $\begin{bmatrix}c\d\c+d\end{bmatrix}$, the plane $z=x+y$. Sections 5 and 8 make “can I reach $b$?” precise through column space, span and independence.</p>
+<p><strong>Linear combinations of matrices.</strong> The same recipe works for matrices of the <em>same size</em>, entry by entry. With $A=\begin{bmatrix}1&amp;2\0&amp;1\end{bmatrix}$ and $B=\begin{bmatrix}1&amp;0\4&amp;1\end{bmatrix}$:
+$$
+2A-3B=\begin{bmatrix}2&amp;4\0&amp;2\end{bmatrix}-\begin{bmatrix}3&amp;0\12&amp;3\end{bmatrix}=\begin{bmatrix}-1&amp;4\-12&amp;-1\end{bmatrix}.
+$$
+This is just addition and scalar multiplication again, with matrices playing the role of vectors. Do not confuse it with the matrix product $AB$ (section 4), which is a different operation. The combination you will use most is the other one: a matrix times a vector, $Ax$, which is a combination of the <em>columns</em> of $A$.</p>
+<p><strong>Three habits.</strong></p>
+<ol>
+<li>Write the weights next to each vector before adding: $c_1,(\ldots)+c_2,(\ldots)$. Most slips happen when the scaling and the adding are done in one step.</li>
+<li>Check sizes: all vectors (or matrices) in the combination must have the same shape.</li>
+<li>Ask both questions: “what do I get for these weights?” and “which weights give this target?” The second one is solving $Ax=b$.</li>
+</ol>
+<p><strong>Dot product</strong> (also called inner product):
+$$
+x^T y = x_1y_1 + x_2y_2 + \dots + x_ny_n .
+$$
+Example: $(1,2,3)\cdot(4,0,-1) = 4+0-3 = 1$.</p>
+<p><strong>Length (Euclidean norm):</strong> $\lVert x\rVert = \sqrt{x^T x}$. Example: $\lVert(3,4)\rVert = 5$.</p>
+<p><strong>Angle:</strong> $\cos\theta = \dfrac{x^T y}{\lVert x\rVert,\lVert y\rVert}$.</p>
+<p><strong>Orthogonal (perpendicular):</strong> $x^T y = 0$. Example: $(1,1)$ and $(1,-1)$ are orthogonal.</p>
+<p><strong>Unit vector:</strong> length 1. Normalise any nonzero $x$ with $x/\lVert x\rVert$.</p>
+<blockquote>
+<p>➜ <strong>Where you’ll use this:</strong> everywhere. Dot products and orthogonality drive least squares, $QR$, the spectral theorem and the SVD.</p>
+</blockquote>
+<hr>
+<h2 id="2-matrices-shapes-and-special-types">2. Matrices: shapes and special types</h2>
+<p>A matrix is a rectangular table of numbers. An $m\times n$ matrix has $m$ rows and $n$ columns:
+$$
+A=\begin{bmatrix}1&amp;2\3&amp;4\5&amp;6\end{bmatrix}\quad (3\times 2).
+$$</p>
+<p><strong>Two ways to see a matrix (keep both in your head):</strong></p>
+<ol>
+<li>As a stack of <strong>rows</strong> (each row is a vector, used for dot products).</li>
+<li>As a row of <strong>columns</strong> $A = [,a_1\ \ a_2\ \cdots\ a_n,]$ (each column is a vector, used for combinations).</li>
+</ol>
+<p><strong>Transpose.</strong> $(A^T)<em>{ij} = a</em>{ji}$. Rows become columns:
+$$
+\begin{bmatrix}1&amp;2\3&amp;4\5&amp;6\end{bmatrix}^T=\begin{bmatrix}1&amp;3&amp;5\2&amp;4&amp;6\end{bmatrix}.
+$$
+Rules: $(A^T)^T=A$, $(A+B)^T=A^T+B^T$, and <strong>$(AB)^T = B^TA^T$</strong> (the order reverses).</p>
+<p><strong>Special matrices you will meet constantly:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Square</td>
+<td>$m=n$</td>
+<td></td>
+</tr>
+<tr>
+<td>Identity $I$</td>
+<td>1 on the diagonal, 0 elsewhere; $IA=AI=A$</td>
+<td>$\begin{bmatrix}1&amp;0\0&amp;1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Diagonal</td>
+<td>nonzero only on the diagonal</td>
+<td>$\begin{bmatrix}3&amp;0\0&amp;-2\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Upper triangular $U$</td>
+<td>zeros below the diagonal</td>
+<td>$\begin{bmatrix}2&amp;1\0&amp;5\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Lower triangular $L$</td>
+<td>zeros above the diagonal</td>
+<td>$\begin{bmatrix}1&amp;0\4&amp;1\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Symmetric</td>
+<td>$A^T=A$</td>
+<td>$\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Permutation $P$</td>
+<td>rows of $I$ reordered; $PA$ reorders the rows of $A$</td>
+<td>$\begin{bmatrix}0&amp;1\1&amp;0\end{bmatrix}$</td>
+</tr>
+<tr>
+<td>Orthogonal $Q$</td>
+<td>columns are orthonormal; $Q^TQ=I$</td>
+<td>rotation matrices</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>➜ <strong>Where you’ll use this:</strong> $L$, $U$, $P$ in $PA=LU$. Symmetric matrices in the spectral theorem and quadratic forms. Orthogonal $Q$ in $A=QR$ and in the SVD.</p>
+</blockquote>
+<hr>
+<h2 id="3-matrix-times-vector-the-most-important-idea">3. Matrix times vector (the most important idea)</h2>
+<p>$Ax$ is defined only when the number of <strong>columns</strong> of $A$ equals the number of entries of $x$. An $(m\times n)$ matrix times an $(n\times 1)$ vector gives an $(m\times 1)$ vector.</p>
+<p><strong>Example.</strong> $A=\begin{bmatrix}1&amp;2\3&amp;4\end{bmatrix}$, $x=\begin{bmatrix}5\6\end{bmatrix}$.</p>
+<p><strong>View 1: by rows (dot products).</strong> Each output entry is a row of $A$ dotted with $x$:
+$$
+Ax=\begin{bmatrix}1\cdot5+2\cdot6\3\cdot5+4\cdot6\end{bmatrix}=\begin{bmatrix}17\39\end{bmatrix}.
+$$</p>
+<p><strong>View 2: by columns (linear combination).</strong> $Ax$ is a combination of the columns of $A$, with weights taken from $x$:
+$$
+Ax = 5\begin{bmatrix}1\3\end{bmatrix}+6\begin{bmatrix}2\4\end{bmatrix}=\begin{bmatrix}17\39\end{bmatrix}.
+$$</p>
+<p><strong>Learn View 2 by heart.</strong> It is the key to the whole course:</p>
+<blockquote>
+<p><strong>$Ax$ is a linear combination of the columns of $A$.</strong> So $Ax=b$ has a solution exactly when $b$ is a combination of the columns of $A$, i.e. when $b$ lies in the <strong>column space</strong> $C(A)$.</p>
+</blockquote>
+<p><strong>Matrix as a function.</strong> $x\mapsto Ax$ is a <em>linear map</em>: $A(cx+dy)=c,Ax+d,Ay$. Geometrically, a $2\times2$ matrix can rotate, stretch, shear or flatten the plane. The columns of $A$ tell you where the basis vectors $(1,0)$ and $(0,1)$ land. 3Blue1Brown’s videos show this beautifully (see References).</p>
+<blockquote>
+<p>➜ <strong>Where you’ll use this:</strong> column space and null space (four subspaces), solvability of $Ax=b$, iterative methods ($x_{k+1}=Mx_k+c$), dynamical systems ($x_{k+1}=Ax_k$).</p>
+</blockquote>
+<hr>
+<h2 id="4-matrix-times-matrix">4. Matrix times matrix</h2>
+<p>$AB$ is defined when (columns of $A$) = (rows of $B$):
+$$
+\underbrace{A}<em>{m\times n}\ \underbrace{B}</em>{n\times p} = \underbrace{AB}_{m\times p}.
+$$</p>
+<p><strong>Entry rule.</strong> $(AB)_{ij}$ = (row $i$ of $A$) · (column $j$ of $B$).</p>
+<p><strong>Column rule (often more useful).</strong> Column $j$ of $AB$ equals $A$ times column $j$ of $B$.</p>
+<p><strong>Row rule.</strong> Row $i$ of $AB$ equals (row $i$ of $A$) times $B$, i.e. a combination of the rows of $B$.</p>
+<p><strong>Column-times-row rule.</strong> $AB = \sum_k (\text{column } k \text{ of } A)(\text{row } k \text{ of } B)$. This is a sum of rank-one matrices, and it is exactly the idea behind the SVD.</p>
+<p><strong>Example: order matters.</strong> Let $A=\begin{bmatrix}1&amp;2\3&amp;4\end{bmatrix}$ and $P=\begin{bmatrix}0&amp;1\1&amp;0\end{bmatrix}$.
+$$
+AP=\begin{bmatrix}2&amp;1\4&amp;3\end{bmatrix}\ (\text{columns swapped}),\qquad
+PA=\begin{bmatrix}3&amp;4\1&amp;2\end{bmatrix}\ (\text{rows swapped}).
+$$
+So <strong>$AB\neq BA$ in general.</strong> Multiplying on the <em>left</em> acts on <em>rows</em>. Multiplying on the <em>right</em> acts on <em>columns</em>.</p>
+<p><strong>Laws that DO hold:</strong></p>
+<ul>
+<li>Associative: $(AB)C = A(BC)$</li>
+<li>Distributive: $A(B+C)=AB+AC$</li>
+<li>$IA=AI=A$</li>
+<li>$(AB)^T=B^TA^T$ and $(AB)^{-1}=B^{-1}A^{-1}$ (order reverses)</li>
+</ul>
+<p><strong>Laws that do NOT hold (classic traps):</strong></p>
+<ul>
+<li>$AB = BA$ (false in general)</li>
+<li>$AB=0 \Rightarrow A=0$ or $B=0$ (false)</li>
+<li>$AB=AC \Rightarrow B=C$ (false, unless $A$ is invertible)</li>
+</ul>
+<p><strong>Powers.</strong> $A^2=AA$, $A^k = A\cdots A$. Only square matrices have powers.</p>
+<p><strong>Block matrices.</strong> You can partition matrices into blocks and multiply block by block, as if the blocks were numbers, provided the sizes fit. Example: $\begin{bmatrix}A&amp;B\end{bmatrix}\begin{bmatrix}x\y\end{bmatrix}=Ax+By$.</p>
+<blockquote>
+<p>➜ <strong>Where you’ll use this:</strong> factorizations ($LU$, $QR$, $Q\Lambda Q^T$, $U\Sigma V^T$) are all products. Cayley–Hamilton and functions of matrices use powers $A^k$.</p>
+</blockquote>
+<hr>
+<h2 id="5-linear-systems-axb">5. Linear systems $Ax=b$</h2>
+<p>A system of $m$ linear equations in $n$ unknowns
+$$
+\begin{aligned}
+2x_1 + x_2 + x_3 &amp;= 5\
+4x_1 - 6x_2 \phantom{{}+x_3} &amp;= -2\
+-2x_1 + 7x_2 + 2x_3 &amp;= 9
+\end{aligned}
+$$
+is a single matrix equation $Ax=b$:
+$$
+\underbrace{\begin{bmatrix}2&amp;1&amp;1\4&amp;-6&amp;0\-2&amp;7&amp;2\end{bmatrix}}<em>{A}
+\underbrace{\begin{bmatrix}x_1\x_2\x_3\end{bmatrix}}</em>{x}=
+\underbrace{\begin{bmatrix}5\-2\9\end{bmatrix}}_{b}.
+$$</p>
+<p><strong>Two pictures:</strong></p>
+<ul>
+<li><strong>Row picture:</strong> each equation is a plane in $\mathbb{R}^3$. The solution is where all the planes meet.</li>
+<li><strong>Column picture:</strong> find weights $x_1,x_2,x_3$ so that $x_1(\text{col }1)+x_2(\text{col }2)+x_3(\text{col }3)=b$.</li>
+</ul>
+<p><strong>Only three things can happen:</strong></p>
+<ol>
+<li><strong>Exactly one solution</strong> (the “nice” case; $A$ square and invertible).</li>
+<li><strong>No solution</strong> (inconsistent; $b$ is not in $C(A)$). Least squares deals with this case.</li>
+<li><strong>Infinitely many solutions</strong> (there are free variables; $N(A)$ contains nonzero vectors).</li>
+</ol>
+<p>It is never “exactly two”. If $x$ and $y$ are both solutions, every point $x + t(y-x)$ on the line through them is also a solution.</p>
+<p><strong>Structure of all solutions:</strong> $x = x_p + x_n$, where $x_p$ is one particular solution and $x_n$ is any vector with $Ax_n=0$ (the null space).</p>
+<hr>
+<h2 id="6-gaussian-elimination-by-hand">6. Gaussian elimination, by hand</h2>
+<p><strong>Goal.</strong> Turn $A$ into an upper triangular $U$ using <strong>row operations</strong>, then solve from the bottom up (<strong>back substitution</strong>).</p>
+<p><strong>The three elementary row operations</strong> (none of them changes the solution set):</p>
+<ol>
+<li>Subtract a multiple of one row from another row.</li>
+<li>Swap two rows.</li>
+<li>Multiply a row by a nonzero number.</li>
+</ol>
+<p>Work on the <strong>augmented matrix</strong> $[A\mid b]$.</p>
+<p><strong>Worked example</strong> (the system from Section 5; this is Strang’s standard example):
+$$
+\left[\begin{array}{rrr|r}2&amp;1&amp;1&amp;5\4&amp;-6&amp;0&amp;-2\-2&amp;7&amp;2&amp;9\end{array}\right]
+$$</p>
+<p><strong>Step 1.</strong> The pivot is 2 (top left). Clear the entries below it.</p>
+<ul>
+<li>Row 2 − <strong>2</strong>·Row 1 → $[0,,-8,,-2 \mid -12]$ (multiplier $\ell_{21}=2$)</li>
+<li>Row 3 − (<strong>−1</strong>)·Row 1 → $[0,,8,,3 \mid 14]$ (multiplier $\ell_{31}=-1$)</li>
+</ul>
+<p><strong>Step 2.</strong> The pivot is −8. Clear the entry below it.</p>
+<ul>
+<li>Row 3 − (<strong>−1</strong>)·Row 2 → $[0,,0,,1 \mid 2]$ (multiplier $\ell_{32}=-1$)</li>
+</ul>
+<p>$$
+\left[\begin{array}{rrr|r}2&amp;1&amp;1&amp;5\0&amp;-8&amp;-2&amp;-12\0&amp;0&amp;1&amp;2\end{array}\right]
+\quad\Rightarrow\quad U=\begin{bmatrix}2&amp;1&amp;1\0&amp;-8&amp;-2\0&amp;0&amp;1\end{bmatrix}
+$$
+<strong>Pivots:</strong> 2, −8, 1 (all nonzero, so there is a unique solution).</p>
+<p><strong>Back substitution:</strong></p>
+<ul>
+<li>$x_3 = 2$</li>
+<li>$-8x_2 - 2(2) = -12 \Rightarrow x_2 = 1$</li>
+<li>$2x_1 + 1 + 2 = 5 \Rightarrow x_1 = 1$</li>
+</ul>
+<p><strong>Solution: $x=(1,1,2)$.</strong> Check it in the original equations: $2+1+2=5$ ✓, $4-6=-2$ ✓, $-2+7+4=9$ ✓.</p>
+<p><strong>Preview of $A=LU$.</strong> Store the multipliers in a lower triangular matrix with 1s on the diagonal:
+$$
+L=\begin{bmatrix}1&amp;0&amp;0\2&amp;1&amp;0\-1&amp;-1&amp;1\end{bmatrix},\qquad LU = A \ \text{(verified)}.
+$$
+Elimination <em>is</em> the factorization $A=LU$. If a zero shows up in a pivot position, you must swap rows. A permutation matrix $P$ records the swaps, which gives <strong>$PA=LU$</strong>.</p>
+<p><strong>Preview of Gauss–Jordan.</strong> Keep going: also clear the entries <em>above</em> each pivot, and divide each row by its pivot. This leads to the <strong>reduced row echelon form</strong> (RREF). If you run it on $[A\mid I]$, you end with $[I\mid A^{-1}]$. That is how you compute an inverse by hand.</p>
+<p><strong>Cost.</strong> Elimination on an $n\times n$ matrix takes about $\tfrac{1}{3}n^3$ multiplications. This motivates iterative methods for very large systems.</p>
+<blockquote>
+<p>➜ <strong>Where you’ll use this:</strong> first block of your syllabus (Gaussian elimination, $PA=LU$, Gauss–Jordan). Pivots also give the rank (Section 8) and the determinant (Section 9).</p>
+</blockquote>
+<hr>
+<h2 id="7-the-inverse-matrix">7. The inverse matrix</h2>
+<p>A square matrix $A$ is <strong>invertible</strong> if there is a matrix $A^{-1}$ with $AA^{-1}=A^{-1}A=I$. Then $Ax=b$ has the unique solution $x=A^{-1}b$. (In practice you solve by elimination. You almost never compute $A^{-1}$ explicitly.)</p>
+<p><strong>The 2×2 formula</strong> (memorise it):
+$$
+\begin{bmatrix}a&amp;b\c&amp;d\end{bmatrix}^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d&amp;-b\-c&amp;a\end{bmatrix},\qquad ad-bc\neq0.
+$$
+Example: $\begin{bmatrix}2&amp;1\1&amp;1\end{bmatrix}^{-1}=\begin{bmatrix}1&amp;-1\-1&amp;2\end{bmatrix}$ (here $ad-bc=1$).</p>
+<p><strong>Rules:</strong> $(AB)^{-1}=B^{-1}A^{-1}$; $(A^T)^{-1}=(A^{-1})^T$; the inverse of a diagonal matrix inverts each diagonal entry.</p>
+<p><strong>The “Invertible Matrix Theorem” (all equivalent for a square $n\times n$ matrix $A$):</strong></p>
+<ul>
+<li>$A$ is invertible</li>
+<li>$Ax=b$ has exactly one solution for every $b$</li>
+<li>$Ax=0$ has only the solution $x=0$</li>
+<li>elimination produces $n$ nonzero pivots</li>
+<li>the columns (and rows) of $A$ are linearly independent</li>
+<li>$\operatorname{rank}A = n$</li>
+<li>$\det A \neq 0$</li>
+<li>$0$ is not an eigenvalue of $A$</li>
+</ul>
+<p>This one list connects almost every topic in your course. Revisit it often.</p>
+<hr>
+<h2 id="8-span-independence-basis-rank">8. Span, independence, basis, rank</h2>
+<ul>
+<li><strong>Span</strong> of $v_1,\dots,v_k$: the set of all their linear combinations.</li>
+<li><strong>Linearly independent:</strong> the only combination $c_1v_1+\dots+c_kv_k$ that gives $0$ is the one with all $c_i=0$. Informally, no vector is redundant.</li>
+<li><strong>Basis</strong> of a space: an independent set that spans it.</li>
+<li><strong>Dimension:</strong> the number of vectors in any basis.</li>
+<li><strong>Subspace:</strong> a set of vectors closed under addition and scalar multiplication (it must contain $0$). Examples are lines and planes <em>through the origin</em>.</li>
+<li><strong>Rank</strong> of $A$: the number of pivots = the number of independent columns = the number of independent rows.</li>
+</ul>
+<p><strong>Example.</strong> $\begin{bmatrix}1&amp;2\2&amp;4\end{bmatrix}$ has rank 1, because column 2 = 2 × column 1.</p>
+<p><strong>The four fundamental subspaces</strong> of an $m\times n$ matrix $A$ of rank $r$ (your course proves this; here is just the map):</p>
+<table>
+<thead>
+<tr>
+<th>Subspace</th>
+<th>Lives in</th>
+<th>Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Column space $C(A)$</td>
+<td>$\mathbb{R}^m$</td>
+<td>$r$</td>
+</tr>
+<tr>
+<td>Null space $N(A)$ (solutions of $Ax=0$)</td>
+<td>$\mathbb{R}^n$</td>
+<td>$n-r$</td>
+</tr>
+<tr>
+<td>Row space $C(A^T)$</td>
+<td>$\mathbb{R}^n$</td>
+<td>$r$</td>
+</tr>
+<tr>
+<td>Left null space $N(A^T)$</td>
+<td>$\mathbb{R}^m$</td>
+<td>$m-r$</td>
+</tr>
+</tbody>
+</table>
+<p>Row space ⟂ null space, and column space ⟂ left null space. Together, the dimensions and the orthogonality form the “fundamental theorem of linear algebra” in Strang’s sense.</p>
+<hr>
+<h2 id="9-determinants">9. Determinants</h2>
+<p>The determinant is a single number attached to a <strong>square</strong> matrix.</p>
+<p><strong>2×2:</strong> $\det\begin{bmatrix}a&amp;b\c&amp;d\end{bmatrix}=ad-bc$.</p>
+<p><strong>3×3 (cofactor expansion along row 1):</strong>
+$$
+\det\begin{bmatrix}a&amp;b&amp;c\d&amp;e&amp;f\g&amp;h&amp;i\end{bmatrix}=a(ei-fh)-b(di-fg)+c(dh-eg).
+$$
+Example: $\det\begin{bmatrix}1&amp;2&amp;3\0&amp;4&amp;5\1&amp;0&amp;6\end{bmatrix}=1(24)-2(-5)+3(-4)=22$.</p>
+<p><strong>Geometric meaning.</strong> $|\det A|$ is the factor by which $A$ scales area (in 2D) or volume (in 3D). The sign tells you whether orientation is flipped. $\det A=0$ means $A$ flattens space into a lower dimension, so $A$ is not invertible.</p>
+<p><strong>Key properties:</strong></p>
+<ul>
+<li>$\det(AB)=\det A\cdot\det B$</li>
+<li>$\det A^T=\det A$</li>
+<li>$\det A^{-1}=1/\det A$</li>
+<li>For a <strong>triangular</strong> matrix, $\det$ = product of the diagonal entries</li>
+<li>A row swap flips the sign; subtracting a multiple of one row from another changes nothing</li>
+<li>$\det(cA)=c^n\det A$ for $n\times n$ (a common trap)</li>
+</ul>
+<p><strong>Fast method:</strong> $\det A = \pm$(product of pivots). For the example in Section 6, $\det A = 2\cdot(-8)\cdot 1=-16$ (no row swaps, so the sign is +).</p>
+<hr>
+<h2 id="10-eigenvalues-and-eigenvectors-preview">10. Eigenvalues and eigenvectors (preview)</h2>
+<p>A nonzero vector $v$ is an <strong>eigenvector</strong> of a square matrix $A$ if $A$ only stretches it:
+$$
+Av=\lambda v .
+$$
+The scalar $\lambda$ is the <strong>eigenvalue</strong>. The direction of $v$ is unchanged (or reversed if $\lambda&lt;0$).</p>
+<p><strong>How to find them.</strong> $Av=\lambda v \iff (A-\lambda I)v=0$ has a nonzero solution $\iff \det(A-\lambda I)=0$. This is the <strong>characteristic polynomial</strong>.</p>
+<p><strong>Worked example.</strong> $A=\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}$.
+$$
+\det\begin{bmatrix}2-\lambda&amp;1\1&amp;2-\lambda\end{bmatrix}=(2-\lambda)^2-1=\lambda^2-4\lambda+3=(\lambda-1)(\lambda-3).
+$$</p>
+<ul>
+<li>$\lambda_1=3$: solve $(A-3I)v=0$, which gives $v_1=(1,1)$</li>
+<li>$\lambda_2=1$: solve $(A-I)v=0$, which gives $v_2=(1,-1)$</li>
+</ul>
+<p>Check: $A(1,1)=(3,3)=3(1,1)$ ✓.</p>
+<p>Notice that $A$ is symmetric and its eigenvectors are orthogonal. That is the <strong>spectral theorem</strong> in miniature: $A=Q\Lambda Q^T$.</p>
+<p><strong>Two handy checks:</strong> $\lambda_1+\dots+\lambda_n=\operatorname{tr}A$ and $\lambda_1\cdots\lambda_n=\det A$. Here $3+1=4=\operatorname{tr}A$ and $3\cdot1=3=\det A$ ✓.</p>
+<p><strong>Triangular matrices:</strong> the eigenvalues are the diagonal entries. Example: $\begin{bmatrix}3&amp;1\0&amp;2\end{bmatrix}$ has $\lambda=3,2$.</p>
+<p><strong>Why it matters.</strong> If $A=V\Lambda V^{-1}$ (diagonalization), then $A^k=V\Lambda^kV^{-1}$. Powers, and functions such as $e^{At}$, become easy. That is the basis of “functions of matrices” and of linear dynamical systems $x_{k+1}=Ax_k$ or $\dot{x}=Ax$.</p>
+<p><strong>Quadratic forms (preview).</strong> For symmetric $A$, the scalar $x^TAx$ is a quadratic form:
+$$
+x^T\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}x = 2x_1^2+2x_1x_2+2x_2^2 .
+$$
+$A$ is <strong>positive definite</strong> if $x^TAx&gt;0$ for all $x\neq0$. This happens exactly when all its eigenvalues are positive.</p>
+<hr>
+<h2 id="11-orthogonality-and-projections">11. Orthogonality and projections</h2>
+<p><strong>Orthonormal vectors:</strong> mutually orthogonal, each of length 1. Put them as columns of $Q$; then $Q^TQ=I$. If $Q$ is square, $Q^{-1}=Q^T$. Orthogonal matrices preserve lengths: $\lVert Qx\rVert=\lVert x\rVert$.</p>
+<p><strong>Projection onto a line</strong> through $a$: the closest point to $b$ on that line is
+$$
+p=\frac{a^Tb}{a^Ta},a, \qquad e=b-p\ \perp\ a .
+$$
+Example: $a=(1,1)$, $b=(2,0)$ gives $p=\tfrac{2}{2}(1,1)=(1,1)$ and $e=(1,-1)$. Check $e^Ta=0$ ✓.</p>
+<p><strong>Projection onto the column space</strong> of $A$ (independent columns):
+$$
+p = A\hat{x},\quad \text{where } A^TA\hat{x}=A^Tb .
+$$
+These are the <strong>normal equations</strong>. The error $e=b-A\hat{x}$ is orthogonal to every column of $A$, i.e. $A^Te=0$.</p>
+<p><strong>Gram–Schmidt</strong> turns independent columns into orthonormal ones. Recording the process gives <strong>$A=QR$</strong> ($R$ upper triangular).</p>
+<hr>
+<h2 id="12-norms-and-the-condition-number-preview">12. Norms and the condition number (preview)</h2>
+<p><strong>Vector norms:</strong></p>
+<ul>
+<li>$\lVert x\rVert_2=\sqrt{\sum x_i^2}$ (Euclidean)</li>
+<li>$\lVert x\rVert_1=\sum|x_i|$</li>
+<li>$\lVert x\rVert_\infty=\max|x_i|$</li>
+</ul>
+<p><strong>Matrix norm</strong> (induced): $\lVert A\rVert=\max_{x\neq0}\dfrac{\lVert Ax\rVert}{\lVert x\rVert}$, the largest stretching factor. In the 2-norm it equals the largest singular value $\sigma_{\max}$.</p>
+<p><strong>Condition number:</strong> $\kappa(A)=\lVert A\rVert,\lVert A^{-1}\rVert$ (in the 2-norm, $\sigma_{\max}/\sigma_{\min}$). It measures how much relative errors in $b$ can be amplified in $x$. Example: $\begin{bmatrix}1&amp;1\1&amp;1.0001\end{bmatrix}$ is almost singular, and its $\kappa\approx 4\times10^4$. A tiny change in $b$ can change $x$ enormously. Tikhonov regularization, which solves $(A^TA+\alpha I)x=A^Tb$, is one remedy for such ill-conditioned problems.</p>
+<hr>
+<h2 id="13-a-little-matrix-calculus-for-least-squares">13. A little matrix calculus (for least squares)</h2>
+<p>For a scalar function $f(x)$ of a vector $x\in\mathbb{R}^n$, the <strong>gradient</strong> is the vector of partial derivatives $\nabla f=\left(\frac{\partial f}{\partial x_1},\dots,\frac{\partial f}{\partial x_n}\right)^T$. A minimum requires $\nabla f = 0$.</p>
+<p><strong>The only three rules you need:</strong></p>
+<table>
+<thead>
+<tr>
+<th>$f(x)$</th>
+<th>$\nabla f(x)$</th>
+<th>Analogy in 1D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$a^Tx$</td>
+<td>$a$</td>
+<td>$(ax)’ = a$</td>
+</tr>
+<tr>
+<td>$x^TAx$</td>
+<td>$(A+A^T)x$, which is $2Ax$ if $A$ is symmetric</td>
+<td>$(ax^2)’=2ax$</td>
+</tr>
+<tr>
+<td>$\lVert Ax-b\rVert^2$</td>
+<td>$2A^T(Ax-b)$</td>
+<td>$((ax-b)^2)’ = 2a(ax-b)$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Derivation of the normal equations.</strong> Expand:
+$$
+f(x)=\lVert Ax-b\rVert^2=(Ax-b)^T(Ax-b)=x^TA^TAx-2b^TAx+b^Tb .
+$$
+Using the rules (note that $A^TA$ is symmetric):
+$$
+\nabla f = 2A^TAx-2A^Tb=0\quad\Longrightarrow\quad \boxed{A^TA\hat{x}=A^Tb}.
+$$
+You get the same equations as from the geometric projection in Section 11. Calculus and geometry agree.</p>
+<p><strong>Worked example (fitting a line).</strong> Fit $y=c+dt$ to the points $(t,y)=(0,6),(1,0),(2,0)$:
+$$
+A=\begin{bmatrix}1&amp;0\1&amp;1\1&amp;2\end{bmatrix},\ b=\begin{bmatrix}6\0\0\end{bmatrix},\quad
+A^TA=\begin{bmatrix}3&amp;3\3&amp;5\end{bmatrix},\ A^Tb=\begin{bmatrix}6\0\end{bmatrix}
+\ \Rightarrow\ \hat{x}=\begin{bmatrix}c\d\end{bmatrix}=\begin{bmatrix}5\-3\end{bmatrix}.
+$$
+The best line is $y=5-3t$.</p>
+<p><strong>Tikhonov version:</strong> minimise $\lVert Ax-b\rVert^2+\alpha\lVert x\rVert^2$. The gradient is $2A^T(Ax-b)+2\alpha x = 0$, which gives $(A^TA+\alpha I)x=A^Tb$.</p>
+<p>For a large table of identities, see <em>The Matrix Cookbook</em> (References).</p>
+<hr>
+<h2 id="14-map-from-this-refresher-to-your-syllabus">14. Map from this refresher to your syllabus</h2>
+<table>
+<thead>
+<tr>
+<th>Syllabus topic</th>
+<th>Read first</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gaussian elimination, $PA=LU$, Gauss–Jordan</td>
+<td>§3, §5, §6, §7</td>
+</tr>
+<tr>
+<td>Vector spaces, subspaces, four fundamental subspaces</td>
+<td>§1, §3, §8</td>
+</tr>
+<tr>
+<td>Determinant, eigenvalues, symmetric matrices, spectral theorem, quadratic forms</td>
+<td>§9, §10, §11</td>
+</tr>
+<tr>
+<td>Cayley–Hamilton, functions of matrices, linear dynamical systems</td>
+<td>§4 (powers), §10</td>
+</tr>
+<tr>
+<td>Iterative methods (Jacobi, Gauss–Seidel)</td>
+<td>§3, §4, §12</td>
+</tr>
+<tr>
+<td>Least squares, normal equations, $QR$, condition number, Tikhonov</td>
+<td>§11, §12, §13</td>
+</tr>
+<tr>
+<td>SVD, Moore–Penrose pseudoinverse</td>
+<td>§4 (column×row), §10, §11, §12</td>
+</tr>
+<tr>
+<td>Leontief input–output model</td>
+<td>§5, §7 (solve $(I-A)x=d$)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leontief in one line.</strong> If $A$ holds the technical coefficients ($a_{ij}$ = input from sector $i$ needed per unit of output of sector $j$) and $d$ is final demand, total output $x$ must satisfy $x = Ax + d$. So $(I-A)x=d$, and $x=(I-A)^{-1}d$. Everything in that line is in §3 to §7.</p>
+<hr>
+<h2 id="15-exercises-with-answers">15. Exercises with answers</h2>
+<p>Try each one before reading the answer.</p>
+<ol>
+<li>Compute $\begin{bmatrix}1&amp;0&amp;2\-1&amp;3&amp;1\end{bmatrix}\begin{bmatrix}1\2\3\end{bmatrix}$ both by rows and by columns.</li>
+<li>Let $A$ be $3\times 4$ and $B$ be $4\times 2$. What is the size of $AB$? Is $BA$ defined?</li>
+<li>Find $A^T$ and $A^TA$ for $A=\begin{bmatrix}1&amp;2\0&amp;1\1&amp;0\end{bmatrix}$. Is $A^TA$ symmetric?</li>
+<li>Solve by elimination: $x+2y=5$, $3x+4y=6$.</li>
+<li>Invert $\begin{bmatrix}3&amp;1\5&amp;2\end{bmatrix}$.</li>
+<li>Are $(1,2,3)$, $(2,4,6)$, $(0,1,0)$ linearly independent?</li>
+<li>Find the eigenvalues of $\begin{bmatrix}4&amp;1\2&amp;3\end{bmatrix}$.</li>
+<li>Project $b=(3,1)$ onto the line through $a=(1,0)$.</li>
+<li>Compute $\det\begin{bmatrix}2&amp;0&amp;0\5&amp;3&amp;0\1&amp;7&amp;4\end{bmatrix}$.</li>
+<li>Write $3x_1^2 + 4x_1x_2 + x_2^2$ as $x^TAx$ with $A$ symmetric.</li>
+</ol>
+<details>
+<summary><strong>Answers</strong></summary>
+<ol>
+<li>Rows: $(1+0+6,,-1+6+3)=(7,8)$. Columns: $1(1,-1)+2(0,3)+3(2,1)=(7,8)$.</li>
+<li>$AB$ is $3\times2$. $BA$ would be $(4\times2)(3\times4)$: not defined, because 2 ≠ 3.</li>
+<li>$A^T=\begin{bmatrix}1&amp;0&amp;1\2&amp;1&amp;0\end{bmatrix}$, $A^TA=\begin{bmatrix}2&amp;2\2&amp;5\end{bmatrix}$. Yes, $A^TA$ is always symmetric, since $(A^TA)^T=A^TA$.</li>
+<li>Row 2 − 3·Row 1 gives $-2y=-9$, so $y=4.5$ and $x=5-9=-4$.</li>
+<li>$\det=6-5=1$, so the inverse is $\begin{bmatrix}2&amp;-1\-5&amp;3\end{bmatrix}$.</li>
+<li>No. $(2,4,6)=2(1,2,3)$.</li>
+<li>$\lambda^2-7\lambda+10=0$, so $\lambda=5,2$. Check: sum 7 = trace, product 10 = det.</li>
+<li>$p=\tfrac{3}{1}(1,0)=(3,0)$ and $e=(0,1)\perp a$.</li>
+<li>The matrix is triangular, so $\det = 2\cdot3\cdot4=24$.</li>
+<li>$A=\begin{bmatrix}3&amp;2\2&amp;1\end{bmatrix}$. The off-diagonal cross term $4x_1x_2$ is split in half between the two positions.</li>
+</ol>
+</details>
+<hr>
+<h2 id="16-references">16. References</h2>
+<p><strong>Main companion (matches your syllabus closely)</strong></p>
+<ul>
+<li>Strang, G. (2023). <em>Introduction to Linear Algebra</em>, 6th ed. Wellesley-Cambridge Press. ISBN 978-1-7331466-7-8. Book site: <a href="https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html" target="_blank" rel="noopener noreferrer">https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html</a></li>
+<li>MIT OpenCourseWare, <em>18.06SC Linear Algebra</em> (Fall 2011), G. Strang. Free lecture videos, notes, problem sets and exams with solutions, designed for independent study: <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="noopener noreferrer">https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/</a></li>
+</ul>
+<p><strong>Intuition (watch alongside §3, §4, §9, §10)</strong></p>
+<ul>
+<li>Sanderson, G. (3Blue1Brown). <em>Essence of Linear Algebra</em> (video series, 2016). <a href="https://www.3blue1brown.com/lessons/eola-preview" target="_blank" rel="noopener noreferrer">https://www.3blue1brown.com/lessons/eola-preview</a>
+Especially: Ch. 3 “Linear transformations and matrices”, Ch. 4 “Matrix multiplication as composition”, Ch. 6 “The determinant”, Ch. 7 “Inverse matrices, column space and null space”, Ch. 14 “Eigenvectors and eigenvalues”.</li>
+</ul>
+<p><strong>Desk reference (for §13 and beyond)</strong></p>
+<ul>
+<li>Petersen, K. B. &amp; Pedersen, M. S. (2012). <em>The Matrix Cookbook</em>, version 20121115. Technical University of Denmark. <a href="https://www2.imm.dtu.dk/pubdb/pubs/3274-full.html" target="_blank" rel="noopener noreferrer">https://www2.imm.dtu.dk/pubdb/pubs/3274-full.html</a></li>
+</ul>
+<p><strong>Further reading (more rigorous, standard texts; not checked online for this refresher)</strong></p>
+<ul>
+<li>Meyer, C. D. (2000; 2nd ed. 2023). <em>Matrix Analysis and Applied Linear Algebra</em>. SIAM.</li>
+<li>Trefethen, L. N. &amp; Bau, D. (1997). <em>Numerical Linear Algebra</em>. SIAM. (Excellent on $QR$, SVD, conditioning and iterative methods.)</li>
+</ul>
+<hr>
+<h3 id="notes-on-decisions-made">Notes on decisions made</h3>
+<ul>
+<li><strong>Scope.</strong> The course covers prerequisites plus short previews; it does not reteach the syllabus. Proofs are left to your course.</li>
+<li><strong>Examples.</strong> The examples are Strang’s standard ones (the 3×3 elimination system, the line fit through $(0,6),(1,0),(2,0)$), so they will look familiar in his book and lectures.</li>
+<li><strong>Verification.</strong> Every numeric result (the solution $(1,1,2)$, $LU=A$, $\det=-16$, the eigenpairs, the inverses, the rank, the line fit $(5,-3)$, $\det=22$, $\kappa\approx4\times10^4$) was recomputed with NumPy.</li>
+<li><strong>“Matrix calculus.”</strong> I read this as “calculations with matrices” (§1 to §12) and also added the small amount of real matrix calculus (gradients) that least squares needs (§13).</li>
+</ul>
+</div></article></div></div></div><script>(function(){const id = "research";
+
+  // Restore the saved width before first paint.
+  const saved = localStorage.getItem(`split:${id}`);
+  if (saved) document.querySelector(`[data-split="${id}"]`)?.style.setProperty("--split-left", saved);
+})();</script><script type="module">for(let e of document.querySelectorAll(`[data-split]`)){let t=e.querySelector(`.split-handle`),n=e.querySelector(`.split-left`),r=`split:${e.dataset.split}`,i=e.style.getPropertyValue(`--split-left`),a=t=>{let n=e.clientWidth-160,i=`${Math.round(Math.min(Math.max(t,160),n))}px`;e.style.setProperty(`--split-left`,i),localStorage.setItem(r,i)};t.addEventListener(`pointerdown`,r=>{r.preventDefault(),t.setPointerCapture(r.pointerId),e.classList.add(`is-dragging`);let i=r.clientX,o=n.getBoundingClientRect().width,s=e=>a(o+e.clientX-i),c=()=>{e.classList.remove(`is-dragging`),t.removeEventListener(`pointermove`,s),t.removeEventListener(`pointerup`,c)};t.addEventListener(`pointermove`,s),t.addEventListener(`pointerup`,c)}),t.addEventListener(`keydown`,e=>{(e.key===`ArrowLeft`||e.key===`ArrowRight`)&&(e.preventDefault(),a(n.getBoundingClientRect().width+(e.key===`ArrowLeft`?-32:32)))}),t.addEventListener(`dblclick`,()=>{localStorage.removeItem(r),e.style.setProperty(`--split-left`,i)})}</script></main><footer class="site-footer"><div class="frame"><div class="site-footer-inner"><span>Jules Pommier</span><a class="footer-link" href="/legal/">Legal</a></div></div></footer><script>
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script></body></html>
